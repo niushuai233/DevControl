@@ -6,16 +6,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.nav.main.device.NavDeviceFragment">
 
-    <TextView
-        android:id="@+id/nav_device_fragment_textview"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/teal_200"
-        android:text="@string/hello_blank_fragment"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_height="match_parent">
 
+        <androidx.gridlayout.widget.GridLayout
+            android:id="@+id/device_gridLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:columnCount="2">
+
+        </androidx.gridlayout.widget.GridLayout>
+
+        <GridView
+            android:id="@+id/device_gv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:numColumns="2"
+            />
+
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
