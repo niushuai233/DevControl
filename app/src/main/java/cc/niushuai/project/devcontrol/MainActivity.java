@@ -1,8 +1,11 @@
 package cc.niushuai.project.devcontrol;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -10,6 +13,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -56,6 +60,14 @@ public class MainActivity extends AppCompatActivity {
 //        ).build();
         // 返回键 左上角以及右上角
 //        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+
+        // 页签点击监听
+//        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+//            @Override
+//            public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
+//                Toast.makeText(MainActivity.this, "onDestinationChanged Called: " + navDestination.getDisplayName(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         // 底部导航栏
         BottomNavigationView bottomNavView = this.findViewById(R.id.bottom_nav_view);
