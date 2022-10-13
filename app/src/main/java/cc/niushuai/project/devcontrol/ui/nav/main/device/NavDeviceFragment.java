@@ -30,9 +30,9 @@ public class NavDeviceFragment extends Fragment {
         NavDeviceViewModel navDeviceViewModel = new ViewModelProvider(this).get(NavDeviceViewModel.class);
         View rootView = navFragmentDeviceBinding.getRoot();
 
-        TextView textView = navFragmentDeviceBinding.navDeviceFragmentTextview;
-
-        navDeviceViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+//        TextView textView = navFragmentDeviceBinding.navDeviceFragmentTextview;
+//
+//        navDeviceViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
         return rootView;
     }
