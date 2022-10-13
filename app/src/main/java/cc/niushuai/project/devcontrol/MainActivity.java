@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 //                // 设置页签
 //                R.id.id_bottom_nav_menu_set
 //        ).build();
+        // 返回键 左上角以及右上角
 //        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
         // 底部导航栏
