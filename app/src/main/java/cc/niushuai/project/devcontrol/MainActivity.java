@@ -1,14 +1,65 @@
 package cc.niushuai.project.devcontrol;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
+import android.view.Menu;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import cc.niushuai.project.devcontrol.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
+
+    private ActivityMainBinding activityMainBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(activityMainBinding.getRoot());
+
+        // 设置底部导航栏
+        setBottomNavigationView();
+    }
+
+    /**
+     * 设置底部导航栏
+     *
+     * @author niushuai
+     * @date: 2022/10/13 10:42
+     */
+    private void setBottomNavigationView() {
+
+        // 导航栏控制器 获取navController的方式不同
+        // 方式一
+        NavController navController = Navigation.findNavController(this, R.id.main_nav_host_fragment_activity);
+        // 方式二
+//        NavHostFragment fragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.main_nav_host_fragment_activity);
+//        NavController navController = fragment.getNavController();
+
+        // 顶部页签  右上角展开设置项
+//        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+//                // 设备页签
+//                R.id.id_bottom_nav_menu_device,
+//                // 日志页签
+//                R.id.id_bottom_nav_menu_log,
+//                // 设置页签
+//                R.id.id_bottom_nav_menu_set
+//        ).build();
+//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+
+        // 底部导航栏
+        BottomNavigationView bottomNavView = this.findViewById(R.id.bottom_nav_view);
+
+        // 底部栏显示
+        NavigationUI.setupWithNavController(activityMainBinding.bottomNavView, navController);
     }
 }

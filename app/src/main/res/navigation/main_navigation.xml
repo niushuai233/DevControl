@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/navDeviceFragment">
+
+    <fragment
+        android:id="@+id/navDeviceFragment"
+        android:name="cc.niushuai.project.devcontrol.ui.nav.main.device.NavDeviceFragment"
+        android:label="@string/title_bottom_nav_menu_device"
+        tools:layout="@layout/main_nav_fragment_device" />
+    <fragment
+        android:id="@+id/navLogFragment"
+        android:name="cc.niushuai.project.devcontrol.ui.nav.main.log.NavLogFragment"
+        android:label="@string/title_bottom_nav_menu_log"
+        tools:layout="@layout/main_nav_fragment_log" />
+    <fragment
+        android:id="@+id/navSetUpFragment"
+        android:name="cc.niushuai.project.devcontrol.ui.nav.main.setup.NavSetUpFragment"
+        android:label="@string/title_bottom_nav_menu_set"
+        tools:layout="@layout/main_nav_fragment_set_up" />
+</navigation>

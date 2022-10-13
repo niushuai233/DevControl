@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 首页 底部导航栏 start-->
+    <item name="id_bottom_nav_menu_device" type="id"/>
+    <item name="id_bottom_nav_menu_log" type="id"/>
+    <item name="id_bottom_nav_menu_set" type="id"/>
+    <!-- 首页 底部导航栏 end-->
+
+</resources>
