@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
         // 底部导航栏
-        BottomNavigationView bottomNavView = this.findViewById(R.id.bottom_nav_view);
+//        BottomNavigationView bottomNavView = this.findViewById(R.id.bottom_nav_view);
 
         // 底部栏显示
         NavigationUI.setupWithNavController(activityMainBinding.bottomNavView, navController);
