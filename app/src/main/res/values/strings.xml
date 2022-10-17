@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">设备终端</string>
+    <string name="app_name">终端控制器</string>
     <!-- 首页 底部导航栏 start-->
     <string name="title_bottom_nav_menu_device">设备</string>
     <string name="title_bottom_nav_menu_log">日志</string>
