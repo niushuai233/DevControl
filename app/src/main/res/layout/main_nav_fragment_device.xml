@@ -19,10 +19,14 @@
         </androidx.gridlayout.widget.GridLayout>
 
         <GridView
-            android:id="@+id/device_gv"
+            android:id="@id/device_gv"
+            android:paddingTop="25dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:numColumns="2"
+            android:verticalSpacing="12dp"
+            android:horizontalSpacing="12dp"
+            android:background="@color/main_bg_color"
             />
 
     </RelativeLayout>

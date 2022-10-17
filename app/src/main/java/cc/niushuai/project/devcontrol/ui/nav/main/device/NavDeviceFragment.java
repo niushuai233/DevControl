@@ -60,13 +60,16 @@ public class NavDeviceFragment extends Fragment {
         for (int i = 0; i < 3; i++) {
             HashMap<String, Object> m1 = new HashMap<>();
 
-            m1.put("device_item_imageView", R.drawable.ic_mark_as_read);
-            m1.put("device_item_textView", "卧室灯" + i);
+            m1.put("device_item_cardView_image", R.drawable.ic_device_light_1);
+            m1.put("device_item_cardView_text", "卧室灯" + i);
             dataItem.add(m1);
         }
 
+//        SimpleAdapter gvAdapter = new SimpleAdapter(getContext(), dataItem, R.layout.device_item,
+//                new String[]{"device_item_cardView_text"}, new int[]{R.id.device_item_cardView_text});
+
         SimpleAdapter gvAdapter = new SimpleAdapter(getContext(), dataItem, R.layout.device_item,
-                new String[]{"device_item_imageView", "device_item_textView"}, new int[]{R.id.device_item_imageView, R.id.device_item_textView});
+                new String[]{"device_item_cardView_image", "device_item_cardView_text"}, new int[]{R.id.device_item_cardView_image, R.id.device_item_cardView_text});
 
         deviceGv.setAdapter(gvAdapter);
     }

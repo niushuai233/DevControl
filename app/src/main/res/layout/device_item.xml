@@ -1,25 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@id/device_item"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_height="100dp"
     >
 
+    <androidx.cardview.widget.CardView
+        android:id="@id/device_item_cardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="12dp"
+        android:layout_centerInParent="true">
 
-    <ImageView
-        android:id="@+id/device_item_imageView"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        app:srcCompat="@drawable/ic_home"
-        android:layout_centerHorizontal="true"
-        />
+        <RelativeLayout
+            android:id="@id/device_item_cardView_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            >
 
-    <TextView
-        android:id="@+id/device_item_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/device_item_imageView"
-        android:layout_centerHorizontal="true"
-        android:text="TextView"
-        />
+            <ImageView
+                android:id="@id/device_item_cardView_image"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                app:srcCompat="@drawable/ic_home" />
+
+            <TextView
+                android:id="@id/device_item_cardView_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/device_item_cardView_image"
+                android:layout_marginTop="10dp"
+                android:textSize="12dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:shadowColor="#000000"
+                android:shadowDx="0.3"
+                android:shadowDy="0.3"
+                android:shadowRadius="0.3"
+                android:text="TextView" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>
