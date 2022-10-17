@@ -1,5 +1,6 @@
 package cc.niushuai.project.devcontrol.ui.nav.device;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.entity.device.DeviceInfo;
 import cc.niushuai.project.devcontrol.databinding.DeviceItemBinding;
 import cc.niushuai.project.devcontrol.databinding.MainNavFragmentDeviceBinding;
+import cc.niushuai.project.devcontrol.ui.device.DeviceOperate;
 import cn.hutool.core.util.RandomUtil;
 
 /**
@@ -64,12 +66,14 @@ public class NavDeviceFragment extends Fragment {
         deviceGv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                View text = view.findViewById(R.id.device_item_cardView_text);
+                View text = view.findViewById(R.id.device_item_cardView_id);
                 String x = ";";
                 if (text != null) {
                     x = ((TextView) text).getText().toString();
                 }
                 Toast.makeText(getContext(), "Item Clicked" + x, Toast.LENGTH_SHORT).show();
+
+                startActivity(new Intent(getActivity(), DeviceOperate.class));
             }
         });
 
@@ -77,7 +81,8 @@ public class NavDeviceFragment extends Fragment {
 //                new String[]{"device_item_cardView_text"}, new int[]{R.id.device_item_cardView_text});
 
         SimpleAdapter gvAdapter = new SimpleAdapter(getContext(), loadDeviceInfo(), R.layout.device_item,
-                new String[]{"device_item_cardView_image", "device_item_cardView_text"}, new int[]{R.id.device_item_cardView_image, R.id.device_item_cardView_text});
+                new String[]{"device_item_cardView_id", "device_item_cardView_image", "device_item_cardView_text"},
+                new int[]{R.id.device_item_cardView_id, R.id.device_item_cardView_image, R.id.device_item_cardView_text});
 
         deviceGv.setAdapter(gvAdapter);
     }
@@ -100,6 +105,7 @@ public class NavDeviceFragment extends Fragment {
 
             HashMap<String, Object> m1 = new HashMap<>();
             // 设置当前设备的图标和名称
+            m1.put("device_item_cardView_id", deviceInfo.getId());
             m1.put("device_item_cardView_image", deviceInfo.getIconId());
             m1.put("device_item_cardView_text", deviceInfo.getName());
 

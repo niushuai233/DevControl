@@ -11,8 +11,11 @@
     <item name="device_item" type="id"/>
     <item name="device_item_cardView" type="id"/>
     <item name="device_item_cardView_content" type="id"/>
+    <item name="device_item_cardView_id" type="id"/>
     <item name="device_item_cardView_image" type="id"/>
     <item name="device_item_cardView_text" type="id"/>
+
+    <item name="device_operate_fullInfo" type="id"/>
     <!--设备页 end-->
 
 </resources>
