@@ -1,4 +1,4 @@
-package cc.niushuai.project.devcontrol.ui.nav.main.setup;
+package cc.niushuai.project.devcontrol.ui.nav.setup;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package cc.niushuai.project.devcontrol.ui.nav.main.log;
+package cc.niushuai.project.devcontrol.ui.nav.log;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

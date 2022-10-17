@@ -8,19 +8,19 @@
 
     <fragment
         android:id="@id/bottom_nav_log"
-        android:name="cc.niushuai.project.devcontrol.ui.nav.main.log.NavLogFragment"
+        android:name="cc.niushuai.project.devcontrol.ui.nav.log.NavLogFragment"
         android:label="@string/title_bottom_nav_menu_log"
         tools:layout="@layout/main_nav_fragment_log" />
 
     <fragment
         android:id="@id/bottom_nav_device"
-        android:name="cc.niushuai.project.devcontrol.ui.nav.main.device.NavDeviceFragment"
+        android:name="cc.niushuai.project.devcontrol.ui.nav.device.NavDeviceFragment"
         android:label="@string/title_bottom_nav_menu_device"
         tools:layout="@layout/main_nav_fragment_device" />
 
     <fragment
         android:id="@id/bottom_nav_set"
-        android:name="cc.niushuai.project.devcontrol.ui.nav.main.setup.NavSetUpFragment"
+        android:name="cc.niushuai.project.devcontrol.ui.nav.setup.NavSetUpFragment"
         android:label="@string/title_bottom_nav_menu_set"
         tools:layout="@layout/main_nav_fragment_set_up" />
 </navigation>

@@ -1,4 +1,4 @@
-package cc.niushuai.project.devcontrol.ui.nav.main.device;
+package cc.niushuai.project.devcontrol.ui.nav.device;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -12,15 +12,12 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.gridlayout.widget.GridLayout;
 import androidx.lifecycle.ViewModelProvider;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.entity.device.DeviceInfo;

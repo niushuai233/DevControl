@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.nav.main.setup.NavSetUpFragment">
+    tools:context=".ui.nav.setup.NavSetUpFragment">
 
     <TextView
         android:id="@+id/nav_setup_fragment_textview"

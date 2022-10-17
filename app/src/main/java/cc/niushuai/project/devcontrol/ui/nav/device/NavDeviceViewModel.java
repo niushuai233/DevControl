@@ -1,15 +1,15 @@
-package cc.niushuai.project.devcontrol.ui.nav.main.log;
+package cc.niushuai.project.devcontrol.ui.nav.device;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class NavLogViewModel extends ViewModel {
+public class NavDeviceViewModel extends ViewModel {
 
     private final MutableLiveData<String> vText;
 
-    public NavLogViewModel() {
+    public NavDeviceViewModel() {
         this.vText = new MutableLiveData<>();
-        this.vText.setValue("this is log view");
+        this.vText.setValue("this is device view");
     }
 
     public MutableLiveData<String> getText() {
