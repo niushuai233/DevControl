@@ -57,7 +57,7 @@ public class NavDeviceFragment extends Fragment {
         deviceGv.setSelector(new ColorDrawable(Color.TRANSPARENT));
 
         List<HashMap<String, Object>> dataItem = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 31; i++) {
             HashMap<String, Object> m1 = new HashMap<>();
 
             m1.put("device_item_cardView_image", R.drawable.ic_device_light_1);
