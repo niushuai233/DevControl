@@ -2,7 +2,6 @@ package cc.niushuai.project.devcontrol;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.multidex.MultiDex;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -68,11 +67,5 @@ public class MainActivity extends AppCompatActivity {
 
         // 底部栏显示
         NavigationUI.setupWithNavController(activityMainBinding.bottomNavView, navController);
-    }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(newBase);
-        MultiDex.install(this);
     }
 }

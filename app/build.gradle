@@ -31,10 +31,6 @@ android {
     buildFeatures {
         viewBinding true
     }
-
-    dexOptions {
-        javaMaxHeapSize "4g"
-    }
 }
 
 dependencies {
@@ -51,12 +47,4 @@ dependencies {
 
     // hutool
     implementation 'cn.hutool:hutool-all:5.8.8'
-
-    // 解决 dex文件数超过64k问题
-    implementation 'com.android.support:multidex:1.0.1'
-
-    // 测试类资源
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
