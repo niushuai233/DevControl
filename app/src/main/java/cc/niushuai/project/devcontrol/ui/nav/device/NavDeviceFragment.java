@@ -25,7 +25,6 @@ import cc.niushuai.project.devcontrol.base.entity.device.DeviceInfo;
 import cc.niushuai.project.devcontrol.databinding.DeviceItemBinding;
 import cc.niushuai.project.devcontrol.databinding.MainNavFragmentDeviceBinding;
 import cc.niushuai.project.devcontrol.ui.device.DeviceActivity;
-import cc.niushuai.project.devcontrol.ui.device.DeviceOperate;
 import cn.hutool.core.util.RandomUtil;
 
 /**

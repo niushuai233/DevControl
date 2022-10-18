@@ -15,7 +15,23 @@
     <item name="device_item_cardView_image" type="id"/>
     <item name="device_item_cardView_text" type="id"/>
 
-    <item name="device_operate_fullInfo" type="id"/>
+    <!--设备操作页 start-->
+    <item name="device_activity" type="id"/>
+    <item name="device_activity_outside" type="id"/>
+    <item name="device_activity_inner_title" type="id"/>
+    <item name="device_activity_inner_content" type="id"/>
+
+    <!--标题栏-->
+    <item name="device_activity_inner_back" type="id"/>
+    <item name="device_activity_inner_name" type="id"/>
+    <item name="device_activity_inner_description" type="id"/>
+    <item name="device_activity_inner_more_set" type="id"/>
+
+    <!--内容栏-->
+    <item name="device_activity_inner_content_icon" type="id"/>
+    <item name="device_activity_inner_content_switch" type="id"/>
+    <item name="device_activity_inner_content_text" type="id"/>
+    <!--设备操作页 end-->
     <!--设备页 end-->
 
 </resources>
