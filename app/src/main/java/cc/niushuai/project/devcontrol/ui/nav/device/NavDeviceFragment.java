@@ -24,6 +24,7 @@ import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.entity.device.DeviceInfo;
 import cc.niushuai.project.devcontrol.databinding.DeviceItemBinding;
 import cc.niushuai.project.devcontrol.databinding.MainNavFragmentDeviceBinding;
+import cc.niushuai.project.devcontrol.ui.device.DeviceActivity;
 import cc.niushuai.project.devcontrol.ui.device.DeviceOperate;
 import cn.hutool.core.util.RandomUtil;
 
@@ -73,7 +74,7 @@ public class NavDeviceFragment extends Fragment {
                 }
                 Toast.makeText(getContext(), "Item Clicked" + x, Toast.LENGTH_SHORT).show();
 
-                startActivity(new Intent(getActivity(), DeviceOperate.class));
+                startActivity(new Intent(getActivity(), DeviceActivity.class));
             }
         });
 
