@@ -15,7 +15,7 @@
     <item name="device_item_cardView_image" type="id"/>
     <item name="device_item_cardView_text" type="id"/>
 
-    <!--设备操作页 start-->
+    <!--开关操作页 start-->
     <item name="device_activity" type="id"/>
     <item name="device_activity_layout" type="id"/>
     <item name="device_activity_layout_title" type="id"/>
@@ -31,7 +31,7 @@
     <item name="device_activity_content_icon" type="id"/>
     <item name="device_activity_content_switch" type="id"/>
     <item name="device_activity_content_text" type="id"/>
-    <!--设备操作页 end-->
+    <!--开关操作页 end-->
     <!--设备页 end-->
 
 </resources>

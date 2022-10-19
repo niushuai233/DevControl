@@ -1,5 +1,6 @@
-package cc.niushuai.project.devcontrol.ui.device;
+package cc.niushuai.project.devcontrol.ui.powerswitch;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -7,16 +8,16 @@ import android.widget.TextView;
 import androidx.appcompat.widget.AppCompatImageView;
 
 import cc.niushuai.project.devcontrol.R;
-import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
 import cc.niushuai.project.devcontrol.base.entity.device.DeviceInfo;
 import cc.niushuai.project.devcontrol.base.enums.OnOffEnum;
+import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
 import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
 import cc.niushuai.project.devcontrol.base.util.Keys;
-import cc.niushuai.project.devcontrol.databinding.DeviceActivityBinding;
+import cc.niushuai.project.devcontrol.databinding.DevicePowerSwitchActivityBinding;
 
-public class DeviceActivity extends BaseActivity {
+public class PowerSwitchActivity extends BaseActivity {
 
-    private DeviceActivityBinding binding;
+    private DevicePowerSwitchActivityBinding binding;
     private DeviceInfo device;
 
     @Override
@@ -25,7 +26,7 @@ public class DeviceActivity extends BaseActivity {
         // 隐藏自带的标题栏
         getSupportActionBar().hide();
 
-        binding = DeviceActivityBinding.inflate(getLayoutInflater());
+        binding = DevicePowerSwitchActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         // 初始化页面数据
@@ -67,8 +68,40 @@ public class DeviceActivity extends BaseActivity {
      * @date: 2022/10/19 11:49
      */
     private void addListener() {
+        // 开关点击事件
+        binding.deviceActivityContentSwitch.setOnClickListener(this::imageSwitchClickListener);
 
-        binding.deviceActivityContentSwitch.setOnClickListener(this::switchClickListener);
+        // 标题栏 返回
+        binding.deviceActivityTitleBack.setOnClickListener(this::buttonBackClickListener);
+
+        // 标题栏 更多设置
+        binding.deviceActivityTitleMoreSet.setOnClickListener(this::buttonMoreSetClickListener);
+    }
+
+    /**
+     * 更多设置 打开fragment
+     *
+     * @param view
+     * @author niushuai
+     * @date: 2022/10/19 14:47
+     */
+
+    private void buttonMoreSetClickListener(View view) {
+
+
+
+    }
+
+    /**
+     * 返回上一页
+     *
+     * @param view
+     * @author niushuai
+     * @date: 2022/10/19 14:46
+     */
+    private void buttonBackClickListener(View view) {
+//        AppCompatImageButton buttonBack = (AppCompatImageButton) view;
+        PowerSwitchActivity.this.finish();
     }
 
     /**
@@ -78,7 +111,7 @@ public class DeviceActivity extends BaseActivity {
      * @author niushuai
      * @date: 2022/10/19 11:52
      */
-    private void switchClickListener(View view) {
+    private void imageSwitchClickListener(View view) {
         AppCompatImageView appCompatImageView = (AppCompatImageView) view;
 
         int switchImageId, iconImageId;

@@ -1,15 +1,15 @@
-package cc.niushuai.project.devcontrol.ui.device;
+package cc.niushuai.project.devcontrol.ui.powerswitch;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import cc.niushuai.project.devcontrol.base.entity.device.DeviceInfo;
 
-public class DeviceViewModel extends ViewModel {
+public class PowerSwitchViewModel extends ViewModel {
 
     private MutableLiveData<DeviceInfo> deviceInfo;
 
-    public DeviceViewModel() {
+    public PowerSwitchViewModel() {
     }
 
     public MutableLiveData<DeviceInfo> getDeviceInfo() {

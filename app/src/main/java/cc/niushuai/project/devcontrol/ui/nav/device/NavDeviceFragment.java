@@ -11,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -25,7 +24,7 @@ import cc.niushuai.project.devcontrol.base.entity.device.DeviceInfo;
 import cc.niushuai.project.devcontrol.base.util.Keys;
 import cc.niushuai.project.devcontrol.databinding.DeviceItemBinding;
 import cc.niushuai.project.devcontrol.databinding.MainNavFragmentDeviceBinding;
-import cc.niushuai.project.devcontrol.ui.device.DeviceActivity;
+import cc.niushuai.project.devcontrol.ui.powerswitch.PowerSwitchActivity;
 import cn.hutool.core.util.RandomUtil;
 
 /**
@@ -117,7 +116,7 @@ public class NavDeviceFragment extends Fragment {
     private void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         TextView textId = view.findViewById(R.id.device_item_cardView_id);
 
-        Intent intent = new Intent(getActivity(), DeviceActivity.class);
+        Intent intent = new Intent(getActivity(), PowerSwitchActivity.class);
         intent.putExtra(Keys.ID, textId.getText());
         startActivity(intent);
     }
