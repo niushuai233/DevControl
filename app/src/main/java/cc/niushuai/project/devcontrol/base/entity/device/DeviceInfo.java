@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cc.niushuai.project.devcontrol.base.enums.DeviceTypeEnum;
+import cc.niushuai.project.devcontrol.base.enums.OnOffEnum;
+import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;
 
@@ -29,6 +31,11 @@ public class DeviceInfo {
      * 设备类型
      */
     private DeviceTypeEnum type;
+
+    /**
+     * 开关状态
+     */
+    private OnOffEnum onOff;
 
     /**
      * 设备描述信息
@@ -78,6 +85,14 @@ public class DeviceInfo {
 
     public void setType(DeviceTypeEnum type) {
         this.type = type;
+    }
+
+    public OnOffEnum getOnOff() {
+        return onOff;
+    }
+
+    public void setOnOff(OnOffEnum onOff) {
+        this.onOff = onOff;
     }
 
     public String getDescription() {
@@ -134,9 +149,12 @@ public class DeviceInfo {
             device.setIconId(iconId);
             device.setDescription("卧室灯开关-树莓派");
             device.setType(DeviceTypeEnum.Switch);
+            device.setOnOff(OnOffEnum.OFF);
             device.setCommandPath("/path/file");
             device.setCommandArgs("-c light -t 1");
             list.add(device);
+
+            GlobalVariables.DEVICE_INFO_MAP.put(device.getId(), device);
         }
 
         return list;
