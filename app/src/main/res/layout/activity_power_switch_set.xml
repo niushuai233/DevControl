@@ -6,13 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.powerswitch.PowerSwitchSetActivity">
 
-
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/test_hello_blank_textview_3"
         />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

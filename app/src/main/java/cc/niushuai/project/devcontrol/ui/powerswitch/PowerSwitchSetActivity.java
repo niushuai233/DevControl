@@ -1,17 +1,32 @@
 package cc.niushuai.project.devcontrol.ui.powerswitch;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-import cc.niushuai.project.devcontrol.R;
+import cc.niushuai.project.devcontrol.base.entity.device.DeviceInfo;
 import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
+import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
+import cc.niushuai.project.devcontrol.base.util.Keys;
+import cc.niushuai.project.devcontrol.databinding.ActivityPowerSwitchBinding;
+import cc.niushuai.project.devcontrol.databinding.ActivityPowerSwitchSetBinding;
 
 public class PowerSwitchSetActivity extends BaseActivity {
+
+    private ActivityPowerSwitchSetBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_power_switch_set);
+        getSupportActionBar().hide();
+
+        binding = ActivityPowerSwitchSetBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+    }
+
+    @Override
+    public void init() {
+        device = GlobalVariables.getDeviceInfo(getIntentDeviceId());
+
+
+
     }
 }

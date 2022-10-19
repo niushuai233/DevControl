@@ -1,6 +1,7 @@
 package cc.niushuai.project.devcontrol.ui.powerswitch;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -19,7 +20,6 @@ import cc.niushuai.project.devcontrol.databinding.ActivityPowerSwitchBinding;
 public class PowerSwitchActivity extends BaseActivity {
 
     private ActivityPowerSwitchBinding binding;
-    private DeviceInfo device;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,10 +42,10 @@ public class PowerSwitchActivity extends BaseActivity {
      * @author niushuai
      * @date: 2022/10/19 11:18
      */
+    @Override
     public void init() {
-        String deviceId = getIntent().getStringExtra(Keys.ID);
 
-        DeviceInfo data = GlobalVariables.DEVICE_INFO_MAP.get(deviceId);
+        DeviceInfo data = GlobalVariables.getDeviceInfo(getIntentDeviceId());
         if (null != data) {
             this.device = data;
             // 标题名称
@@ -87,7 +87,12 @@ public class PowerSwitchActivity extends BaseActivity {
      * @date: 2022/10/19 14:47
      */
     private void buttonMoreSetClickListener(View view) {
-        ActivityUtil.startActivity(this, PowerSwitchSetActivity.class);
+//        ActivityUtil.startActivity(this, PowerSwitchSetActivity.class);
+
+        Intent intent = new Intent(this, PowerSwitchSetActivity.class);
+
+        startActivity(intent);
+
     }
 
     /**
