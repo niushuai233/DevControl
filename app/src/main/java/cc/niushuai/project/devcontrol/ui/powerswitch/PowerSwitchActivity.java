@@ -48,15 +48,15 @@ public class PowerSwitchActivity extends BaseActivity {
         if (null != data) {
             this.device = data;
             // 标题名称
-            TextView titleTextView = findViewById(R.id.device_activity_title_name);
+            TextView titleTextView = findViewById(R.id.power_switch_activity_title_name);
             titleTextView.setText(device.getName());
 
             // 副标题名称
-            TextView descTextView = findViewById(R.id.device_activity_title_description);
+            TextView descTextView = findViewById(R.id.power_switch_activity_title_description);
             descTextView.setText(device.getDescription());
 
             // 开关底部的名称
-            TextView contentTextTextView = findViewById(R.id.device_activity_content_text);
+            TextView contentTextTextView = findViewById(R.id.power_switch_activity_content_text);
             contentTextTextView.setText(device.getName());
         }
     }
@@ -69,13 +69,13 @@ public class PowerSwitchActivity extends BaseActivity {
      */
     private void addListener() {
         // 开关点击事件
-        binding.deviceActivityContentSwitch.setOnClickListener(this::imageSwitchClickListener);
+        binding.powerSwitchActivityContentSwitch.setOnClickListener(this::imageSwitchClickListener);
 
         // 标题栏 返回
-        binding.deviceActivityTitleBack.setOnClickListener(this::buttonBackClickListener);
+        binding.powerSwitchActivityTitleBack.setOnClickListener(this::buttonBackClickListener);
 
         // 标题栏 更多设置
-        binding.deviceActivityTitleMoreSet.setOnClickListener(this::buttonMoreSetClickListener);
+        binding.powerSwitchActivityTitleMoreSet.setOnClickListener(this::buttonMoreSetClickListener);
     }
 
     /**
@@ -125,7 +125,7 @@ public class PowerSwitchActivity extends BaseActivity {
             iconImageId = R.drawable.ic_device_light_1_close;
         }
         appCompatImageView.setImageResource(switchImageId);
-        ((AppCompatImageView) findViewById(R.id.device_activity_content_icon)).setImageResource(iconImageId);
+        ((AppCompatImageView) findViewById(R.id.power_switch_activity_content_icon)).setImageResource(iconImageId);
     }
 
 

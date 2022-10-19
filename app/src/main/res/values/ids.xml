@@ -16,21 +16,21 @@
     <item name="device_item_cardView_text" type="id"/>
 
     <!--开关操作页 start-->
-    <item name="device_activity" type="id"/>
-    <item name="device_activity_layout" type="id"/>
-    <item name="device_activity_layout_title" type="id"/>
-    <item name="device_activity_layout_content" type="id"/>
+    <item name="power_switch_activity" type="id"/>
+    <item name="power_switch_activity_layout" type="id"/>
+    <item name="power_switch_activity_layout_title" type="id"/>
+    <item name="power_switch_activity_layout_content" type="id"/>
 
     <!--标题栏-->
-    <item name="device_activity_title_back" type="id"/>
-    <item name="device_activity_title_name" type="id"/>
-    <item name="device_activity_title_description" type="id"/>
-    <item name="device_activity_title_more_set" type="id"/>
+    <item name="power_switch_activity_title_back" type="id"/>
+    <item name="power_switch_activity_title_name" type="id"/>
+    <item name="power_switch_activity_title_description" type="id"/>
+    <item name="power_switch_activity_title_more_set" type="id"/>
 
     <!--内容栏-->
-    <item name="device_activity_content_icon" type="id"/>
-    <item name="device_activity_content_switch" type="id"/>
-    <item name="device_activity_content_text" type="id"/>
+    <item name="power_switch_activity_content_icon" type="id"/>
+    <item name="power_switch_activity_content_switch" type="id"/>
+    <item name="power_switch_activity_content_text" type="id"/>
     <!--开关操作页 end-->
     <!--设备页 end-->
 
