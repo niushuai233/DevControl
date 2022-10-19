@@ -49,11 +49,11 @@ public class PowerSwitchActivity extends BaseActivity {
         if (null != data) {
             this.device = data;
             // 标题名称
-            TextView titleTextView = findViewById(R.id.power_switch_activity_title_name);
+            TextView titleTextView = findViewById(R.id.activity_title_name);
             titleTextView.setText(device.getName());
 
             // 副标题名称
-            TextView descTextView = findViewById(R.id.power_switch_activity_title_description);
+            TextView descTextView = findViewById(R.id.activity_title_description);
             descTextView.setText(device.getDescription());
 
             // 开关底部的名称
@@ -73,10 +73,12 @@ public class PowerSwitchActivity extends BaseActivity {
         binding.powerSwitchActivityContentSwitch.setOnClickListener(this::imageSwitchClickListener);
 
         // 标题栏 返回
-        binding.powerSwitchActivityTitleBack.setOnClickListener(this::buttonBackClickListener);
+        findViewById(R.id.activity_title_back).setOnClickListener(this::buttonBackClickListener);
+//        binding.powerSwitchActivityTitleBack.setOnClickListener(this::buttonBackClickListener);
 
         // 标题栏 更多设置
-        binding.powerSwitchActivityTitleMoreSet.setOnClickListener(this::buttonMoreSetClickListener);
+        findViewById(R.id.activity_title_more_set).setOnClickListener(this::buttonMoreSetClickListener);
+//        binding.powerSwitchActivityTitleMoreSet.setOnClickListener(this::buttonMoreSetClickListener);
     }
 
     /**

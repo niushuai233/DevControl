@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@id/activity_layout_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/main_bg_color"
+        android:gravity="center">
+
+    <!--标题栏 返回-->
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@id/activity_title_back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_weight="1"
+        android:background="@color/empty"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_back_32" />
+
+    <!--标题中间部分-->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="5">
+
+        <!--name名称-->
+        <TextView
+            android:id="@id/activity_title_name"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:text="@string/test_hello_blank_textview_1"
+            android:textSize="16dp" />
+        <!--描述信息-->
+        <TextView
+            android:id="@id/activity_title_description"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_below="@id/activity_title_name"
+            android:gravity="center"
+            android:text="@string/test_hello_blank_textview_3"
+            android:textSize="12dp" />
+    </RelativeLayout>
+
+    <!--标题栏 更多设置-->
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@id/activity_title_more_set"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="5dp"
+        android:layout_weight="1"
+        android:background="@color/empty"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_more_v_32" />
+</LinearLayout>
