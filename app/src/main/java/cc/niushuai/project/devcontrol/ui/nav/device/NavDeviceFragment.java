@@ -21,6 +21,7 @@ import java.util.List;
 
 import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.entity.device.DeviceInfo;
+import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
 import cc.niushuai.project.devcontrol.base.util.Keys;
 import cc.niushuai.project.devcontrol.databinding.DeviceItemBinding;
 import cc.niushuai.project.devcontrol.databinding.MainNavFragmentDeviceBinding;
@@ -116,7 +117,8 @@ public class NavDeviceFragment extends Fragment {
     private void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         TextView textId = view.findViewById(R.id.device_item_cardView_id);
 
-        Intent intent = new Intent(getActivity(), PowerSwitchActivity.class);
+        DeviceInfo deviceInfo = GlobalVariables.DEVICE_INFO_MAP.get(textId.getText());
+        Intent intent = new Intent(getActivity(), deviceInfo.getType().getActivity());
         intent.putExtra(Keys.ID, textId.getText());
         startActivity(intent);
     }
