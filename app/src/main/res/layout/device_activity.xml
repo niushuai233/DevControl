@@ -77,28 +77,34 @@
             <!--中间开关图片 可点击-->
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@id/device_activity_inner_content_switch"
-                android:layout_margin="50dp"
-                android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/img_switch_close"/>
+                android:layout_height="375dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="50dp"
+                android:src="@drawable/img_switch_close" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@id/device_activity_inner_content_icon"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
                 android:layout_centerHorizontal="true"
-                android:layout_width="128dp"
-                android:layout_height="128dp"
-                android:src="@drawable/ic_device_light_1"/>
+                android:layout_marginTop="25dp"
+                android:src="@drawable/ic_device_light_1" />
 
             <TextView
                 android:id="@id/device_activity_inner_content_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:gravity="center"
-                android:layout_centerHorizontal="true"
                 android:layout_below="@id/device_activity_inner_content_icon"
-                android:text="@string/test_btn_1"/>
+                android:layout_centerInParent="true"
+                android:layout_marginTop="225dp"
+                android:gravity="center"
+                android:text="@string/test_btn_1" />
 
         </RelativeLayout>
     </RelativeLayout>
