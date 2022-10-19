@@ -11,13 +11,14 @@ import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.entity.device.DeviceInfo;
 import cc.niushuai.project.devcontrol.base.enums.OnOffEnum;
 import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
+import cc.niushuai.project.devcontrol.base.util.ActivityUtil;
 import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
 import cc.niushuai.project.devcontrol.base.util.Keys;
-import cc.niushuai.project.devcontrol.databinding.DevicePowerSwitchActivityBinding;
+import cc.niushuai.project.devcontrol.databinding.ActivityPowerSwitchBinding;
 
 public class PowerSwitchActivity extends BaseActivity {
 
-    private DevicePowerSwitchActivityBinding binding;
+    private ActivityPowerSwitchBinding binding;
     private DeviceInfo device;
 
     @Override
@@ -26,7 +27,7 @@ public class PowerSwitchActivity extends BaseActivity {
         // 隐藏自带的标题栏
         getSupportActionBar().hide();
 
-        binding = DevicePowerSwitchActivityBinding.inflate(getLayoutInflater());
+        binding = ActivityPowerSwitchBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         // 初始化页面数据
@@ -85,11 +86,8 @@ public class PowerSwitchActivity extends BaseActivity {
      * @author niushuai
      * @date: 2022/10/19 14:47
      */
-
     private void buttonMoreSetClickListener(View view) {
-
-
-
+        ActivityUtil.startActivity(this, PowerSwitchSetActivity.class);
     }
 
     /**
