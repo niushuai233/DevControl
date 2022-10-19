@@ -7,7 +7,7 @@ import android.widget.TextView;
 import androidx.appcompat.widget.AppCompatImageView;
 
 import cc.niushuai.project.devcontrol.R;
-import cc.niushuai.project.devcontrol.base.activity.BaseActivity;
+import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
 import cc.niushuai.project.devcontrol.base.entity.device.DeviceInfo;
 import cc.niushuai.project.devcontrol.base.enums.OnOffEnum;
 import cc.niushuai.project.devcontrol.base.util.GlobalVariables;

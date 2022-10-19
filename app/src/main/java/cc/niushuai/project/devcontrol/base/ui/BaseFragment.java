@@ -1,4 +1,4 @@
-package cc.niushuai.project.devcontrol.base.fragment;
+package cc.niushuai.project.devcontrol.base.ui;
 
 import androidx.fragment.app.Fragment;
 

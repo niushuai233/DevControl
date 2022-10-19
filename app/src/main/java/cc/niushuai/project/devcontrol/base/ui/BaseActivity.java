@@ -1,4 +1,4 @@
-package cc.niushuai.project.devcontrol.base.activity;
+package cc.niushuai.project.devcontrol.base.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
