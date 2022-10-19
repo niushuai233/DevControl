@@ -1,18 +1,17 @@
 package cc.niushuai.project.devcontrol.ui.powerswitch;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatImageView;
 
+import java.util.HashMap;
+
 import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.entity.device.DeviceInfo;
 import cc.niushuai.project.devcontrol.base.enums.OnOffEnum;
 import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
-import cc.niushuai.project.devcontrol.base.util.ActivityUtil;
 import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
 import cc.niushuai.project.devcontrol.base.util.Keys;
 import cc.niushuai.project.devcontrol.databinding.ActivityPowerSwitchBinding;
@@ -43,7 +42,7 @@ public class PowerSwitchActivity extends BaseActivity {
      * @date: 2022/10/19 11:18
      */
     @Override
-    public void init() {
+    protected void init() {
 
         DeviceInfo data = GlobalVariables.getDeviceInfo(getIntentDeviceId());
         if (null != data) {
@@ -68,46 +67,20 @@ public class PowerSwitchActivity extends BaseActivity {
      * @author niushuai
      * @date: 2022/10/19 11:49
      */
-    private void addListener() {
+    @Override
+    protected void addListener() {
         // 开关点击事件
         binding.powerSwitchActivityContentSwitch.setOnClickListener(this::imageSwitchClickListener);
 
         // 标题栏 返回
-        findViewById(R.id.activity_title_back).setOnClickListener(this::buttonBackClickListener);
-//        binding.powerSwitchActivityTitleBack.setOnClickListener(this::buttonBackClickListener);
+        super.activityButtonBackClickListener(this);
 
         // 标题栏 更多设置
-        findViewById(R.id.activity_title_more_set).setOnClickListener(this::buttonMoreSetClickListener);
-//        binding.powerSwitchActivityTitleMoreSet.setOnClickListener(this::buttonMoreSetClickListener);
+        HashMap<String, String> withData = new HashMap<>(1);
+        withData.put(Keys.ID, device.getId());
+        super.activityButtonMoreSetClickListener(this, PowerSwitchSetActivity.class, withData);
     }
 
-    /**
-     * 更多设置 打开fragment
-     *
-     * @param view
-     * @author niushuai
-     * @date: 2022/10/19 14:47
-     */
-    private void buttonMoreSetClickListener(View view) {
-//        ActivityUtil.startActivity(this, PowerSwitchSetActivity.class);
-
-        Intent intent = new Intent(this, PowerSwitchSetActivity.class);
-
-        startActivity(intent);
-
-    }
-
-    /**
-     * 返回上一页
-     *
-     * @param view
-     * @author niushuai
-     * @date: 2022/10/19 14:46
-     */
-    private void buttonBackClickListener(View view) {
-//        AppCompatImageButton buttonBack = (AppCompatImageButton) view;
-        PowerSwitchActivity.this.finish();
-    }
 
     /**
      * 开关点击事件处理

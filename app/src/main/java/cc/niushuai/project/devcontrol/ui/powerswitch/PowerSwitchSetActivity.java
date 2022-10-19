@@ -23,10 +23,7 @@ public class PowerSwitchSetActivity extends BaseActivity {
     }
 
     @Override
-    public void init() {
+    protected void init() {
         device = GlobalVariables.getDeviceInfo(getIntentDeviceId());
-
-
-
     }
 }
