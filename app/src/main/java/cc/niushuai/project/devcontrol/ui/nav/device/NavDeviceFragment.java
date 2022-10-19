@@ -117,8 +117,7 @@ public class NavDeviceFragment extends Fragment {
     private void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         TextView textId = view.findViewById(R.id.device_item_cardView_id);
 
-        DeviceInfo deviceInfo = GlobalVariables.DEVICE_INFO_MAP.get(textId.getText());
-        Intent intent = new Intent(getActivity(), deviceInfo.getType().getActivity());
+        Intent intent = new Intent(getActivity(), GlobalVariables.getDeviceOperateActivity(textId.getText().toString()));
         intent.putExtra(Keys.ID, textId.getText());
         startActivity(intent);
     }

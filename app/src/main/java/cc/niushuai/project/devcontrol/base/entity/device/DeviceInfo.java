@@ -30,7 +30,7 @@ public class DeviceInfo {
     /**
      * 设备类型
      */
-    private DeviceTypeEnum type;
+    private DeviceTypeEnum deviceType;
 
     /**
      * 开关状态
@@ -79,12 +79,12 @@ public class DeviceInfo {
         this.name = name;
     }
 
-    public DeviceTypeEnum getType() {
-        return type;
+    public DeviceTypeEnum getDeviceType() {
+        return deviceType;
     }
 
-    public void setType(DeviceTypeEnum type) {
-        this.type = type;
+    public void setDeviceType(DeviceTypeEnum deviceType) {
+        this.deviceType = deviceType;
     }
 
     public OnOffEnum getOnOff() {
@@ -148,7 +148,7 @@ public class DeviceInfo {
             device.setName("卧室灯开关" + (i + 1));
             device.setIconId(iconId);
             device.setDescription("卧室灯开关-树莓派");
-            device.setType(DeviceTypeEnum.Switch);
+            device.setDeviceType(DeviceTypeEnum.Switch);
             device.setOnOff(OnOffEnum.OFF);
             device.setCommandPath("/path/file");
             device.setCommandArgs("-c light -t 1");
