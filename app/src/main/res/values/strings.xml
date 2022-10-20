@@ -9,6 +9,9 @@
     <string name="log">日志</string>
     <string name="confirm">确定</string>
     <string name="cancel">取消</string>
+    <string name="open">开启</string>
+    <string name="close">关闭</string>
+    <string name="save">保存</string>
     <!--common end-->
 
     <!--测试字符串 start-->
@@ -33,6 +36,9 @@
     <string name="power_switch_set_iconChange">更换图标</string>
     <string name="power_switch_set_paramSet">参数设置</string>
     <string name="power_switch_set_logView">日志</string>
+
+    <string name="power_switch_set_paramSet_open">开</string>
+    <string name="power_switch_set_paramSet_close">关</string>
     <!--开关设置页面 end-->
     <!--设备 end-->
 </resources>
