@@ -11,11 +11,16 @@
 
     <!--common end-->
 
+    <!--首页 start-->
+
+    <item name="device_add" type="id"/>
+
     <!-- 首页 底部导航栏 start-->
     <item name="bottom_nav_device" type="id"/>
     <item name="bottom_nav_log" type="id"/>
     <item name="bottom_nav_set" type="id"/>
     <!-- 首页 底部导航栏 end-->
+    <!--首页 end-->
 
     <!--设备页 start-->
     <item name="device_gv" type="id"/>

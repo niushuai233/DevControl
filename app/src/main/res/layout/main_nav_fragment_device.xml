@@ -27,7 +27,7 @@
 
             <!--标题栏 更多设置-->
             <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@id/activity_title_more_set"
+                android:id="@id/device_add"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="5dp"
