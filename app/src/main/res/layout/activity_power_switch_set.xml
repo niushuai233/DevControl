@@ -4,11 +4,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_bg_color"
     tools:context=".ui.powerswitch.PowerSwitchSetActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <include layout="@layout/activity_common_title" />
+
+        <LinearLayout
+            android:id="@+id/power_switch_set_activity_item_iconChange_outside"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/activity_layout_title"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/main_bg_color"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@id/power_switch_set_activity_item_iconChange_text"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="6"
+                android:gravity="center_vertical"
+                android:text="@string/power_switch_set_iconChange"
+                android:textSize="16dp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@id/power_switch_set_activity_item_iconChange_icon"
+                android:layout_width="25dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_next_16" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/power_switch_set_activity_item_paramSet_outside"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/power_switch_set_activity_item_iconChange_outside"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/main_bg_color"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@id/power_switch_set_activity_item_paramSet_text"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="6"
+                android:gravity="center_vertical"
+                android:text="@string/power_switch_set_paramSet"
+                android:textSize="16dp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@id/power_switch_set_activity_item_paramSet_icon"
+                android:layout_width="25dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_next_16" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/power_switch_set_activity_item_logView_outside"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/power_switch_set_activity_item_paramSet_outside"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/main_bg_color"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@id/power_switch_set_activity_item_logView_text"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="6"
+                android:gravity="center_vertical"
+                android:text="@string/power_switch_set_logView"
+                android:textSize="16dp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@id/power_switch_set_activity_item_logView_icon"
+                android:layout_width="25dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_next_16" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

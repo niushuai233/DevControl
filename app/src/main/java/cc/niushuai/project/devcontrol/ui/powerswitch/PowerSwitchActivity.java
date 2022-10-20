@@ -44,21 +44,12 @@ public class PowerSwitchActivity extends BaseActivity {
     @Override
     protected void init() {
 
-        DeviceInfo data = GlobalVariables.getDeviceInfo(getIntentDeviceId());
-        if (null != data) {
-            this.device = data;
-            // 标题名称
-            TextView titleTextView = findViewById(R.id.activity_title_name);
-            titleTextView.setText(device.getName());
-
-            // 副标题名称
-            TextView descTextView = findViewById(R.id.activity_title_description);
-            descTextView.setText(device.getDescription());
-
-            // 开关底部的名称
-            TextView contentTextTextView = findViewById(R.id.power_switch_activity_content_text);
-            contentTextTextView.setText(device.getName());
-        }
+        this.device = GlobalVariables.getDeviceInfo(getIntentDeviceId());
+        // 标题名称
+        super.setTitle(this.device.getName(), this.device.getDescription());
+        // 开关底部的名称
+        TextView contentTextTextView = findViewById(R.id.power_switch_activity_content_text);
+        contentTextTextView.setText(device.getName());
     }
 
     /**

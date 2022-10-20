@@ -2,11 +2,13 @@
 <resources>
 
     <!--common start-->
+
     <item name="activity_layout_title" type="id"/>
     <item name="activity_title_back" type="id"/>
     <item name="activity_title_name" type="id"/>
     <item name="activity_title_description" type="id"/>
     <item name="activity_title_more_set" type="id"/>
+
     <!--common end-->
 
     <!-- 首页 底部导航栏 start-->
@@ -34,6 +36,24 @@
     <item name="power_switch_activity_content_switch" type="id"/>
     <item name="power_switch_activity_content_text" type="id"/>
     <!--开关操作页 end-->
+
+
+    <!--开关设置 start-->
+    <!--更换图标-->
+    <item name="power_switch_set_activity_item_iconChange_outside" type="id"/>
+    <item name="power_switch_set_activity_item_iconChange_text" type="id"/>
+    <item name="power_switch_set_activity_item_iconChange_icon" type="id"/>
+    <!--参数设置-->
+    <item name="power_switch_set_activity_item_paramSet_outside" type="id"/>
+    <item name="power_switch_set_activity_item_paramSet_text" type="id"/>
+    <item name="power_switch_set_activity_item_paramSet_icon" type="id"/>
+    <!--日志查看-->
+    <item name="power_switch_set_activity_item_logView_outside" type="id"/>
+    <item name="power_switch_set_activity_item_logView_text" type="id"/>
+    <item name="power_switch_set_activity_item_logView_icon" type="id"/>
+    <!--开关设置 end-->
+
+
     <!--设备页 end-->
 
 </resources>
