@@ -38,6 +38,12 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <!--开关参数设置-->
+        <activity android:name=".ui.powerswitch.PowerSwitchSetParamActivity" android:exported="false">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

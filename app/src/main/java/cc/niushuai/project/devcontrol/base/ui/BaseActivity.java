@@ -1,8 +1,6 @@
 package cc.niushuai.project.devcontrol.base.ui;
 
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -91,8 +89,14 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @author niushuai
      * @date: 2022/10/19 14:47
      */
-    protected void activityButtonMoreSetClickListener(BaseActivity activity, Class<? extends BaseActivity> clazz, Map<String, String> withData) {
-        findViewById(R.id.activity_title_more_set).setOnClickListener(view -> ActivityUtil.startActivity(activity, clazz, withData));
+    protected void activityButtonMoreSetClickListener(boolean display, BaseActivity activity, Class<? extends BaseActivity> clazz, Map<String, String> withData) {
+
+        View moreSetView = findViewById(R.id.activity_title_more_set);
+        if (!display) {
+            moreSetView.setVisibility(View.GONE);
+            return;
+        }
+        moreSetView.setOnClickListener(view -> ActivityUtil.startActivity(activity, clazz, withData));
     }
 
 }

@@ -23,8 +23,6 @@ public class PowerSwitchActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // 隐藏自带的标题栏
-        getSupportActionBar().hide();
 
         binding = ActivityPowerSwitchBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -69,7 +67,7 @@ public class PowerSwitchActivity extends BaseActivity {
         // 标题栏 更多设置
         HashMap<String, String> withData = new HashMap<>(1);
         withData.put(Keys.ID, device.getId());
-        super.activityButtonMoreSetClickListener(this, PowerSwitchSetActivity.class, withData);
+        super.activityButtonMoreSetClickListener(true, this, PowerSwitchSetActivity.class, withData);
     }
 
 

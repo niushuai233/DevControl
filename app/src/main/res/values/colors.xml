@@ -10,5 +10,5 @@
     <color name="gray">#FFAFAFAF</color>
     <color name="main_bg_color">#F6F6F6</color>
     <color name="empty">#00FF0000</color>
-    <color name="btn_green">#83FF4D</color>
+    <color name="btn_blue">#449EFF</color>
 </resources>
