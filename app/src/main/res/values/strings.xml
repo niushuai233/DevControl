@@ -15,6 +15,7 @@
     <!--common end-->
 
     <!--测试字符串 start-->
+    <string name="hello_world">Hello World</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="test_hello_blank_textview_1">Hello blank textview 1</string>
     <string name="test_hello_blank_textview_2">Hello blank textview 2</string>
@@ -32,6 +33,12 @@
 
 
     <!--设备 start-->
+    <!--添加设备 start-->
+    <string name="device_add_type_select">选择设备类型</string>
+    <!--添加设备 end-->
+
+
+
     <!--开关设置页面 start-->
     <string name="power_switch_set_iconChange">更换图标</string>
     <string name="power_switch_set_paramSet">参数设置</string>

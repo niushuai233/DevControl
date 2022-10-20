@@ -25,7 +25,6 @@ import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
 import cc.niushuai.project.devcontrol.base.util.Keys;
 import cc.niushuai.project.devcontrol.databinding.DeviceItemBinding;
 import cc.niushuai.project.devcontrol.databinding.MainNavFragmentDeviceBinding;
-import cc.niushuai.project.devcontrol.ui.powerswitch.PowerSwitchActivity;
 import cn.hutool.core.util.RandomUtil;
 
 /**
@@ -36,18 +35,18 @@ import cn.hutool.core.util.RandomUtil;
  */
 public class NavDeviceFragment extends Fragment {
 
-    private MainNavFragmentDeviceBinding deviceBinding;
+    private MainNavFragmentDeviceBinding binding;
     private DeviceItemBinding deviceItemBinding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        deviceBinding = MainNavFragmentDeviceBinding.inflate(inflater, container, false);
+        binding = MainNavFragmentDeviceBinding.inflate(inflater, container, false);
         deviceItemBinding = DeviceItemBinding.inflate(inflater, container, false);
 
         NavDeviceViewModel navDeviceViewModel = new ViewModelProvider(this).get(NavDeviceViewModel.class);
-        View rootView = deviceBinding.getRoot();
+        View rootView = binding.getRoot();
 
 //        TextView textView = navFragmentDeviceBinding.navDeviceFragmentTextview;
 //
@@ -55,13 +54,25 @@ public class NavDeviceFragment extends Fragment {
 
         setDevices();
 
+        this.addListener();
+
         return rootView;
+    }
+
+    private void addListener() {
+        binding.deviceAdd.setOnClickListener(this::deviceAddClickListener);
+    }
+
+    private void deviceAddClickListener(View view) {
+
+        DeviceAddDialogFragment dialogFragment = new DeviceAddDialogFragment();
+        dialogFragment.show(getActivity().getSupportFragmentManager(), DeviceAddDialogFragment.class.getName());
     }
 
     private void setDevices() {
 
 //        GridLayout deviceGridLayout = binding.deviceGridLayout;
-        GridView deviceGv = deviceBinding.deviceGv;
+        GridView deviceGv = binding.deviceGv;
         deviceGv.setSelector(new ColorDrawable(Color.TRANSPARENT));
 
         deviceGv.setOnItemClickListener(this::onItemClick);
@@ -107,10 +118,10 @@ public class NavDeviceFragment extends Fragment {
     /**
      * 条目点击事件
      *
-     * @param parent 父view
-     * @param view 被点击的view
+     * @param parent   父view
+     * @param view     被点击的view
      * @param position 当前view中的位置顺序
-     * @param id 组件id
+     * @param id       组件id
      * @author niushuai
      * @date: 2022/10/19 11:13
      */
@@ -125,7 +136,7 @@ public class NavDeviceFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        deviceBinding = null;
+        binding = null;
         deviceItemBinding = null;
     }
 
