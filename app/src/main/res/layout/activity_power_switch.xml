@@ -9,8 +9,7 @@
     <RelativeLayout
         android:id="@id/power_switch_activity_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/main_bg_color">
+        android:layout_height="match_parent">
 
         <include layout="@layout/activity_common_title"/>
 
@@ -18,8 +17,7 @@
             android:id="@id/power_switch_activity_layout_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/activity_layout_title"
-            android:background="@color/main_bg_color">
+            android:layout_below="@id/activity_layout_title">
 
             <!--中间开关图片 可点击-->
             <androidx.appcompat.widget.AppCompatImageView
