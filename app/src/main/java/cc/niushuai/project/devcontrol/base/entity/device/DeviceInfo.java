@@ -148,7 +148,7 @@ public class DeviceInfo {
             device.setName("卧室灯开关" + (i + 1));
             device.setIconId(iconId);
             device.setDescription("卧室灯开关-树莓派");
-            device.setDeviceType(DeviceTypeEnum.Switch);
+            device.setDeviceType(DeviceTypeEnum.Power_Switch);
             device.setOnOff(OnOffEnum.OFF);
             device.setCommandPath("/path/file");
             device.setCommandArgs("-c light -t 1");

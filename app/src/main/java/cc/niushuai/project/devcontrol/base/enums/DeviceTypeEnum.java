@@ -1,7 +1,10 @@
 package cc.niushuai.project.devcontrol.base.enums;
 
+import android.widget.TextView;
+
 import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
+import cc.niushuai.project.devcontrol.ui.deviceadd.DeviceAddPowerSwitchActivity;
 import cc.niushuai.project.devcontrol.ui.powerswitch.PowerSwitchActivity;
 
 /**
@@ -15,20 +18,34 @@ public enum DeviceTypeEnum {
     /**
      * 开关
      */
-    Switch("Switch", "开关", R.drawable.ic_device_type_switch, PowerSwitchActivity.class),
-    Custom("Custom", "自定义设备", R.drawable.ic_device_type_custom, PowerSwitchActivity.class),
+    Power_Switch("Power_Switch", "开关", R.drawable.ic_device_type_switch, DeviceAddPowerSwitchActivity.class, PowerSwitchActivity.class),
+    Custom("Custom", "自定义设备", R.drawable.ic_device_type_custom, DeviceAddPowerSwitchActivity.class, PowerSwitchActivity.class),
     ;
 
     private String value;
     private String text;
     private int resId;
-    private Class<? extends BaseActivity> activity;
+    private Class<? extends BaseActivity> deviceAddActivity;
+    private Class<? extends BaseActivity> deviceOperateActivity;
 
-    DeviceTypeEnum(String value, String text, int resId, Class<? extends BaseActivity> activity) {
+    DeviceTypeEnum(String value, String text, int resId,
+                   Class<? extends BaseActivity> deviceAddActivity,
+                   Class<? extends BaseActivity> deviceOperateActivity) {
         this.value = value;
         this.text = text;
         this.resId = resId;
-        this.activity = activity;
+        this.deviceAddActivity = deviceAddActivity;
+        this.deviceOperateActivity = deviceOperateActivity;
+    }
+
+    public static DeviceTypeEnum matchByValue(String value) {
+
+        for (DeviceTypeEnum deviceTypeEnum : DeviceTypeEnum.values()) {
+            if (deviceTypeEnum.getValue().equals(value)) {
+                return deviceTypeEnum;
+            }
+        }
+        return null;
     }
 
     public String getValue() {
@@ -55,11 +72,19 @@ public enum DeviceTypeEnum {
         this.resId = resId;
     }
 
-    public Class<? extends BaseActivity> getActivity() {
-        return activity;
+    public Class<? extends BaseActivity> getDeviceAddActivity() {
+        return deviceAddActivity;
     }
 
-    public void setActivity(Class<? extends BaseActivity> activity) {
-        this.activity = activity;
+    public void setDeviceAddActivity(Class<? extends BaseActivity> deviceAddActivity) {
+        this.deviceAddActivity = deviceAddActivity;
+    }
+
+    public Class<? extends BaseActivity> getDeviceOperateActivity() {
+        return deviceOperateActivity;
+    }
+
+    public void setDeviceOperateActivity(Class<? extends BaseActivity> deviceOperateActivity) {
+        this.deviceOperateActivity = deviceOperateActivity;
     }
 }

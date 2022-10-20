@@ -38,7 +38,6 @@
     <!--添加设备 end-->
 
 
-
     <!--开关设置页面 start-->
     <string name="power_switch_set_iconChange">更换图标</string>
     <string name="power_switch_set_paramSet">参数设置</string>

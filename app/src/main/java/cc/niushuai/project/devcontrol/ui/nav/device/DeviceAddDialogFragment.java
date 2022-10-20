@@ -11,12 +11,15 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,6 +28,7 @@ import java.util.Map;
 
 import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.enums.DeviceTypeEnum;
+import cc.niushuai.project.devcontrol.base.util.ActivityUtil;
 import cc.niushuai.project.devcontrol.databinding.DeviceAddBinding;
 
 public class DeviceAddDialogFragment extends DialogFragment {
@@ -88,7 +92,9 @@ public class DeviceAddDialogFragment extends DialogFragment {
      * @date: 2022/10/20 16:59
      */
     private void deviceTypeListItemClickListener(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(getActivity(), "xxx", Toast.LENGTH_SHORT).show();
+        TextView keyView = view.findViewById(R.id.device_type_list_key);
+
+        ActivityUtil.startActivity(getActivity(), DeviceTypeEnum.matchByValue(keyView.getText().toString()).getDeviceAddActivity());
     }
 
     /**

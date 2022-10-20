@@ -14,8 +14,11 @@ public class GlobalVariables {
      */
     public static final Map<String, DeviceInfo> DEVICE_INFO_MAP = new HashMap<>(16);
 
+    public static Class<? extends BaseActivity> getDeviceAddActivity(String deviceId) {
+        return getDeviceInfo(deviceId).getDeviceType().getDeviceAddActivity();
+    }
     public static Class<? extends BaseActivity> getDeviceOperateActivity(String deviceId) {
-        return getDeviceInfo(deviceId).getDeviceType().getActivity();
+        return getDeviceInfo(deviceId).getDeviceType().getDeviceOperateActivity();
     }
 
     public static DeviceInfo getDeviceInfo(String deviceId) {
