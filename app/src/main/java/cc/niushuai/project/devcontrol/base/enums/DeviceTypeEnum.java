@@ -4,6 +4,8 @@ import android.widget.TextView;
 
 import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
+import cc.niushuai.project.devcontrol.ui.custom.DeviceCustomActivity;
+import cc.niushuai.project.devcontrol.ui.deviceadd.DeviceAddCustomActivity;
 import cc.niushuai.project.devcontrol.ui.deviceadd.DeviceAddPowerSwitchActivity;
 import cc.niushuai.project.devcontrol.ui.powerswitch.PowerSwitchActivity;
 
@@ -19,7 +21,7 @@ public enum DeviceTypeEnum {
      * 开关
      */
     Power_Switch("Power_Switch", "开关", R.drawable.ic_device_type_switch, DeviceAddPowerSwitchActivity.class, PowerSwitchActivity.class),
-    Custom("Custom", "自定义设备", R.drawable.ic_device_type_custom, DeviceAddPowerSwitchActivity.class, PowerSwitchActivity.class),
+    Custom("Custom", "自定义设备", R.drawable.ic_device_type_custom, DeviceAddCustomActivity.class, DeviceCustomActivity.class),
     ;
 
     private String value;
