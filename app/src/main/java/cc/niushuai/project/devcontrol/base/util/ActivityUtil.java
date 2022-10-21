@@ -16,6 +16,16 @@ public class ActivityUtil {
         startActivity(sourceActivity, targetActivity, null);
     }
 
+    public static void startActivity(Activity sourceActivity, Class<? extends BaseActivity> targetActivity, String[] keys, String[] values) {
+
+        HashMap<String, String> map = new HashMap<>();
+        for (int i = 0; i < keys.length; i++) {
+            map.put(keys[i], values[i]);
+        }
+
+        startActivity(sourceActivity, targetActivity, map);
+    }
+
     public static void startActivity(Activity sourceActivity, Class<? extends BaseActivity> targetActivity,
                                      Map<String, String> withData) {
         Intent intent = new Intent(sourceActivity, targetActivity);

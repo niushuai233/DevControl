@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageButton;
 
 import java.util.Map;
 
@@ -43,9 +44,21 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @date: 2022/10/20 10:13
      */
     protected void setTitle(String title, String subTitle) {
+        this.setTitle(null, title, subTitle, null);
+    }
+
+    /**
+     * 设置title 同时修改icon
+     *
+     * @author niushuai
+     * @date: 2022/10/20 10:13
+     */
+    protected void setTitle(Integer backIconResId, String title, String subTitle, Integer moreSetIconResId) {
         // 标题名称
         TextView titleTextView = findViewById(R.id.activity_title_name);
-        titleTextView.setText(title);
+        if (StrUtil.isNotEmpty(title)) {
+            titleTextView.setText(title);
+        }
 
         // 副标题名称
         TextView descTextView = findViewById(R.id.activity_title_description);
@@ -57,6 +70,18 @@ public abstract class BaseActivity extends AppCompatActivity {
 
             // 主标题 修改高度为50dp
             titleTextView.getLayoutParams().height = UiUtil.dip2px(this, 50);
+        }
+
+        // 修改back按钮的图片
+        if (null != backIconResId) {
+            AppCompatImageButton btnBack = findViewById(R.id.activity_title_back);
+            btnBack.setImageResource(backIconResId);
+        }
+
+        // 修改back按钮的图片
+        if (null != moreSetIconResId) {
+            AppCompatImageButton btnMoreSet = findViewById(R.id.activity_title_more_set);
+            btnMoreSet.setImageResource(moreSetIconResId);
         }
     }
 
@@ -81,6 +106,17 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
+     * 自定义back的点击事件
+     *
+     * @param onClickListener 点击事件
+     * @author niushuai
+     * @date: 2022/10/21 14:19
+     */
+    protected void activityButtonBackClickListener(View.OnClickListener onClickListener) {
+        findViewById(R.id.activity_title_back).setOnClickListener(onClickListener);
+    }
+
+    /**
      * 更多设置 打开新的activity
      *
      * @param activity 源activity
@@ -97,6 +133,17 @@ public abstract class BaseActivity extends AppCompatActivity {
             return;
         }
         moreSetView.setOnClickListener(view -> ActivityUtil.startActivity(activity, clazz, withData));
+    }
+
+    /**
+     * 自定义moreSet点击事件
+     *
+     * @param onClickListener 点击事件
+     * @author niushuai
+     * @date: 2022/10/21 14:18
+     */
+    protected void activityButtonMoreSetClickListener(View.OnClickListener onClickListener) {
+        findViewById(R.id.activity_title_more_set).setOnClickListener(onClickListener);
     }
 
 }

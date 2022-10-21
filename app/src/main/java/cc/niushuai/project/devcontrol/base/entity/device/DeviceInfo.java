@@ -56,12 +56,19 @@ public class DeviceInfo {
     private String commandPath;
 
     /**
-     * <pre>
-     *  执行命令 参数
-     *  /文件夹/二进制文件 参数
-     * </pre>
+     * 开启参数
      */
-    private String commandArgs;
+    private String commandOpen;
+
+    /**
+     * 关闭参数
+     */
+    private String commandClose;
+
+    /**
+     * 扩展参数集合
+     */
+    private List<String> commandExtra;
 
     public String getId() {
         return id;
@@ -119,18 +126,29 @@ public class DeviceInfo {
         this.commandPath = commandPath;
     }
 
-    public String getCommandArgs() {
-        return commandArgs;
+    public String getCommandOpen() {
+        return commandOpen;
     }
 
-    public void setCommandArgs(String commandArgs) {
-        this.commandArgs = commandArgs;
+    public void setCommandOpen(String commandOpen) {
+        this.commandOpen = commandOpen;
     }
 
-    public String getFullCommandArgs() {
-        return StrUtil.join(StrUtil.SPACE, this.getCommandPath(), StrUtil.SPACE, this.getCommandArgs());
+    public String getCommandClose() {
+        return commandClose;
     }
 
+    public void setCommandClose(String commandClose) {
+        this.commandClose = commandClose;
+    }
+
+    public List<String> getCommandExtra() {
+        return commandExtra;
+    }
+
+    public void setCommandExtra(List<String> commandExtra) {
+        this.commandExtra = commandExtra;
+    }
 
     /**
      * mock 假数据
@@ -151,7 +169,8 @@ public class DeviceInfo {
             device.setDeviceType(DeviceTypeEnum.Power_Switch);
             device.setOnOff(OnOffEnum.OFF);
             device.setCommandPath("/path/file");
-            device.setCommandArgs("-c light -t 1");
+            device.setCommandOpen("-c light -t 1");
+            device.setCommandClose("-c light -t 0");
             list.add(device);
 
             GlobalVariables.DEVICE_INFO_MAP.put(device.getId(), device);

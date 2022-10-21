@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--开关-->
+    <item name="device_add_name" type="id"/>
+    <item name="device_add_select_icon" type="id"/>
+    <item name="device_add_param_open" type="id"/>
+    <item name="device_add_param_close" type="id"/>
+    <item name="device_add_param_program" type="id"/>
+
+    <!--layout-->
+    <item name="device_add_ll_name" type="id"/>
+    <item name="device_add_ll_select_icon" type="id"/>
+    <item name="device_add_ll_program" type="id"/>
+    <item name="device_add_ll_open" type="id"/>
+    <item name="device_add_ll_close" type="id"/>
+
+
+
+
+</resources>
