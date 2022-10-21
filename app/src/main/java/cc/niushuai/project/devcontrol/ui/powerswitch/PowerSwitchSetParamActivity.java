@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
 import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
+import cc.niushuai.project.devcontrol.base.util.ToastUtil;
 import cc.niushuai.project.devcontrol.databinding.ActivityPowerSwitchSetParamBinding;
 
 
@@ -47,7 +48,7 @@ public class PowerSwitchSetParamActivity extends BaseActivity {
 
     private void btnSaveParamClickListener(View view) {
 
-        Toast.makeText(this, "已保存", Toast.LENGTH_SHORT).show();
+        ToastUtil.show(this, "已保存");
     }
 
     @Override

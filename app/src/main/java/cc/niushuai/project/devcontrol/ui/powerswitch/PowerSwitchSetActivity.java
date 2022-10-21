@@ -11,6 +11,7 @@ import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
 import cc.niushuai.project.devcontrol.base.util.ActivityUtil;
 import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
 import cc.niushuai.project.devcontrol.base.util.Keys;
+import cc.niushuai.project.devcontrol.base.util.ToastUtil;
 import cc.niushuai.project.devcontrol.databinding.ActivityPowerSwitchSetBinding;
 
 public class PowerSwitchSetActivity extends BaseActivity {
@@ -46,7 +47,7 @@ public class PowerSwitchSetActivity extends BaseActivity {
     }
 
     private void outsideIconChangeClickListener(View view) {
-        Toast.makeText(this, "更换图标暂未实现哦", Toast.LENGTH_SHORT).show();
+        ToastUtil.show(this, "更换图标暂未实现哦");
     }
 
     private void outsideParamSetClickListener(View view) {
@@ -57,7 +58,7 @@ public class PowerSwitchSetActivity extends BaseActivity {
     }
 
     private void outsideLogViewClickListener(View view) {
-        Toast.makeText(this, "日志暂未实现哦", Toast.LENGTH_SHORT).show();
+        ToastUtil.show(this, "日志暂未实现哦");
     }
 
     @Override
