@@ -1,6 +1,5 @@
 package cc.niushuai.project.devcontrol.ui.nav.device;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -12,14 +11,8 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -92,9 +85,13 @@ public class DeviceAddDialogFragment extends DialogFragment {
      * @date: 2022/10/20 16:59
      */
     private void deviceTypeListItemClickListener(AdapterView<?> parent, View view, int position, long id) {
-        TextView keyView = view.findViewById(R.id.device_type_list_key);
 
+        // 跳转到相应的activity
+        TextView keyView = view.findViewById(R.id.device_type_list_key);
         ActivityUtil.startActivity(getActivity(), DeviceTypeEnum.matchByValue(keyView.getText().toString()).getDeviceAddActivity());
+
+        // 关闭弹出框
+        this.dismiss();
     }
 
     /**
@@ -119,5 +116,11 @@ public class DeviceAddDialogFragment extends DialogFragment {
         }
 
         return gvData;
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        super.onDismiss(dialog);
+        binding = null;
     }
 }

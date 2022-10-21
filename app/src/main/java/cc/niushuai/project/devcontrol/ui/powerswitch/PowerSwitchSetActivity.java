@@ -59,4 +59,10 @@ public class PowerSwitchSetActivity extends BaseActivity {
     private void outsideLogViewClickListener(View view) {
         Toast.makeText(this, "日志暂未实现哦", Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
 }

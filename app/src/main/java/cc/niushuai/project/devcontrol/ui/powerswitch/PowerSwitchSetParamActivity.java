@@ -49,4 +49,10 @@ public class PowerSwitchSetParamActivity extends BaseActivity {
 
         Toast.makeText(this, "已保存", Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
 }

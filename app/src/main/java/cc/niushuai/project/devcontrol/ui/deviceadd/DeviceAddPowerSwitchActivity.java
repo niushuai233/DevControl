@@ -3,15 +3,22 @@ package cc.niushuai.project.devcontrol.ui.deviceadd;
 
 import android.os.Bundle;
 
-import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
+import cc.niushuai.project.devcontrol.databinding.ActivityDeviceAddPowerSwitchBinding;
 
 public class DeviceAddPowerSwitchActivity extends BaseActivity {
+
+    private ActivityDeviceAddPowerSwitchBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_device_add_power_switch);
+
+        binding = ActivityDeviceAddPowerSwitchBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        this.init();
+        this.addListener();
     }
 
     @Override
