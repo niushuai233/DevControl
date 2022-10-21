@@ -82,6 +82,7 @@ public class DeviceAddPowerSwitchActivity extends BaseActivity {
 
         ToastUtil.show(this, StrUtil.format("设备: {} 已新增", device.getName()));
 
+        this.finish();
         ActivityUtil.startActivity(this, PowerSwitchActivity.class, new String[]{Keys.ID}, new String[]{device.getId()});
     }
 }
