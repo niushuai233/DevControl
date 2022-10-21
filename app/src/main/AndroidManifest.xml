@@ -9,9 +9,7 @@
         android:roundIcon="@mipmap/app_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DevControl">
-        <activity
-            android:name=".ui.deviceadd.DeviceAddPowerSwitchActivity"
-            android:exported="false" />
+
         <!-- 主页面 -->
         <activity
             android:name=".MainActivity"
@@ -21,21 +19,27 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- 开关操作 -->
+        </activity>
+
+        <!-- 开关操作 -->
         <activity
             android:name=".ui.powerswitch.PowerSwitchActivity"
             android:exported="false">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </activity> <!-- 开关设置 -->
+        </activity>
+
+        <!-- 开关设置 -->
         <activity
             android:name=".ui.powerswitch.PowerSwitchSetActivity"
             android:exported="false">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </activity> <!-- 开关参数设置 -->
+        </activity>
+
+        <!-- 开关参数设置 -->
         <activity
             android:name=".ui.powerswitch.PowerSwitchSetParamActivity"
             android:exported="false">
@@ -43,6 +47,36 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+
+        <!--自定义设备操作页面-->
+        <activity
+            android:name=".ui.custom.DeviceCustomActivity"
+            android:exported="false">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!--自定义设备添加页面-->
+        <activity
+            android:name=".ui.deviceadd.DeviceAddCustomActivity"
+            android:exported="false">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!--开关添加页面-->
+        <activity
+            android:name=".ui.deviceadd.DeviceAddPowerSwitchActivity"
+            android:exported="false">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
     </application>
 
 </manifest>
