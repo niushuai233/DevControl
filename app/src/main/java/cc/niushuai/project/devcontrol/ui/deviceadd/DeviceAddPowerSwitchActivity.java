@@ -39,8 +39,6 @@ public class DeviceAddPowerSwitchActivity extends BaseActivity {
 
         // 设置标题栏信息
         this.setTitle(null, getString(R.string.power_switch_add), null, R.drawable.ic_confrim_32);
-
-
     }
 
     /**
