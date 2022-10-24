@@ -3,7 +3,7 @@ package cc.niushuai.project.devcontrol.base.util;
 import java.util.HashMap;
 import java.util.Map;
 
-import cc.niushuai.project.devcontrol.base.entity.device.DeviceInfo;
+import cc.niushuai.project.devcontrol.vo.DeviceInfo;
 import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
 
 public class GlobalVariables {

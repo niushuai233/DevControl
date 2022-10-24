@@ -3,10 +3,9 @@ package cc.niushuai.project.devcontrol.ui.deviceadd;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import cc.niushuai.project.devcontrol.R;
-import cc.niushuai.project.devcontrol.base.entity.device.DeviceInfo;
+import cc.niushuai.project.devcontrol.vo.DeviceInfo;
 import cc.niushuai.project.devcontrol.base.enums.DeviceTypeEnum;
 import cc.niushuai.project.devcontrol.base.enums.OnOffEnum;
 import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
@@ -70,15 +69,15 @@ public class DeviceAddPowerSwitchActivity extends BaseActivity {
         device.setIconId(R.drawable.ic_device_type_switch);
         device.setDeviceType(DeviceTypeEnum.Power_Switch);
         device.setOnOff(OnOffEnum.OFF);
-        device.setName(binding.deviceAddName.getText().toString());
-        device.setDescription("默认设备");
+        device.setDeviceName(binding.deviceAddName.getText().toString());
+        device.setRemark("默认设备");
         device.setCommandPath(binding.deviceAddParamProgram.getText().toString());
         device.setCommandOpen(binding.deviceAddParamOpen.getText().toString());
         device.setCommandClose(binding.deviceAddParamClose.getText().toString());
 
         GlobalVariables.DEVICE_INFO_MAP.put(device.getId(), device);
 
-        ToastUtil.show(this, StrUtil.format("设备: {} 已新增", device.getName()));
+        ToastUtil.show(this, StrUtil.format("设备: {} 已新增", device.getDeviceName()));
 
         this.finish();
         ActivityUtil.startActivity(this, PowerSwitchActivity.class, new String[]{Keys.ID}, new String[]{device.getId()});

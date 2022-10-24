@@ -1,13 +1,13 @@
-package cc.niushuai.project.devcontrol.base.entity.device;
+package cc.niushuai.project.devcontrol.vo;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import cc.niushuai.project.devcontrol.base.entity.BaseVO;
 import cc.niushuai.project.devcontrol.base.enums.DeviceTypeEnum;
 import cc.niushuai.project.devcontrol.base.enums.OnOffEnum;
 import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
-import cn.hutool.core.util.IdUtil;
-import cn.hutool.core.util.StrUtil;
+import cc.niushuai.project.devcontrol.base.util.IdWorker;
 
 /**
  * 设备信息实体数据类
@@ -15,17 +15,12 @@ import cn.hutool.core.util.StrUtil;
  * @author niushuai
  * @date: 2022/10/17 16:47
  */
-public class DeviceInfo {
-
-    /**
-     * 主id 唯一标识
-     */
-    private String id;
+public class DeviceInfo extends BaseVO {
 
     /**
      * 设备名称
      */
-    private String name;
+    private String deviceName;
 
     /**
      * 设备类型
@@ -36,11 +31,6 @@ public class DeviceInfo {
      * 开关状态
      */
     private OnOffEnum onOff;
-
-    /**
-     * 设备描述信息
-     */
-    private String description;
 
     /**
      * 设备列表界面 list icon id
@@ -70,20 +60,12 @@ public class DeviceInfo {
      */
     private List<String> commandExtra;
 
-    public String getId() {
-        return id;
+    public String getDeviceName() {
+        return deviceName;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
     }
 
     public DeviceTypeEnum getDeviceType() {
@@ -102,20 +84,12 @@ public class DeviceInfo {
         this.onOff = onOff;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public int getIconId() {
         return iconId;
     }
 
-    public void setIconId(int listIconId) {
-        this.iconId = listIconId;
+    public void setIconId(int iconId) {
+        this.iconId = iconId;
     }
 
     public String getCommandPath() {
@@ -162,10 +136,10 @@ public class DeviceInfo {
 
         for (int i = 0; i < size; i++) {
             DeviceInfo device = new DeviceInfo();
-            device.setId(IdUtil.nanoId());
-            device.setName("卧室灯开关" + (i + 1));
+            device.setId(IdWorker.getNextIdStr());
+            device.setDeviceName("卧室灯开关" + (i + 1));
             device.setIconId(iconId);
-            device.setDescription("卧室灯开关-树莓派");
+            device.setRemark("卧室灯开关-树莓派");
             device.setDeviceType(DeviceTypeEnum.Power_Switch);
             device.setOnOff(OnOffEnum.OFF);
             device.setCommandPath("/path/file");

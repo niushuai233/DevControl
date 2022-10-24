@@ -9,7 +9,6 @@ import androidx.appcompat.widget.AppCompatImageView;
 import java.util.HashMap;
 
 import cc.niushuai.project.devcontrol.R;
-import cc.niushuai.project.devcontrol.base.entity.device.DeviceInfo;
 import cc.niushuai.project.devcontrol.base.enums.OnOffEnum;
 import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
 import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
@@ -44,10 +43,10 @@ public class PowerSwitchActivity extends BaseActivity {
 
         this.device = GlobalVariables.getDeviceInfo(getIntentDeviceId());
         // 标题名称
-        super.setTitle(this.device.getName(), this.device.getDescription());
+        super.setTitle(this.device.getDeviceName(), this.device.getRemark());
         // 开关底部的名称
         TextView contentTextTextView = findViewById(R.id.power_switch_activity_content_text);
-        contentTextTextView.setText(device.getName());
+        contentTextTextView.setText(device.getDeviceName());
     }
 
     /**

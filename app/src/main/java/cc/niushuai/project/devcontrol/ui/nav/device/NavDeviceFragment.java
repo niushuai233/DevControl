@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import cc.niushuai.project.devcontrol.R;
-import cc.niushuai.project.devcontrol.base.entity.device.DeviceInfo;
+import cc.niushuai.project.devcontrol.vo.DeviceInfo;
 import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
 import cc.niushuai.project.devcontrol.base.util.Keys;
 import cc.niushuai.project.devcontrol.databinding.DeviceItemBinding;
@@ -107,7 +107,7 @@ public class NavDeviceFragment extends Fragment {
             // 设置当前设备的图标和名称
             m1.put("device_item_cardView_id", deviceInfo.getId());
             m1.put("device_item_cardView_image", deviceInfo.getIconId());
-            m1.put("device_item_cardView_text", deviceInfo.getName());
+            m1.put("device_item_cardView_text", deviceInfo.getDeviceName());
 
             // 统一添加到data中
             gvData.add(m1);
