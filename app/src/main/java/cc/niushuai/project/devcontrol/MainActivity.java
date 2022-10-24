@@ -9,6 +9,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import cc.niushuai.project.devcontrol.base.App;
 import cc.niushuai.project.devcontrol.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
         // 设置底部导航栏
         setBottomNavigationView();
+
+        App.init(this);
     }
 
     /**
