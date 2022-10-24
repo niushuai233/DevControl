@@ -25,6 +25,12 @@ public class CommandExt {
     private Long deviceId;
 
     /**
+     * key 备用字段
+     */
+    @Index
+    private String key;
+
+    /**
      * 命令
      */
     private String command;
@@ -44,11 +50,12 @@ public class CommandExt {
      */
     private String createTime;
 
-    @Generated(hash = 101490941)
-    public CommandExt(Long id, Long deviceId, String command, Integer order,
-            String remark, String createTime) {
+    @Generated(hash = 704236641)
+    public CommandExt(Long id, Long deviceId, String key, String command,
+            Integer order, String remark, String createTime) {
         this.id = id;
         this.deviceId = deviceId;
+        this.key = key;
         this.command = command;
         this.order = order;
         this.remark = remark;
@@ -105,6 +112,14 @@ public class CommandExt {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getKey() {
+        return this.key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
 }

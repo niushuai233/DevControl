@@ -60,6 +60,11 @@ public class Device implements Serializable {
     private String commandPath;
 
     /**
+     * 查询状态参数
+     */
+    private String commandStatus;
+
+    /**
      * 开启参数
      */
     private String commandOpen;
@@ -84,11 +89,11 @@ public class Device implements Serializable {
      */
     private String createTime;
 
-    @Generated(hash = 2026639556)
+    @Generated(hash = 94069086)
     public Device(Long id, Integer order, String deviceName, String deviceType,
             String onOff, String description, Integer iconId, String commandPath,
-            String commandOpen, String commandClose, Integer isDeleted,
-            String remark, String createTime) {
+            String commandStatus, String commandOpen, String commandClose,
+            Integer isDeleted, String remark, String createTime) {
         this.id = id;
         this.order = order;
         this.deviceName = deviceName;
@@ -97,6 +102,7 @@ public class Device implements Serializable {
         this.description = description;
         this.iconId = iconId;
         this.commandPath = commandPath;
+        this.commandStatus = commandStatus;
         this.commandOpen = commandOpen;
         this.commandClose = commandClose;
         this.isDeleted = isDeleted;
@@ -210,5 +216,13 @@ public class Device implements Serializable {
 
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
+    }
+
+    public String getCommandStatus() {
+        return this.commandStatus;
+    }
+
+    public void setCommandStatus(String commandStatus) {
+        this.commandStatus = commandStatus;
     }
 }
