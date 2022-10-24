@@ -3,10 +3,14 @@ package cc.niushuai.project.devcontrol.ui.deviceadd;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.enums.YesNoEnum;
 import cc.niushuai.project.devcontrol.base.util.IdWorker;
+import cc.niushuai.project.devcontrol.base.util.UiUtil;
 import cc.niushuai.project.devcontrol.db.DB;
 import cc.niushuai.project.devcontrol.db.entity.Device;
 import cc.niushuai.project.devcontrol.vo.DeviceInfo;
@@ -74,12 +78,12 @@ public class DeviceAddPowerSwitchActivity extends BaseActivity {
         device.setIconId(R.drawable.ic_device_type_switch);
         device.setDeviceType(DeviceTypeEnum.Power_Switch.getValue());
         device.setOnOff(OnOffEnum.OFF.getValue());
-        device.setDeviceName(binding.deviceAddName.getText().toString());
-        device.setCommandPath(binding.deviceAddParamProgram.getText().toString());
-        device.setCommandStatus(binding.deviceAddParamStatus.getText().toString());
-        device.setCommandOpen(binding.deviceAddParamOpen.getText().toString());
-        device.setCommandClose(binding.deviceAddParamClose.getText().toString());
-        device.setRemark(binding.deviceAddParamRemark.getText().toString());
+        device.setDeviceName(UiUtil.getTextViewTextById(this, R.id.device_add_name));
+        device.setCommandPath(UiUtil.getTextViewTextById(this,R.id.device_add_param_program));
+        device.setCommandStatus(UiUtil.getTextViewTextById(this,R.id.device_add_param_status));
+        device.setCommandOpen(UiUtil.getTextViewTextById(this,R.id.device_add_param_open));
+        device.setCommandClose(UiUtil.getTextViewTextById(this,R.id.device_add_param_close));
+        device.setRemark(UiUtil.getTextViewTextById(this,R.id.device_add_param_remark));
         device.setCreateTime(DateUtil.now());
         device.setOrder(1);
         device.setIsDeleted(YesNoEnum.NO.getIntegerValue());
@@ -95,4 +99,6 @@ public class DeviceAddPowerSwitchActivity extends BaseActivity {
         this.finish();
         ActivityUtil.startActivity(this, PowerSwitchActivity.class, new String[]{Keys.ID}, new String[]{device.getId() + ""});
     }
+
+
 }

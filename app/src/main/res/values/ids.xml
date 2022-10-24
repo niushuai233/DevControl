@@ -62,7 +62,6 @@
     <item name="power_switch_set_activity_item_paramSet_open_ev" type="id"/>
     <item name="power_switch_set_activity_item_paramSet_close_tv" type="id"/>
     <item name="power_switch_set_activity_item_paramSet_close_ev" type="id"/>
-    <item name="power_switch_set_activity_item_paramSet_btn_save" type="id"/>
 
     <!--日志查看-->
     <item name="power_switch_set_activity_item_logView_outside" type="id"/>

@@ -9,65 +9,13 @@
 
         <include layout="@layout/activity_common_title" />
 
-        <LinearLayout
-            android:id="@+id/power_switch_set_activity_item_paramSet_linear1"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@id/activity_layout_title"
-            android:layout_margin="10dp">
+            android:layout_height="match_parent"
+            android:layout_below="@id/activity_layout_title">
 
-            <TextView
-                android:id="@id/power_switch_set_activity_item_paramSet_open_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/power_switch_set_paramSet_open"
-                android:textSize="16dp" />
-
-            <EditText
-                android:id="@id/power_switch_set_activity_item_paramSet_open_ev"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="9" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/power_switch_set_activity_item_paramSet_linear2"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@id/power_switch_set_activity_item_paramSet_linear1"
-            android:layout_margin="10dp">
-
-            <TextView
-                android:id="@id/power_switch_set_activity_item_paramSet_close_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/power_switch_set_paramSet_close"
-                android:textSize="16dp" />
-
-            <EditText
-                android:id="@id/power_switch_set_activity_item_paramSet_close_ev"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="9" />
-        </LinearLayout>
-
-        <Button
-            android:id="@id/power_switch_set_activity_item_paramSet_btn_save"
-            style="?android:borderlessButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/power_switch_set_activity_item_paramSet_linear2"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="30dp"
-            android:background="@drawable/shape_round"
-            android:text="@string/save"
-            android:textColor="@color/white"
-            android:textSize="16dp" />
+            <include layout="@layout/activity_common_content"/>
+        </ScrollView>
 
     </RelativeLayout>
 

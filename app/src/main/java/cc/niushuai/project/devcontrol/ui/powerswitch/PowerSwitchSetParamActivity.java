@@ -32,7 +32,8 @@ public class PowerSwitchSetParamActivity extends BaseActivity {
     protected void init() {
         device = GlobalVariables.getDeviceInfo(getIntentDeviceId());
 
-        super.setTitle(getString(R.string.power_switch_set_paramSet), null);
+        this.setTitle(null, getString(R.string.power_switch_set_paramSet), null, R.drawable.ic_confrim_32);
+
     }
 
     @Override
@@ -40,10 +41,8 @@ public class PowerSwitchSetParamActivity extends BaseActivity {
 
         // 隐藏更多按钮
         super.activityButtonBackClickListener(this);
-        super.activityButtonMoreSetClickListener(false, null, null, null);
-
         // 保存监听事件
-        binding.powerSwitchSetActivityItemParamSetBtnSave.setOnClickListener(this::btnSaveParamClickListener);
+        super.activityButtonMoreSetClickListener(this::btnSaveParamClickListener);
     }
 
     private void btnSaveParamClickListener(View view) {

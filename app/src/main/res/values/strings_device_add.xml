@@ -2,6 +2,7 @@
 <resources>
 
     <!--common-->
+    <string name="device_add_name">设备名称</string>
     <string name="device_add_select_icon">选择图标</string>
     <string name="device_add_param_status">状态指令</string>
     <string name="device_add_param_open">开启指令</string>
