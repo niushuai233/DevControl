@@ -21,6 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <!--设备名称-->
                 <LinearLayout
                     android:id="@id/device_add_ll_name"
                     android:layout_width="match_parent"
@@ -48,6 +49,7 @@
 
                 </LinearLayout>
 
+                <!--选择icon-->
                 <LinearLayout
                     android:id="@id/device_add_ll_select_icon"
                     android:layout_width="match_parent"
@@ -81,6 +83,7 @@
 
                 </LinearLayout>
 
+                <!--关联程序-->
                 <LinearLayout
                     android:id="@id/device_add_ll_program"
                     android:layout_width="match_parent"
@@ -108,11 +111,40 @@
 
                 </LinearLayout>
 
+                <!--状态指令-->
+                <LinearLayout
+                    android:id="@id/device_add_ll_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_below="@id/device_add_ll_program"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/device_add_param_status"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@id/device_add_param_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="9"
+                        android:inputType="text" />
+
+                </LinearLayout>
+
+                <!--开启指令-->
                 <LinearLayout
                     android:id="@id/device_add_ll_open"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:layout_below="@id/device_add_ll_program"
+                    android:layout_below="@id/device_add_ll_status"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
@@ -135,6 +167,7 @@
 
                 </LinearLayout>
 
+                <!--关闭指令-->
                 <LinearLayout
                     android:id="@id/device_add_ll_close"
                     android:layout_width="match_parent"
@@ -155,6 +188,33 @@
 
                     <EditText
                         android:id="@id/device_add_param_close"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="9"
+                        android:inputType="text" />
+                </LinearLayout>
+
+                <!--备注信息-->
+                <LinearLayout
+                    android:id="@id/device_add_ll_remark"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_below="@id/device_add_ll_close"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/device_add_param_remark"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@id/device_add_param_remark"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="9"

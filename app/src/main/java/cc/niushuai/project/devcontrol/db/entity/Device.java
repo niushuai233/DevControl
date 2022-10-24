@@ -40,12 +40,7 @@ public class Device implements Serializable {
      * 开关状态
      */
     private String onOff;
-
-    /**
-     * 设备描述信息
-     */
-    private String description;
-
+    
     /**
      * 设备列表界面 list icon id
      */
@@ -89,17 +84,16 @@ public class Device implements Serializable {
      */
     private String createTime;
 
-    @Generated(hash = 94069086)
+    @Generated(hash = 1723639212)
     public Device(Long id, Integer order, String deviceName, String deviceType,
-            String onOff, String description, Integer iconId, String commandPath,
-            String commandStatus, String commandOpen, String commandClose,
-            Integer isDeleted, String remark, String createTime) {
+            String onOff, Integer iconId, String commandPath, String commandStatus,
+            String commandOpen, String commandClose, Integer isDeleted,
+            String remark, String createTime) {
         this.id = id;
         this.order = order;
         this.deviceName = deviceName;
         this.deviceType = deviceType;
         this.onOff = onOff;
-        this.description = description;
         this.iconId = iconId;
         this.commandPath = commandPath;
         this.commandStatus = commandStatus;
@@ -144,14 +138,6 @@ public class Device implements Serializable {
 
     public void setOnOff(String onOff) {
         this.onOff = onOff;
-    }
-
-    public String getDescription() {
-        return this.description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Integer getIconId() {

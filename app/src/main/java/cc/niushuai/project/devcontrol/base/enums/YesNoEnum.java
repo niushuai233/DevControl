@@ -1,16 +1,18 @@
 package cc.niushuai.project.devcontrol.base.enums;
 
-public enum OnOffEnum {
+public enum YesNoEnum {
 
-    ON("ON", "开"),
-    OFF("OFF", "关"),
+    YES("1", 1, "是"),
+    NO("0",0, "否"),
     ;
 
     private String value;
+    private Integer integerValue;
     private String text;
 
-    OnOffEnum(String value, String text) {
+    YesNoEnum(String value, Integer integerValue, String text) {
         this.value = value;
+        this.integerValue = integerValue;
         this.text = text;
     }
 
@@ -18,12 +20,16 @@ public enum OnOffEnum {
         return value;
     }
 
+    public Integer getIntegerValue() {
+        return integerValue;
+    }
+
     public String getText() {
         return text;
     }
 
-    public static OnOffEnum matchByValue(String value) {
-        for (OnOffEnum onOffEnum : OnOffEnum.values()) {
+    public static YesNoEnum matchByValue(String value) {
+        for (YesNoEnum onOffEnum : YesNoEnum.values()) {
             if (onOffEnum.getValue().equals(value)) {
                 return onOffEnum;
             }

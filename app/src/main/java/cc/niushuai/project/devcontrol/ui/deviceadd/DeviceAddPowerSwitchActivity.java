@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import cc.niushuai.project.devcontrol.R;
+import cc.niushuai.project.devcontrol.base.enums.YesNoEnum;
+import cc.niushuai.project.devcontrol.base.util.IdWorker;
+import cc.niushuai.project.devcontrol.db.DB;
+import cc.niushuai.project.devcontrol.db.entity.Device;
 import cc.niushuai.project.devcontrol.vo.DeviceInfo;
 import cc.niushuai.project.devcontrol.base.enums.DeviceTypeEnum;
 import cc.niushuai.project.devcontrol.base.enums.OnOffEnum;
@@ -15,6 +19,7 @@ import cc.niushuai.project.devcontrol.base.util.Keys;
 import cc.niushuai.project.devcontrol.base.util.ToastUtil;
 import cc.niushuai.project.devcontrol.databinding.ActivityDeviceAddPowerSwitchBinding;
 import cc.niushuai.project.devcontrol.ui.powerswitch.PowerSwitchActivity;
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;
 
@@ -63,23 +68,31 @@ public class DeviceAddPowerSwitchActivity extends BaseActivity {
      * @date: 2022/10/21 14:20
      */
     private void confirm4SaveDataClickListener(View view) {
-        DeviceInfo device = new DeviceInfo();
+        Device device = new Device();
 
-        device.setId(IdUtil.nanoId());
+        device.setId(IdWorker.getNextId());
         device.setIconId(R.drawable.ic_device_type_switch);
-        device.setDeviceType(DeviceTypeEnum.Power_Switch);
-        device.setOnOff(OnOffEnum.OFF);
+        device.setDeviceType(DeviceTypeEnum.Power_Switch.getValue());
+        device.setOnOff(OnOffEnum.OFF.getValue());
         device.setDeviceName(binding.deviceAddName.getText().toString());
-        device.setRemark("默认设备");
         device.setCommandPath(binding.deviceAddParamProgram.getText().toString());
+        device.setCommandStatus(binding.deviceAddParamStatus.getText().toString());
         device.setCommandOpen(binding.deviceAddParamOpen.getText().toString());
         device.setCommandClose(binding.deviceAddParamClose.getText().toString());
+        device.setRemark(binding.deviceAddParamRemark.getText().toString());
+        device.setCreateTime(DateUtil.now());
+        device.setOrder(1);
+        device.setIsDeleted(YesNoEnum.NO.getIntegerValue());
 
-        GlobalVariables.DEVICE_INFO_MAP.put(device.getId(), device);
+        // 新增到数据库
+        DB.getDeviceDao().insert(device);
+
+        // 重建缓存
+        super.rebuildDeviceInfoMapCache();
 
         ToastUtil.show(this, StrUtil.format("设备: {} 已新增", device.getDeviceName()));
 
         this.finish();
-        ActivityUtil.startActivity(this, PowerSwitchActivity.class, new String[]{Keys.ID}, new String[]{device.getId()});
+        ActivityUtil.startActivity(this, PowerSwitchActivity.class, new String[]{Keys.ID}, new String[]{device.getId() + ""});
     }
 }

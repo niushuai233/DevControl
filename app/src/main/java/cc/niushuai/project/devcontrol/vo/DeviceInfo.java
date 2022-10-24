@@ -8,6 +8,8 @@ import cc.niushuai.project.devcontrol.base.enums.DeviceTypeEnum;
 import cc.niushuai.project.devcontrol.base.enums.OnOffEnum;
 import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
 import cc.niushuai.project.devcontrol.base.util.IdWorker;
+import cc.niushuai.project.devcontrol.db.entity.Device;
+import cn.hutool.core.date.DateUtil;
 
 /**
  * 设备信息实体数据类
@@ -46,6 +48,11 @@ public class DeviceInfo extends BaseVO {
     private String commandPath;
 
     /**
+     * 状态值
+     */
+    private String commandStatus;
+
+    /**
      * 开启参数
      */
     private String commandOpen;
@@ -59,6 +66,19 @@ public class DeviceInfo extends BaseVO {
      * 扩展参数集合
      */
     private List<String> commandExtra;
+
+    /**
+     * 排序
+     */
+    private Integer order;
+
+    public Integer getOrder() {
+        return order;
+    }
+
+    public void setOrder(Integer order) {
+        this.order = order;
+    }
 
     public String getDeviceName() {
         return deviceName;
@@ -98,6 +118,14 @@ public class DeviceInfo extends BaseVO {
 
     public void setCommandPath(String commandPath) {
         this.commandPath = commandPath;
+    }
+
+    public String getCommandStatus() {
+        return commandStatus;
+    }
+
+    public void setCommandStatus(String commandStatus) {
+        this.commandStatus = commandStatus;
     }
 
     public String getCommandOpen() {
@@ -151,5 +179,25 @@ public class DeviceInfo extends BaseVO {
         }
 
         return list;
+    }
+
+    public static DeviceInfo convert(Device device) {
+
+        DeviceInfo _this = new DeviceInfo();
+        _this.setId(device.getId() + "");
+        _this.setDeviceName(device.getDeviceName());
+        _this.setDeviceType(DeviceTypeEnum.matchByValue(device.getDeviceType()));
+        _this.setOnOff(OnOffEnum.matchByValue(device.getOnOff()));
+        _this.setRemark(device.getRemark());
+        _this.setIconId(device.getIconId());
+        _this.setCommandPath(device.getCommandPath());
+        _this.setCommandStatus(device.getCommandStatus());
+        _this.setCommandOpen(device.getCommandOpen());
+        _this.setCommandClose(device.getCommandClose());
+        _this.setOrder(device.getOrder());
+        _this.setIsDeleted(device.getIsDeleted());
+        _this.setCreateTime(DateUtil.parseDateTime(device.getCreateTime()));
+
+        return _this;
     }
 }

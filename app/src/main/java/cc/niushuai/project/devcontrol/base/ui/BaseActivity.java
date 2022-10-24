@@ -9,6 +9,7 @@ import androidx.appcompat.widget.AppCompatImageButton;
 import java.util.Map;
 
 import cc.niushuai.project.devcontrol.R;
+import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
 import cc.niushuai.project.devcontrol.vo.DeviceInfo;
 import cc.niushuai.project.devcontrol.base.util.ActivityUtil;
 import cc.niushuai.project.devcontrol.base.util.Keys;
@@ -146,4 +147,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         findViewById(R.id.activity_title_more_set).setOnClickListener(onClickListener);
     }
 
+    /**
+     * 重建缓存
+     *
+     * @author niushuai
+     * @date: 2022/10/24 17:09
+     */
+    public void rebuildDeviceInfoMapCache() {
+        GlobalVariables.initDeviceInfoMap();
+    }
 }

@@ -3,9 +3,11 @@
 
     <!--common-->
     <string name="device_add_select_icon">选择图标</string>
+    <string name="device_add_param_status">状态指令</string>
     <string name="device_add_param_open">开启指令</string>
     <string name="device_add_param_close">关闭指令</string>
     <string name="device_add_param_program">关联程序</string>
+    <string name="device_add_param_remark">扩展描述</string>
 
     <!--开关-->
     <string name="power_switch_add">添加开关设备</string>
