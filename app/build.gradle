@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'org.greenrobot.greendao'
 }
 
 android {
@@ -46,5 +47,17 @@ dependencies {
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
 
     // hutool
-    implementation 'cn.hutool:hutool-all:5.8.8'
+    implementation 'cn.hutool:hutool-core:5.8.8'
+
+    // greendao
+    implementation 'org.greenrobot:greendao:3.3.0'
+}
+
+greendao {
+    // 数据库版本号
+    schemaVersion 1
+    // 生成数据库文件的目录
+    targetGenDir 'src/main/java'
+    // 生成的数据库相关文件的包名
+    daoPackage 'cc.niushuai.project.devcontrol.db.greendao.gen'
 }
