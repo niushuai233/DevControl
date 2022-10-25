@@ -20,7 +20,8 @@
             android:layout_height="50dp"
             android:layout_below="@id/activity_layout_title"
             android:layout_gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <TextView
                 android:id="@id/power_switch_set_activity_item_iconChange_text"
