@@ -2,6 +2,7 @@ package cc.niushuai.project.devcontrol.ui.powerswitch;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -10,6 +11,7 @@ import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
 import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
 import cc.niushuai.project.devcontrol.base.util.ToastUtil;
+import cc.niushuai.project.devcontrol.base.util.UiUtil;
 import cc.niushuai.project.devcontrol.databinding.ActivityPowerSwitchSetParamBinding;
 
 
@@ -34,8 +36,27 @@ public class PowerSwitchSetParamActivity extends BaseActivity {
 
         this.setTitle(null, getString(R.string.power_switch_set_paramSet), null, R.drawable.ic_confrim_32);
 
+        this.echoData();
+
     }
 
+    /**
+     * 回显数据
+     *
+     * @author niushuai
+     * @date: 2022/10/25 9:01
+     */
+    private void echoData() {
+
+        UiUtil.setTextViewTextById(this, R.id.device_add_name, device.getDeviceName());
+        UiUtil.setTextViewTextById(this, R.id.device_add_param_program, device.getCommandPath());
+        UiUtil.setTextViewTextById(this, R.id.device_add_param_status, device.getCommandStatus());
+        UiUtil.setTextViewTextById(this, R.id.device_add_param_open, device.getCommandOpen());
+        UiUtil.setTextViewTextById(this, R.id.device_add_param_close, device.getCommandClose());
+        UiUtil.setTextViewTextById(this, R.id.device_add_param_remark, device.getRemark());
+
+        UiUtil.setAppImageCompatResource(this, R.id.device_add_select_icon, device.getIconId());
+    }
     @Override
     protected void addListener() {
 
