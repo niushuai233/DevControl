@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/icon_select_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/main_bg_color"
+            android:text="@string/icon_select_title"
+            android:textSize="24dp" />
+
+        <GridView
+            android:id="@+id/icon_list_gridView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/icon_select_layout"
+            android:background="@color/main_bg_color"
+            android:horizontalSpacing="12dp"
+            android:numColumns="2"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:verticalSpacing="12dp" />
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

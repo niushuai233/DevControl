@@ -13,6 +13,7 @@ import cc.niushuai.project.devcontrol.base.util.ActivityUtil;
 import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
 import cc.niushuai.project.devcontrol.base.util.Keys;
 import cc.niushuai.project.devcontrol.base.util.UiUtil;
+import cc.niushuai.project.devcontrol.ui.common.IconSelectDialogFragment;
 import cc.niushuai.project.devcontrol.vo.DeviceInfo;
 import cn.hutool.core.util.StrUtil;
 
@@ -145,6 +146,39 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     protected void activityButtonMoreSetClickListener(View.OnClickListener onClickListener) {
         findViewById(R.id.activity_title_more_set).setOnClickListener(onClickListener);
+    }
+
+    /**
+     * 为icon选择绑定点击事件
+     *
+     * @author niushuai
+     * @date: 2022/10/25 16:55
+     */
+    protected void activityIconSelectClickListener() {
+        findViewById(R.id.device_add_select_icon).setOnClickListener(view -> {
+            IconSelectDialogFragment iconSelectDialogFragment = new IconSelectDialogFragment();
+            iconSelectDialogFragment.show(getSupportFragmentManager(), IconSelectDialogFragment.class.getName());
+
+            getSupportFragmentManager().setFragmentResultListener(IconSelectDialogFragment.class.getSimpleName(),
+                    this, (requestKey, result) -> {
+                        int iconResId = result.getInt(requestKey + Keys.ID);
+                        System.out.println(iconResId);
+                        device.setIconId(iconResId);
+                    });
+
+        });
+    }
+
+
+    /**
+     * 为icon选择绑定点击事件
+     *
+     * @param onClickListener
+     * @author niushuai
+     * @date: 2022/10/25 16:55
+     */
+    protected void activityIconSelectClickListener(View.OnClickListener onClickListener) {
+        findViewById(R.id.device_add_select_icon).setOnClickListener(onClickListener);
     }
 
     /**

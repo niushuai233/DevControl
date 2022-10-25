@@ -37,6 +37,9 @@
     <string name="device_add_type_select">选择设备类型</string>
     <!--添加设备 end-->
 
+    <!--添加icon start-->
+    <string name="icon_select_title">选择图标</string>
+    <!--添加icon end-->
 
     <!--开关设置页面 start-->
     <string name="power_switch_set_iconChange">更换图标</string>

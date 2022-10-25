@@ -9,6 +9,11 @@
     <item name="activity_title_description" type="id"/>
     <item name="activity_title_more_set" type="id"/>
 
+    <item name="icon_select_list" type="id"/>
+    <item name="icon_select_list_key" type="id"/>
+    <item name="icon_select_list_text" type="id"/>
+    <item name="icon_select_list_icon" type="id"/>
+
     <!--common end-->
 
     <!--首页 start-->
