@@ -18,6 +18,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // 最先执行初始化代码
+        App.init(this);
+
         super.onCreate(savedInstanceState);
 
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -25,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
         // 设置底部导航栏
         setBottomNavigationView();
-
-        App.init(this);
     }
 
     /**

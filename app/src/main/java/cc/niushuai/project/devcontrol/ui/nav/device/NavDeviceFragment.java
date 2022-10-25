@@ -16,16 +16,17 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import cc.niushuai.project.devcontrol.R;
-import cc.niushuai.project.devcontrol.vo.DeviceInfo;
 import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
 import cc.niushuai.project.devcontrol.base.util.Keys;
 import cc.niushuai.project.devcontrol.databinding.DeviceItemBinding;
 import cc.niushuai.project.devcontrol.databinding.MainNavFragmentDeviceBinding;
-import cn.hutool.core.util.RandomUtil;
+import cc.niushuai.project.devcontrol.vo.DeviceInfo;
 
 /**
  * 设备页面ui
@@ -37,8 +38,10 @@ public class NavDeviceFragment extends Fragment {
 
     private MainNavFragmentDeviceBinding binding;
     private DeviceItemBinding deviceItemBinding;
+    private List<DeviceInfo> deviceInfoList;
 
     @Override
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -59,6 +62,7 @@ public class NavDeviceFragment extends Fragment {
         return rootView;
     }
 
+
     private void addListener() {
         binding.deviceAdd.setOnClickListener(this::deviceAddClickListener);
     }
@@ -71,6 +75,11 @@ public class NavDeviceFragment extends Fragment {
 
     private void setDevices() {
 
+        deviceInfoList = GlobalVariables.DEVICE_INFO_MAP.values()
+                .stream()
+                .sorted(Comparator.comparingInt(DeviceInfo::getOrder))
+                .collect(Collectors.toList());
+
 //        GridLayout deviceGridLayout = binding.deviceGridLayout;
         GridView deviceGv = binding.deviceGv;
         deviceGv.setSelector(new ColorDrawable(Color.TRANSPARENT));
@@ -80,7 +89,8 @@ public class NavDeviceFragment extends Fragment {
 //        SimpleAdapter gvAdapter = new SimpleAdapter(getContext(), dataItem, R.layout.device_item,
 //                new String[]{"device_item_cardView_text"}, new int[]{R.id.device_item_cardView_text});
 
-        SimpleAdapter gvAdapter = new SimpleAdapter(getContext(), loadDeviceInfo(), R.layout.device_item,
+        List<HashMap<String, Object>> data = loadDeviceInfo();
+        SimpleAdapter gvAdapter = new SimpleAdapter(getContext(), data, R.layout.device_item,
                 new String[]{"device_item_cardView_id", "device_item_cardView_image", "device_item_cardView_text"},
                 new int[]{R.id.device_item_cardView_id, R.id.device_item_cardView_image, R.id.device_item_cardView_text});
 
@@ -98,10 +108,10 @@ public class NavDeviceFragment extends Fragment {
         List<HashMap<String, Object>> gvData = new ArrayList<>();
 
         // 此处数据要加载为真实数据
-        List<DeviceInfo> list = DeviceInfo.mock(RandomUtil.randomInt(9, 27), R.drawable.ic_device_light_1);
+//        List<DeviceInfo> list = DeviceInfo.mock(RandomUtil.randomInt(9, 27), R.drawable.ic_device_light_1);
 
         // 循环处理数据
-        for (DeviceInfo deviceInfo : list) {
+        for (DeviceInfo deviceInfo : deviceInfoList) {
 
             HashMap<String, Object> m1 = new HashMap<>();
             // 设置当前设备的图标和名称
@@ -140,4 +150,18 @@ public class NavDeviceFragment extends Fragment {
         deviceItemBinding = null;
     }
 
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Dispatch onResume() to fragments.  Note that for better inter-operation
+     * with older versions of the platform, at the point of this call the
+     * fragments attached to the activity are <em>not</em> resumed.
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+        // 重新初始化值
+        GlobalVariables.initDeviceInfoMap();
+        this.setDevices();
+    }
 }
