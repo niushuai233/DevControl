@@ -3,29 +3,22 @@ package cc.niushuai.project.devcontrol.ui.deviceadd;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
 
 import cc.niushuai.project.devcontrol.R;
-import cc.niushuai.project.devcontrol.base.enums.YesNoEnum;
-import cc.niushuai.project.devcontrol.base.util.CommonUiUtil;
-import cc.niushuai.project.devcontrol.base.util.IdWorker;
-import cc.niushuai.project.devcontrol.base.util.UiUtil;
-import cc.niushuai.project.devcontrol.db.DB;
-import cc.niushuai.project.devcontrol.db.entity.Device;
-import cc.niushuai.project.devcontrol.vo.DeviceInfo;
 import cc.niushuai.project.devcontrol.base.enums.DeviceTypeEnum;
 import cc.niushuai.project.devcontrol.base.enums.OnOffEnum;
+import cc.niushuai.project.devcontrol.base.enums.YesNoEnum;
 import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
 import cc.niushuai.project.devcontrol.base.util.ActivityUtil;
-import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
+import cc.niushuai.project.devcontrol.base.util.CommonUiUtil;
+import cc.niushuai.project.devcontrol.base.util.IdWorker;
 import cc.niushuai.project.devcontrol.base.util.Keys;
 import cc.niushuai.project.devcontrol.base.util.ToastUtil;
 import cc.niushuai.project.devcontrol.databinding.ActivityDeviceAddPowerSwitchBinding;
+import cc.niushuai.project.devcontrol.db.DB;
+import cc.niushuai.project.devcontrol.db.entity.Device;
 import cc.niushuai.project.devcontrol.ui.powerswitch.PowerSwitchActivity;
 import cn.hutool.core.date.DateUtil;
-import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;
 
 public class DeviceAddPowerSwitchActivity extends BaseActivity {

@@ -2,7 +2,6 @@ package cc.niushuai.project.devcontrol.base.util;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 
 import java.util.HashMap;
 import java.util.Map;

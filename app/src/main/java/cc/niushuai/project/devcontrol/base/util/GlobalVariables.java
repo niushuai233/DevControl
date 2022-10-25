@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
 import cc.niushuai.project.devcontrol.db.DB;
 import cc.niushuai.project.devcontrol.db.entity.Device;
 import cc.niushuai.project.devcontrol.vo.DeviceInfo;
-import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
 
 public class GlobalVariables {
 
@@ -35,6 +35,7 @@ public class GlobalVariables {
     public static Class<? extends BaseActivity> getDeviceAddActivity(String deviceId) {
         return getDeviceInfo(deviceId).getDeviceType().getDeviceAddActivity();
     }
+
     public static Class<? extends BaseActivity> getDeviceOperateActivity(String deviceId) {
         return getDeviceInfo(deviceId).getDeviceType().getDeviceOperateActivity();
     }

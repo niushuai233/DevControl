@@ -19,7 +19,10 @@ public class DB {
     private static boolean INIT_FLAG = false;
 
     private static DB db;
-
+    private Context context;
+    private DaoMaster.OpenHelper openHelper;
+    private DaoMaster daoMaster;
+    private DaoSession daoSession;
     private DB() {
     }
 
@@ -30,10 +33,27 @@ public class DB {
         return db;
     }
 
-    private Context context;
-    private DaoMaster.OpenHelper openHelper;
-    private DaoMaster daoMaster;
-    private DaoSession daoSession;
+    /**
+     * daoSession 对外暴漏入口
+     *
+     * @author niushuai
+     * @date: 2022/10/24 11:04
+     * @return: {@link DaoSession}
+     */
+    public static DaoSession session() {
+        return DB.getInstance().getDaoSession();
+    }
+
+    /**
+     * 设备操作入口
+     *
+     * @author niushuai
+     * @date: 2022/10/24 11:05
+     * @return: {@link DeviceDao}
+     */
+    public static DeviceDao getDeviceDao() {
+        return session().getDeviceDao();
+    }
 
     /**
      * 初始化数据库表结构
@@ -79,27 +99,5 @@ public class DB {
             daoSession = getDaoMaster().newSession();
         }
         return daoSession;
-    }
-
-    /**
-     * daoSession 对外暴漏入口
-     *
-     * @author niushuai
-     * @date: 2022/10/24 11:04
-     * @return: {@link DaoSession}
-     */
-    public static DaoSession session() {
-        return DB.getInstance().getDaoSession();
-    }
-
-    /**
-     * 设备操作入口
-     *
-     * @author niushuai
-     * @date: 2022/10/24 11:05
-     * @return: {@link DeviceDao}
-     */
-    public static DeviceDao getDeviceDao() {
-        return session().getDeviceDao();
     }
 }

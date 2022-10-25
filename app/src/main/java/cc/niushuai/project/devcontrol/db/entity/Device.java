@@ -1,7 +1,6 @@
 package cc.niushuai.project.devcontrol.db.entity;
 
 import org.greenrobot.greendao.annotation.Entity;
-
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 
@@ -40,7 +39,7 @@ public class Device implements Serializable {
      * 开关状态
      */
     private String onOff;
-    
+
     /**
      * 设备列表界面 list icon id
      */
@@ -86,9 +85,9 @@ public class Device implements Serializable {
 
     @Generated(hash = 1723639212)
     public Device(Long id, Integer order, String deviceName, String deviceType,
-            String onOff, Integer iconId, String commandPath, String commandStatus,
-            String commandOpen, String commandClose, Integer isDeleted,
-            String remark, String createTime) {
+                  String onOff, Integer iconId, String commandPath, String commandStatus,
+                  String commandOpen, String commandClose, Integer isDeleted,
+                  String remark, String createTime) {
         this.id = id;
         this.order = order;
         this.deviceName = deviceName;

@@ -72,6 +72,63 @@ public class DeviceInfo extends BaseVO {
      */
     private Integer order;
 
+    /**
+     * mock 假数据
+     *
+     * @author niushuai
+     * @date: 2022/10/17 17:02
+     * @return: {@link List<DeviceInfo>}
+     */
+    public static List<DeviceInfo> mock(int size, int iconId) {
+        List<DeviceInfo> list = new ArrayList<>();
+
+        for (int i = 0; i < size; i++) {
+            DeviceInfo device = new DeviceInfo();
+            device.setId(IdWorker.getNextIdStr());
+            device.setDeviceName("卧室灯开关" + (i + 1));
+            device.setIconId(iconId);
+            device.setRemark("卧室灯开关-树莓派");
+            device.setDeviceType(DeviceTypeEnum.Power_Switch);
+            device.setOnOff(OnOffEnum.OFF);
+            device.setCommandPath("/path/file");
+            device.setCommandOpen("-c light -t 1");
+            device.setCommandClose("-c light -t 0");
+            list.add(device);
+
+            GlobalVariables.DEVICE_INFO_MAP.put(device.getId(), device);
+        }
+
+        return list;
+    }
+
+    /**
+     * device to deviceInfo
+     *
+     * @param device
+     * @author niushuai
+     * @date: 2022/10/25 14:13
+     * @return: {@link DeviceInfo}
+     */
+    public static DeviceInfo parseDevice(Device device) {
+
+        DeviceInfo _this = new DeviceInfo();
+        _this.setId(device.getId() + "");
+        _this.setDeviceName(device.getDeviceName());
+        _this.setDeviceType(DeviceTypeEnum.matchByValue(device.getDeviceType()));
+        _this.setOnOff(OnOffEnum.matchByValue(device.getOnOff()));
+        _this.setRemark(device.getRemark());
+        _this.setIconId(device.getIconId());
+        _this.setCommandPath(device.getCommandPath());
+        _this.setCommandStatus(device.getCommandStatus());
+        _this.setCommandOpen(device.getCommandOpen());
+        _this.setCommandClose(device.getCommandClose());
+        _this.setOrder(device.getOrder());
+        _this.setIsDeleted(device.getIsDeleted());
+        _this.setCreateTime(DateFormatUtil.parseDateTime(device.getCreateTime()));
+
+        return _this;
+    }
+
     public Integer getOrder() {
         return order;
     }
@@ -151,64 +208,6 @@ public class DeviceInfo extends BaseVO {
     public void setCommandExtra(List<String> commandExtra) {
         this.commandExtra = commandExtra;
     }
-
-    /**
-     * mock 假数据
-     *
-     * @author niushuai
-     * @date: 2022/10/17 17:02
-     * @return: {@link List<DeviceInfo>}
-     */
-    public static List<DeviceInfo> mock(int size, int iconId) {
-        List<DeviceInfo> list = new ArrayList<>();
-
-        for (int i = 0; i < size; i++) {
-            DeviceInfo device = new DeviceInfo();
-            device.setId(IdWorker.getNextIdStr());
-            device.setDeviceName("卧室灯开关" + (i + 1));
-            device.setIconId(iconId);
-            device.setRemark("卧室灯开关-树莓派");
-            device.setDeviceType(DeviceTypeEnum.Power_Switch);
-            device.setOnOff(OnOffEnum.OFF);
-            device.setCommandPath("/path/file");
-            device.setCommandOpen("-c light -t 1");
-            device.setCommandClose("-c light -t 0");
-            list.add(device);
-
-            GlobalVariables.DEVICE_INFO_MAP.put(device.getId(), device);
-        }
-
-        return list;
-    }
-
-    /**
-     *  device to deviceInfo
-     *
-     * @param device
-     * @author niushuai
-     * @date: 2022/10/25 14:13
-     * @return: {@link DeviceInfo}
-     */
-    public static DeviceInfo parseDevice(Device device) {
-
-        DeviceInfo _this = new DeviceInfo();
-        _this.setId(device.getId() + "");
-        _this.setDeviceName(device.getDeviceName());
-        _this.setDeviceType(DeviceTypeEnum.matchByValue(device.getDeviceType()));
-        _this.setOnOff(OnOffEnum.matchByValue(device.getOnOff()));
-        _this.setRemark(device.getRemark());
-        _this.setIconId(device.getIconId());
-        _this.setCommandPath(device.getCommandPath());
-        _this.setCommandStatus(device.getCommandStatus());
-        _this.setCommandOpen(device.getCommandOpen());
-        _this.setCommandClose(device.getCommandClose());
-        _this.setOrder(device.getOrder());
-        _this.setIsDeleted(device.getIsDeleted());
-        _this.setCreateTime(DateFormatUtil.parseDateTime(device.getCreateTime()));
-
-        return _this;
-    }
-
 
     /**
      * deviceInfo to device

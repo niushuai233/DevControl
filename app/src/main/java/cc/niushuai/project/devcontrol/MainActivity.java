@@ -7,8 +7,6 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import cc.niushuai.project.devcontrol.base.App;
 import cc.niushuai.project.devcontrol.databinding.ActivityMainBinding;
 

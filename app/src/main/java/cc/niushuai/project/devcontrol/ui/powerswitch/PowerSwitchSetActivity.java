@@ -2,7 +2,6 @@ package cc.niushuai.project.devcontrol.ui.powerswitch;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.HashMap;
 

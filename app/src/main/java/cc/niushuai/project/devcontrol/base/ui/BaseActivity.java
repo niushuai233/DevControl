@@ -9,11 +9,11 @@ import androidx.appcompat.widget.AppCompatImageButton;
 import java.util.Map;
 
 import cc.niushuai.project.devcontrol.R;
-import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
-import cc.niushuai.project.devcontrol.vo.DeviceInfo;
 import cc.niushuai.project.devcontrol.base.util.ActivityUtil;
+import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
 import cc.niushuai.project.devcontrol.base.util.Keys;
 import cc.niushuai.project.devcontrol.base.util.UiUtil;
+import cc.niushuai.project.devcontrol.vo.DeviceInfo;
 import cn.hutool.core.util.StrUtil;
 
 /**

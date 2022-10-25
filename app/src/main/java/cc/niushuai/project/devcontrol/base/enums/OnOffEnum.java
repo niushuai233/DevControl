@@ -14,14 +14,6 @@ public enum OnOffEnum {
         this.text = text;
     }
 
-    public String getValue() {
-        return value;
-    }
-
-    public String getText() {
-        return text;
-    }
-
     public static OnOffEnum matchByValue(String value) {
         for (OnOffEnum onOffEnum : OnOffEnum.values()) {
             if (onOffEnum.getValue().equals(value)) {
@@ -29,5 +21,13 @@ public enum OnOffEnum {
             }
         }
         return null;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public String getText() {
+        return text;
     }
 }

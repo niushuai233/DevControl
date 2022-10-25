@@ -1,8 +1,8 @@
 package cc.niushuai.project.devcontrol.db.entity;
 
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
 
 /**
@@ -52,7 +52,7 @@ public class CommandExt {
 
     @Generated(hash = 704236641)
     public CommandExt(Long id, Long deviceId, String key, String command,
-            Integer order, String remark, String createTime) {
+                      Integer order, String remark, String createTime) {
         this.id = id;
         this.deviceId = deviceId;
         this.key = key;

@@ -1,7 +1,5 @@
 package cc.niushuai.project.devcontrol.base.enums;
 
-import android.widget.TextView;
-
 import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
 import cc.niushuai.project.devcontrol.ui.custom.DeviceCustomActivity;
