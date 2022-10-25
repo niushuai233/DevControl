@@ -7,13 +7,20 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.util.Date;
+
 import cc.niushuai.project.devcontrol.R;
+import cc.niushuai.project.devcontrol.base.enums.DeviceTypeEnum;
+import cc.niushuai.project.devcontrol.base.enums.OnOffEnum;
 import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
+import cc.niushuai.project.devcontrol.base.util.CommonUiUtil;
 import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
 import cc.niushuai.project.devcontrol.base.util.ToastUtil;
 import cc.niushuai.project.devcontrol.base.util.UiUtil;
 import cc.niushuai.project.devcontrol.databinding.ActivityPowerSwitchSetParamBinding;
-
+import cc.niushuai.project.devcontrol.db.DB;
+import cc.niushuai.project.devcontrol.db.entity.Device;
+import cc.niushuai.project.devcontrol.vo.DeviceInfo;
 
 public class PowerSwitchSetParamActivity extends BaseActivity {
 
@@ -36,27 +43,12 @@ public class PowerSwitchSetParamActivity extends BaseActivity {
 
         this.setTitle(null, getString(R.string.power_switch_set_paramSet), null, R.drawable.ic_confrim_32);
 
-        this.echoData();
+        // 回显数据
+        CommonUiUtil.echoDeviceInfo(this, device);
 
     }
 
-    /**
-     * 回显数据
-     *
-     * @author niushuai
-     * @date: 2022/10/25 9:01
-     */
-    private void echoData() {
 
-        UiUtil.setTextViewTextById(this, R.id.device_add_name, device.getDeviceName());
-        UiUtil.setTextViewTextById(this, R.id.device_add_param_program, device.getCommandPath());
-        UiUtil.setTextViewTextById(this, R.id.device_add_param_status, device.getCommandStatus());
-        UiUtil.setTextViewTextById(this, R.id.device_add_param_open, device.getCommandOpen());
-        UiUtil.setTextViewTextById(this, R.id.device_add_param_close, device.getCommandClose());
-        UiUtil.setTextViewTextById(this, R.id.device_add_param_remark, device.getRemark());
-
-        UiUtil.setAppImageCompatResource(this, R.id.device_add_select_icon, device.getIconId());
-    }
     @Override
     protected void addListener() {
 
@@ -66,9 +58,29 @@ public class PowerSwitchSetParamActivity extends BaseActivity {
         super.activityButtonMoreSetClickListener(this::btnSaveParamClickListener);
     }
 
+    /**
+     * 更新数据操作
+     *
+     * @param view
+     * @author niushuai
+     * @date: 2022/10/25 13:56
+     */
     private void btnSaveParamClickListener(View view) {
+        // 构建更新数据
+        DeviceInfo deviceInfo = CommonUiUtil.getDeviceInfo(this, device.getId());
+        deviceInfo.setDeviceType(device.getDeviceType());
+        deviceInfo.setOnOff(device.getOnOff());
+        deviceInfo.setOrder(device.getOrder());
+        deviceInfo.setIconId(device.getIconId());
+        deviceInfo.setIsDeleted(device.getIsDeleted());
+        deviceInfo.setCreateTime(device.getCreateTime());
+        DB.getDeviceDao().update(deviceInfo.toDevice());
 
-        ToastUtil.show(this, "已保存");
+        // 对当前设备引用重新赋值
+        device = deviceInfo;
+
+        // 返回上一层
+        this.finish();
     }
 
     @Override

@@ -6,10 +6,10 @@ import java.util.List;
 import cc.niushuai.project.devcontrol.base.entity.BaseVO;
 import cc.niushuai.project.devcontrol.base.enums.DeviceTypeEnum;
 import cc.niushuai.project.devcontrol.base.enums.OnOffEnum;
+import cc.niushuai.project.devcontrol.base.util.DateFormatUtil;
 import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
 import cc.niushuai.project.devcontrol.base.util.IdWorker;
 import cc.niushuai.project.devcontrol.db.entity.Device;
-import cn.hutool.core.date.DateUtil;
 
 /**
  * 设备信息实体数据类
@@ -181,7 +181,15 @@ public class DeviceInfo extends BaseVO {
         return list;
     }
 
-    public static DeviceInfo convert(Device device) {
+    /**
+     *  device to deviceInfo
+     *
+     * @param device
+     * @author niushuai
+     * @date: 2022/10/25 14:13
+     * @return: {@link DeviceInfo}
+     */
+    public static DeviceInfo parseDevice(Device device) {
 
         DeviceInfo _this = new DeviceInfo();
         _this.setId(device.getId() + "");
@@ -196,8 +204,35 @@ public class DeviceInfo extends BaseVO {
         _this.setCommandClose(device.getCommandClose());
         _this.setOrder(device.getOrder());
         _this.setIsDeleted(device.getIsDeleted());
-        _this.setCreateTime(DateUtil.parseDateTime(device.getCreateTime()));
+        _this.setCreateTime(DateFormatUtil.parseDateTime(device.getCreateTime()));
 
         return _this;
+    }
+
+
+    /**
+     * deviceInfo to device
+     *
+     * @author niushuai
+     * @date: 2022/10/25 14:13
+     * @return: {@link Device}
+     */
+    public Device toDevice() {
+        Device to = new Device();
+        to.setId(Long.valueOf(this.getId()));
+        to.setDeviceName(this.getDeviceName());
+        to.setDeviceType(this.getDeviceType().getValue());
+        to.setOnOff(this.getOnOff().getValue());
+        to.setRemark(this.getRemark());
+        to.setIconId(this.getIconId());
+        to.setCommandPath(this.getCommandPath());
+        to.setCommandStatus(this.getCommandStatus());
+        to.setCommandOpen(this.getCommandOpen());
+        to.setCommandClose(this.getCommandClose());
+        to.setOrder(this.getOrder());
+        to.setIsDeleted(this.getIsDeleted());
+        to.setCreateTime(DateFormatUtil.formatDateTime(this.getCreateTime()));
+
+        return to;
     }
 }

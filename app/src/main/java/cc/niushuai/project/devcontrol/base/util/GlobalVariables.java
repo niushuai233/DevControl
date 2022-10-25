@@ -28,7 +28,7 @@ public class GlobalVariables {
         List<Device> deviceList = DB.getDeviceDao().loadAll();
 
         for (Device device : deviceList) {
-            DEVICE_INFO_MAP.put(device.getId() + "", DeviceInfo.convert(device));
+            DEVICE_INFO_MAP.put(device.getId() + "", DeviceInfo.parseDevice(device));
         }
     }
 

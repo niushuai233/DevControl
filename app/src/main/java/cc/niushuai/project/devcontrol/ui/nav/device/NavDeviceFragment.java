@@ -77,7 +77,12 @@ public class NavDeviceFragment extends Fragment {
 
         deviceInfoList = GlobalVariables.DEVICE_INFO_MAP.values()
                 .stream()
-                .sorted(Comparator.comparingInt(DeviceInfo::getOrder))
+                .sorted((before, after) -> {
+                    if (null == before.getOrder() || null == after.getOrder()) {
+                        return 99999;
+                    }
+                    return before.getOrder() - after.getOrder();
+                })
                 .collect(Collectors.toList());
 
 //        GridLayout deviceGridLayout = binding.deviceGridLayout;

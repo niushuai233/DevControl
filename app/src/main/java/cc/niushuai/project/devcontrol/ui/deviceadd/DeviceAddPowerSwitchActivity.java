@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 
 import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.enums.YesNoEnum;
+import cc.niushuai.project.devcontrol.base.util.CommonUiUtil;
 import cc.niushuai.project.devcontrol.base.util.IdWorker;
 import cc.niushuai.project.devcontrol.base.util.UiUtil;
 import cc.niushuai.project.devcontrol.db.DB;
@@ -72,18 +73,12 @@ public class DeviceAddPowerSwitchActivity extends BaseActivity {
      * @date: 2022/10/21 14:20
      */
     private void confirm4SaveDataClickListener(View view) {
-        Device device = new Device();
+        Device device = CommonUiUtil.getDeviceInfo(this, IdWorker.getNextId());
 
-        device.setId(IdWorker.getNextId());
         device.setIconId(R.drawable.ic_device_type_switch);
         device.setDeviceType(DeviceTypeEnum.Power_Switch.getValue());
         device.setOnOff(OnOffEnum.OFF.getValue());
-        device.setDeviceName(UiUtil.getTextViewTextById(this, R.id.device_add_name));
-        device.setCommandPath(UiUtil.getTextViewTextById(this,R.id.device_add_param_program));
-        device.setCommandStatus(UiUtil.getTextViewTextById(this,R.id.device_add_param_status));
-        device.setCommandOpen(UiUtil.getTextViewTextById(this,R.id.device_add_param_open));
-        device.setCommandClose(UiUtil.getTextViewTextById(this,R.id.device_add_param_close));
-        device.setRemark(UiUtil.getTextViewTextById(this,R.id.device_add_param_remark));
+
         device.setCreateTime(DateUtil.now());
         device.setOrder(1);
         device.setIsDeleted(YesNoEnum.NO.getIntegerValue());
