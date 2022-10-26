@@ -41,8 +41,14 @@ public class UiUtil {
 //        ((ImageView) view.findViewById(id)).setImageResource(resId);
 //    }
 
+    public static int getAppImageCompatResourceTag(Activity activity, int id) {
+        return (int) ((AppCompatImageView) activity.findViewById(id)).getTag();
+    }
+
     public static void setAppImageCompatResource(Activity activity, int id, int resId) {
-        ((AppCompatImageView) activity.findViewById(id)).setImageResource(resId);
+        AppCompatImageView appCompatImageView = (AppCompatImageView) activity.findViewById(id);
+        appCompatImageView.setImageResource(resId);
+        appCompatImageView.setTag(resId);
     }
 
 //    public static void setAppImageCompatResource(View view, int id, int resId) {

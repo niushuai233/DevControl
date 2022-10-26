@@ -154,18 +154,10 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @author niushuai
      * @date: 2022/10/25 16:55
      */
-    protected void activityIconSelectClickListener() {
+    protected void activityIconSelectClickListener(Integer callbackIconResId) {
         findViewById(R.id.device_add_select_icon).setOnClickListener(view -> {
-            IconSelectDialogFragment iconSelectDialogFragment = new IconSelectDialogFragment();
+            IconSelectDialogFragment iconSelectDialogFragment = new IconSelectDialogFragment(callbackIconResId);
             iconSelectDialogFragment.show(getSupportFragmentManager(), IconSelectDialogFragment.class.getName());
-
-            getSupportFragmentManager().setFragmentResultListener(IconSelectDialogFragment.class.getSimpleName(),
-                    this, (requestKey, result) -> {
-                        int iconResId = result.getInt(requestKey + Keys.ID);
-                        System.out.println(iconResId);
-                        device.setIconId(iconResId);
-                    });
-
         });
     }
 

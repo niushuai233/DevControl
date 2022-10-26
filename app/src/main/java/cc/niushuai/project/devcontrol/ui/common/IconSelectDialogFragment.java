@@ -21,6 +21,7 @@ import java.util.Map;
 
 import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.enums.IconEnum;
+import cc.niushuai.project.devcontrol.base.util.UiUtil;
 import cc.niushuai.project.devcontrol.databinding.LayoutIconSelectBinding;
 
 /**
@@ -32,6 +33,7 @@ import cc.niushuai.project.devcontrol.databinding.LayoutIconSelectBinding;
 public class IconSelectDialogFragment extends DialogFragment {
 
     private LayoutIconSelectBinding binding;
+    private Integer callbackIconResId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,6 +43,10 @@ public class IconSelectDialogFragment extends DialogFragment {
         this.init();
 
         return binding.getRoot();
+    }
+
+    public IconSelectDialogFragment(Integer callbackIconResId) {
+        this.callbackIconResId = callbackIconResId;
     }
 
     /**
@@ -64,7 +70,7 @@ public class IconSelectDialogFragment extends DialogFragment {
 
         GridView iconListGridView = binding.iconListGridView;
 
-        SimpleAdapter simpleAdapter = new SimpleAdapter(getContext(), getIconList(), R.layout.layout_icon_select,
+        SimpleAdapter simpleAdapter = new SimpleAdapter(getContext(), getIconList(), R.layout.layout_icon_select_item,
                 new String[]{"icon_select_list_key", "icon_select_list_icon", "icon_select_list_text"},
                 new int[]{R.id.icon_select_list_key, R.id.icon_select_list_icon, R.id.icon_select_list_text}
         );
@@ -77,7 +83,9 @@ public class IconSelectDialogFragment extends DialogFragment {
     private void iconListClickListener(AdapterView<?> parent, View view, int position, long id) {
 
         // 跳转到相应的activity
-        String iconId = ((TextView) view.findViewById(R.id.device_type_list_key)).getText().toString();
+        String iconId = ((TextView) view.findViewById(R.id.icon_select_list_key)).getText().toString();
+
+        UiUtil.setAppImageCompatResource(getActivity(), callbackIconResId, Integer.parseInt(iconId));
 
         // 关闭弹出框
         this.dismiss();

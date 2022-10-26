@@ -29,6 +29,8 @@ public class CommonUiUtil {
         DeviceInfo deviceInfo = new DeviceInfo();
         deviceInfo.setId(deviceId);
 
+        deviceInfo.setIconId(UiUtil.getAppImageCompatResourceTag(activity, R.id.device_add_select_icon));
+
         deviceInfo.setDeviceName(UiUtil.getTextViewTextById(activity, R.id.device_add_name));
         deviceInfo.setCommandPath(UiUtil.getTextViewTextById(activity, R.id.device_add_param_program));
         deviceInfo.setCommandStatus(UiUtil.getTextViewTextById(activity, R.id.device_add_param_status));
@@ -52,6 +54,8 @@ public class CommonUiUtil {
 
         Device device = new Device();
         device.setId(deviceId);
+
+        device.setIconId(UiUtil.getAppImageCompatResourceTag(activity, R.id.device_add_select_icon));
 
         device.setDeviceName(UiUtil.getTextViewTextById(activity, R.id.device_add_name));
         device.setCommandPath(UiUtil.getTextViewTextById(activity, R.id.device_add_param_program));

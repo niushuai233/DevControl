@@ -30,6 +30,7 @@ public class GlobalVariables {
         for (Device device : deviceList) {
             DEVICE_INFO_MAP.put(device.getId() + "", DeviceInfo.parseDevice(device));
         }
+        System.out.println();
     }
 
     public static Class<? extends BaseActivity> getDeviceAddActivity(String deviceId) {

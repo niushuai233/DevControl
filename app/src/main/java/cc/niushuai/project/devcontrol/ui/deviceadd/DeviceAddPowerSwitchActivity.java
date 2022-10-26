@@ -17,7 +17,6 @@ import cc.niushuai.project.devcontrol.base.util.ToastUtil;
 import cc.niushuai.project.devcontrol.databinding.ActivityDeviceAddPowerSwitchBinding;
 import cc.niushuai.project.devcontrol.db.DB;
 import cc.niushuai.project.devcontrol.db.entity.Device;
-import cc.niushuai.project.devcontrol.ui.common.IconSelectDialogFragment;
 import cc.niushuai.project.devcontrol.ui.powerswitch.PowerSwitchActivity;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.StrUtil;
@@ -58,12 +57,7 @@ public class DeviceAddPowerSwitchActivity extends BaseActivity {
         // 保存设备信息事件
         this.activityButtonMoreSetClickListener(this::confirm4SaveDataClickListener);
         // icon选择器点击事件
-        this.activityIconSelectClickListener();
-
-    }
-
-    protected void iconSelectClickListener(View view) {
-
+        this.activityIconSelectClickListener(R.id.device_add_select_icon);
     }
 
     /**
@@ -76,7 +70,7 @@ public class DeviceAddPowerSwitchActivity extends BaseActivity {
     private void confirm4SaveDataClickListener(View view) {
         Device device = CommonUiUtil.getDeviceInfo(this, IdWorker.getNextId());
 
-        device.setIconId(R.drawable.ic_device_type_switch);
+//        device.setIconId(R.drawable.ic_device_type_switch);
         device.setDeviceType(DeviceTypeEnum.Power_Switch.getValue());
         device.setOnOff(OnOffEnum.OFF.getValue());
 

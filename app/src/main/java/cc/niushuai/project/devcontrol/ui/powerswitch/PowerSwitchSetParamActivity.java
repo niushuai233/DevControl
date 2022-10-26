@@ -46,7 +46,9 @@ public class PowerSwitchSetParamActivity extends BaseActivity {
         // 隐藏更多按钮
         super.activityButtonBackClickListener(this);
         // 保存监听事件
-        super.activityButtonMoreSetClickListener(this::btnSaveParamClickListener);
+        super.activityButtonMoreSetClickListener(this::btnUpdateParamClickListener);
+        // icon选择监听事件
+        super.activityIconSelectClickListener(R.id.device_add_select_icon);
     }
 
     /**
@@ -56,13 +58,13 @@ public class PowerSwitchSetParamActivity extends BaseActivity {
      * @author niushuai
      * @date: 2022/10/25 13:56
      */
-    private void btnSaveParamClickListener(View view) {
+    private void btnUpdateParamClickListener(View view) {
         // 构建更新数据
         DeviceInfo deviceInfo = CommonUiUtil.getDeviceInfo(this, device.getId());
         deviceInfo.setDeviceType(device.getDeviceType());
         deviceInfo.setOnOff(device.getOnOff());
         deviceInfo.setOrder(device.getOrder());
-        deviceInfo.setIconId(device.getIconId());
+//        deviceInfo.setIconId(device.getIconId());
         deviceInfo.setIsDeleted(device.getIsDeleted());
         deviceInfo.setCreateTime(device.getCreateTime());
         DB.getDeviceDao().update(deviceInfo.toDevice());
