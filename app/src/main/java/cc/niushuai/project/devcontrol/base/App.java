@@ -25,6 +25,8 @@ public class App {
 
     public static void init(Activity activity) {
 
+        // 初始化日志相关内容
+        initLog(activity);
         // 检查root权限
         checkRoot(activity);
         // 申请权限
@@ -33,8 +35,6 @@ public class App {
         initDb(activity);
         // 重建设备信息缓存
         Global.initDeviceInfoMap();
-        // 初始化日志相关内容
-        initLog(activity);
     }
 
     /**
