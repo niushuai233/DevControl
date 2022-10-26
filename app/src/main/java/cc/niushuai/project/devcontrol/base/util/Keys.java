@@ -14,5 +14,7 @@ public interface Keys {
 
     interface Tag {
         String MY_OPEN_HELPER = "MyOpenHelper";
+
+        String APP_INIT = "AppInit";
     }
 }

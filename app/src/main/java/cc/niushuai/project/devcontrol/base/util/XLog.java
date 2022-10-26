@@ -9,6 +9,7 @@ import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.text.StrPool;
+import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.StrUtil;
 
 /**
@@ -124,7 +125,7 @@ public class XLog {
     private static String filterThr(String message, Object[] params) {
 
         String format = StrUtil.format(message, params);
-        if (null != params) {
+        if (ArrayUtil.isNotEmpty(params)) {
             Object lastParam = params[params.length - 1];
             if (lastParam instanceof Throwable) {
                 // 最后一个元素如果为异常对象
@@ -179,7 +180,7 @@ public class XLog {
     public static void write(String tag, String message, int level) {
 
         String logContent = concatFinalLog(tag, level, message);
-        FileUtil.appendUtf8String(logContent, currentAbsoluteLogPath());
+        FileUtil.appendUtf8String(logContent + System.lineSeparator(), currentAbsoluteLogPath());
     }
 
     /**

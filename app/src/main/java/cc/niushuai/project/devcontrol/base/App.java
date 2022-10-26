@@ -15,6 +15,7 @@ import java.util.List;
 import cc.niushuai.project.devcontrol.BuildConfig;
 import cc.niushuai.project.devcontrol.base.util.Global;
 import cc.niushuai.project.devcontrol.base.util.Keys;
+import cc.niushuai.project.devcontrol.base.util.XLog;
 import cc.niushuai.project.devcontrol.db.DB;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.text.StrPool;
@@ -25,12 +26,13 @@ public class App {
 
     public static void init(Activity activity) {
 
+        // 申请权限
+        requestPermissions(activity);
+
         // 初始化日志相关内容
         initLog(activity);
         // 检查root权限
         checkRoot(activity);
-        // 申请权限
-        requestPermissions(activity);
         // 初始化数据库
         initDb(activity);
         // 重建设备信息缓存
@@ -47,10 +49,13 @@ public class App {
     private static void checkRoot(Activity activity) {
 
         String which_su = RuntimeUtil.execForStr("which su");
+        XLog.i(Keys.Tag.APP_INIT, "检查root权限... {}", which_su);
         if (StrUtil.isNotEmpty(which_su)) {
             Global.HAS_ROOT = true;
+            XLog.i(Keys.Tag.APP_INIT, "当前设备具有root权限, su路径: {}", which_su);
+        } else {
+            XLog.i(Keys.Tag.APP_INIT, "当前设备不具有root权限");
         }
-        System.out.println("当前设备具有root权限");
     }
 
     /**
