@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import cc.niushuai.project.devcontrol.R;
-import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
+import cc.niushuai.project.devcontrol.base.util.Global;
 import cc.niushuai.project.devcontrol.base.util.Keys;
 import cc.niushuai.project.devcontrol.databinding.DeviceItemBinding;
 import cc.niushuai.project.devcontrol.databinding.MainNavFragmentDeviceBinding;
@@ -74,7 +74,7 @@ public class NavDeviceFragment extends Fragment {
 
     private void setDevices() {
 
-        deviceInfoList = GlobalVariables.DEVICE_INFO_MAP.values()
+        deviceInfoList = Global.DEVICE_INFO_MAP.values()
                 .stream()
                 .sorted((before, after) -> {
                     if (null == before.getOrder() || null == after.getOrder()) {
@@ -142,7 +142,7 @@ public class NavDeviceFragment extends Fragment {
     private void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         TextView textId = view.findViewById(R.id.device_item_cardView_id);
 
-        Intent intent = new Intent(getActivity(), GlobalVariables.getDeviceOperateActivity(textId.getText().toString()));
+        Intent intent = new Intent(getActivity(), Global.getDeviceOperateActivity(textId.getText().toString()));
         intent.putExtra(Keys.ID, textId.getText());
         startActivity(intent);
     }
@@ -165,7 +165,7 @@ public class NavDeviceFragment extends Fragment {
     public void onResume() {
         super.onResume();
         // 重新初始化值
-        GlobalVariables.initDeviceInfoMap();
+        Global.initDeviceInfoMap();
         this.setDevices();
     }
 }

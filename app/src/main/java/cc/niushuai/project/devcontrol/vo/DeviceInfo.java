@@ -7,7 +7,7 @@ import cc.niushuai.project.devcontrol.base.entity.BaseVO;
 import cc.niushuai.project.devcontrol.base.enums.DeviceTypeEnum;
 import cc.niushuai.project.devcontrol.base.enums.OnOffEnum;
 import cc.niushuai.project.devcontrol.base.util.DateFormatUtil;
-import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
+import cc.niushuai.project.devcontrol.base.util.Global;
 import cc.niushuai.project.devcontrol.base.util.IdWorker;
 import cc.niushuai.project.devcontrol.db.entity.Device;
 
@@ -95,7 +95,7 @@ public class DeviceInfo extends BaseVO {
             device.setCommandClose("-c light -t 0");
             list.add(device);
 
-            GlobalVariables.DEVICE_INFO_MAP.put(device.getId(), device);
+            Global.DEVICE_INFO_MAP.put(device.getId(), device);
         }
 
         return list;

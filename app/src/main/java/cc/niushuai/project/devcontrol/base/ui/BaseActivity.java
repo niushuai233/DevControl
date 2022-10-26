@@ -10,7 +10,7 @@ import java.util.Map;
 
 import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.util.ActivityUtil;
-import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
+import cc.niushuai.project.devcontrol.base.util.Global;
 import cc.niushuai.project.devcontrol.base.util.Keys;
 import cc.niushuai.project.devcontrol.base.util.UiUtil;
 import cc.niushuai.project.devcontrol.ui.common.IconSelectDialogFragment;
@@ -180,6 +180,6 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @date: 2022/10/24 17:09
      */
     public void rebuildDeviceInfoMapCache() {
-        GlobalVariables.initDeviceInfoMap();
+        Global.initDeviceInfoMap();
     }
 }

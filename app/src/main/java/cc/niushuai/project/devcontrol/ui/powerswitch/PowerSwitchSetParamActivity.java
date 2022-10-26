@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
 import cc.niushuai.project.devcontrol.base.util.CommonUiUtil;
-import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
+import cc.niushuai.project.devcontrol.base.util.Global;
 import cc.niushuai.project.devcontrol.databinding.ActivityPowerSwitchSetParamBinding;
 import cc.niushuai.project.devcontrol.db.DB;
 import cc.niushuai.project.devcontrol.vo.DeviceInfo;
@@ -30,7 +30,7 @@ public class PowerSwitchSetParamActivity extends BaseActivity {
 
     @Override
     protected void init() {
-        device = GlobalVariables.getDeviceInfo(getIntentDeviceId());
+        device = Global.getDeviceInfo(getIntentDeviceId());
 
         this.setTitle(null, getString(R.string.power_switch_set_paramSet), null, R.drawable.ic_confrim_32);
 

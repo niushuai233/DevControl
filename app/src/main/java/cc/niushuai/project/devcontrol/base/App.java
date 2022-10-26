@@ -8,20 +8,17 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.Settings;
 
-import androidx.core.app.ActivityCompat;
-
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import cc.niushuai.project.devcontrol.BuildConfig;
-import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
+import cc.niushuai.project.devcontrol.base.util.Global;
 import cc.niushuai.project.devcontrol.base.util.Keys;
 import cc.niushuai.project.devcontrol.db.DB;
-import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.text.StrPool;
+import cn.hutool.core.util.RuntimeUtil;
 import cn.hutool.core.util.StrUtil;
 
 public class App {
@@ -35,7 +32,7 @@ public class App {
         // 初始化数据库
         initDb(activity);
         // 重建设备信息缓存
-        GlobalVariables.initDeviceInfoMap();
+        Global.initDeviceInfoMap();
         // 初始化日志相关内容
         initLog(activity);
     }
@@ -49,7 +46,11 @@ public class App {
      */
     private static void checkRoot(Activity activity) {
 
-
+        String which_su = RuntimeUtil.execForStr("which su");
+        if (StrUtil.isNotEmpty(which_su)) {
+            Global.HAS_ROOT = true;
+        }
+        System.out.println("当前设备具有root权限");
     }
 
     /**
@@ -120,7 +121,7 @@ public class App {
         }
 
         // 内存存储日志根目录
-        GlobalVariables.LOG_ROOT_PATH = rootPath;
+        Global.LOG_ROOT_PATH = rootPath;
     }
 
     private static String getRootPath() {

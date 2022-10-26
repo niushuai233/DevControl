@@ -12,13 +12,16 @@ import cc.niushuai.project.devcontrol.vo.DeviceInfo;
 import cn.hutool.core.text.StrPool;
 import cn.hutool.core.util.StrUtil;
 
-public class GlobalVariables {
+public class Global {
 
     /**
      * 全部设备列表map
      * id为key elem为value
      */
     public static final Map<String, DeviceInfo> DEVICE_INFO_MAP = new HashMap<>(16);
+
+    public static boolean HAS_ROOT = false;
+
     public static String LOG_ROOT_PATH = StrUtil.join(StrPool.SLASH, Keys.LOG_ROOT_FILE_PATH,  BuildConfig.APPLICATION_ID, Keys.LOG_LOG_FOLDER);
 
     /**

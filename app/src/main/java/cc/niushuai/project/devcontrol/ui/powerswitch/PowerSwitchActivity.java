@@ -11,7 +11,7 @@ import java.util.HashMap;
 import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.enums.OnOffEnum;
 import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
-import cc.niushuai.project.devcontrol.base.util.GlobalVariables;
+import cc.niushuai.project.devcontrol.base.util.Global;
 import cc.niushuai.project.devcontrol.base.util.Keys;
 import cc.niushuai.project.devcontrol.databinding.ActivityPowerSwitchBinding;
 
@@ -41,7 +41,7 @@ public class PowerSwitchActivity extends BaseActivity {
     @Override
     protected void init() {
 
-        this.device = GlobalVariables.getDeviceInfo(getIntentDeviceId());
+        this.device = Global.getDeviceInfo(getIntentDeviceId());
         // 标题名称
         super.setTitle(this.device.getDeviceName(), this.device.getRemark());
         // 开关底部的名称
