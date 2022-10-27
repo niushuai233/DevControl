@@ -21,6 +21,7 @@ import cn.hutool.core.util.StrUtil;
 public class XLog {
 
     public static final String _Symbol1 = "#";
+
     /**
      * 日志总开关
      */
@@ -48,50 +49,6 @@ public class XLog {
      * </pre>
      */
     public static final String LOG_TEMPLATE = "{} - [{}] - {}: {}";
-
-    static class Level {
-
-        /**
-         * 详细
-         */
-        public static final int VERBOSE = 2;
-
-        /**
-         * 调试
-         */
-        public static final int DEBUG = 3;
-
-        /**
-         * 一般
-         */
-        public static final int INFO = 4;
-
-        /**
-         * 警告
-         */
-        public static final int WARN = 5;
-
-        /**
-         * 错误
-         */
-        public static final int ERROR = 6;
-
-        public static String transform(int level) {
-            String str = "VERBOSE";
-            if (VERBOSE == level) {
-                str = "VERBOSE";
-            } else if (DEBUG == level) {
-                str = "DEBUG";
-            } else if (INFO == level) {
-                str = "INFO";
-            } else if (WARN == level) {
-                str = "WARN";
-            } else if (ERROR == level) {
-                str = "ERROR";
-            }
-            return StrUtil.format("%0.7s", str);
-        }
-    }
 
     public static void v(String tag, String message, Object... params) {
         log(tag, filterThr(message, params), Level.VERBOSE);
@@ -139,6 +96,15 @@ public class XLog {
         return format;
     }
 
+    /**
+     * 统一输出log入口
+     *
+     * @param tag     log tag
+     * @param message log 内容
+     * @param level   log level
+     * @author niushuai
+     * @date: 2022/10/27 9:07
+     */
     private static void log(String tag, String message, int level) {
         if (!LOG_SWITCH) {
             // 不输出日志 直接返回
@@ -177,10 +143,21 @@ public class XLog {
         }
     }
 
+    /**
+     * 写入到文件中
+     *
+     * @param tag
+     * @param message
+     * @param level
+     * @author niushuai
+     * @date: 2022/10/27 9:07
+     */
     public static void write(String tag, String message, int level) {
 
-        String logContent = concatFinalLog(tag, level, message);
-        FileUtil.appendUtf8String(logContent + System.lineSeparator(), currentAbsoluteLogPath());
+        if (LOG_SWITCH_TO_FILE) {
+            String logContent = concatFinalLog(tag, level, message);
+            FileUtil.appendUtf8String(logContent + System.lineSeparator(), currentAbsoluteLogPath());
+        }
     }
 
     /**
@@ -207,17 +184,6 @@ public class XLog {
     }
 
     /**
-     * 当前日志文件的绝对路径
-     *
-     * @author niushuai
-     * @date: 2022/10/26 15:33
-     * @return: {@link String}
-     */
-    private static String currentAbsoluteLogPath() {
-        return Global.LOG_ROOT_PATH + DateUtil.formatDate(new Date()) + Keys.LOG_SUFFIX;
-    }
-
-    /**
      * 组装需打印的线程信息
      *
      * @author niushuai
@@ -236,5 +202,60 @@ public class XLog {
             return threadClassName + _Symbol1 + stackTraceElement.getMethodName() + StrPool.COLON + stackTraceElement.getLineNumber();
         }
         return null;
+    }
+
+    /**
+     * 当前日志文件的绝对路径
+     *
+     * @author niushuai
+     * @date: 2022/10/26 15:33
+     * @return: {@link String}
+     */
+    private static String currentAbsoluteLogPath() {
+        return Global.LOG_ROOT_PATH + DateUtil.formatDate(new Date()) + Keys.LOG_SUFFIX;
+    }
+
+    static class Level {
+
+        /**
+         * 详细
+         */
+        public static final int VERBOSE = 2;
+
+        /**
+         * 调试
+         */
+        public static final int DEBUG = 3;
+
+        /**
+         * 一般
+         */
+        public static final int INFO = 4;
+
+        /**
+         * 警告
+         */
+        public static final int WARN = 5;
+
+        /**
+         * 错误
+         */
+        public static final int ERROR = 6;
+
+        public static String transform(int level) {
+            String str = "VERBOSE";
+            if (VERBOSE == level) {
+                str = "VERBOSE";
+            } else if (DEBUG == level) {
+                str = "DEBUG";
+            } else if (INFO == level) {
+                str = "INFO";
+            } else if (WARN == level) {
+                str = "WARN";
+            } else if (ERROR == level) {
+                str = "ERROR";
+            }
+            return StrPool.BRACKET_START + String.format("%7s", str) + StrPool.BRACKET_END;
+        }
     }
 }
