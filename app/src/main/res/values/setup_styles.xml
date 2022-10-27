@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--不可点击的title外层布局-->
+    <style name="SetupTitleLL">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:background">@color/main_bg_color</item>
+    </style>
+
+    <!--不可点击的title-->
+    <style name="SetupTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">#FFBB86FC</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+
+    <!--==========================================================================-->
+    <!--==========================================================================-->
+    <!--==========================================================================-->
+
+    <!--可点击的tv外层布局-->
+    <style name="SetupTextLL">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <!--可点击的文本-->
+    <style name="SetupText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">16dp</item>.
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginLeft">5dp</item>
+    </style>
+
+    <!--icon-->
+    <style name="SetupIcon">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+</resources>

@@ -6,13 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.ViewModelProvider;
 
+import cc.niushuai.project.devcontrol.base.ui.BaseFragment;
 import cc.niushuai.project.devcontrol.databinding.MainNavFragmentSetUpBinding;
 
-
-public class NavSetUpFragment extends Fragment {
+public class NavSetUpFragment extends BaseFragment {
 
     private MainNavFragmentSetUpBinding navFragmentSetUpBinding;
 
@@ -20,17 +22,25 @@ public class NavSetUpFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        navFragmentSetUpBinding = MainNavFragmentSetUpBinding.inflate(inflater, container, false);
+        navFragmentSetUpBinding = MainNavFragmentSetUpBinding.inflate(getLayoutInflater());
 
-        NavSetUpViewModel navSetUpViewModel = new ViewModelProvider(this).get(NavSetUpViewModel.class);
         View rootView = navFragmentSetUpBinding.getRoot();
 
-        TextView textView = navFragmentSetUpBinding.navSetupFragmentTextview;
+        this.init();
+        this.addListener();
 
-        navSetUpViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-
+        rootView.requestLayout();
         return rootView;
     }
+
+    private void addListener() {
+
+    }
+
+    private void init() {
+
+    }
+
 
     @Override
     public void onDestroyView() {

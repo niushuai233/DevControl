@@ -6,15 +6,123 @@
     android:layout_height="match_parent"
     tools:context=".ui.nav.setup.NavSetUpFragment">
 
-    <TextView
-        android:id="@+id/nav_setup_fragment_textview"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!--通用-->
+            <LinearLayout
+                android:id="@+id/setup_ll_general"
+                style="@style/SetupTitleLL">
+
+                <TextView
+                    style="@style/SetupTitle"
+                    android:text="@string/setup_general" />
+            </LinearLayout>
+
+            <!--备份-->
+            <LinearLayout
+                android:id="@+id/setup_ll_general_backup"
+                style="@style/SetupTextLL"
+                android:layout_below="@id/setup_ll_general">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    style="@style/SetupIcon"
+                    app:srcCompat="@drawable/ic_backup" />
+
+                <TextView
+                    android:id="@+id/setup_general_backup"
+                    style="@style/SetupText"
+                    android:text="@string/setup_general_backup" />
+
+            </LinearLayout>
+
+            <!--恢复-->
+            <LinearLayout
+                android:id="@+id/setup_ll_general_restore"
+                style="@style/SetupTextLL"
+                android:layout_below="@id/setup_ll_general_backup">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    style="@style/SetupIcon"
+                    app:srcCompat="@drawable/ic_restore" />
+
+                <TextView
+                    android:id="@+id/setup_general_restore"
+                    style="@style/SetupText"
+                    android:text="@string/setup_general_restore" />
+
+            </LinearLayout>
+
+            <!--日志-->
+            <LinearLayout
+                android:id="@+id/setup_ll_log"
+                style="@style/SetupTitleLL"
+                android:layout_below="@id/setup_ll_general_restore">
+
+                <TextView
+                    style="@style/SetupTitle"
+                    android:text="@string/setup_log" />
+            </LinearLayout>
+
+            <!--总开关-->
+            <LinearLayout
+                android:id="@+id/setup_ll_log_switch"
+                style="@style/SetupTextLL"
+                android:layout_below="@id/setup_ll_log">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    style="@style/SetupIcon"
+                    app:srcCompat="@drawable/ic_lock" />
+
+                <TextView
+                    android:id="@+id/setup_log_switch"
+                    style="@style/SetupText"
+                    android:text="@string/setup_log_switch" />
+
+            </LinearLayout>
+
+            <!--总开关-->
+            <LinearLayout
+                android:id="@+id/setup_ll_log_level"
+                style="@style/SetupTextLL"
+                android:layout_below="@id/setup_ll_log_switch">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    style="@style/SetupIcon"
+                    app:srcCompat="@drawable/ic_level" />
+
+                <TextView
+                    android:id="@+id/setup_log_level"
+                    style="@style/SetupText"
+                    android:text="@string/setup_log_level" />
+
+            </LinearLayout>
+
+            <!--总开关-->
+            <LinearLayout
+                android:id="@+id/setup_ll_log_keep_day"
+                style="@style/SetupTextLL"
+                android:layout_below="@id/setup_ll_log_level">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    style="@style/SetupIcon"
+                    app:srcCompat="@drawable/ic_log_keep_day" />
+
+                <TextView
+                    android:id="@+id/setup_log_keep_day"
+                    style="@style/SetupText"
+                    android:text="@string/setup_log_keep_day" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
