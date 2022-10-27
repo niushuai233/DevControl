@@ -4,9 +4,11 @@ import android.content.Context;
 
 import cc.niushuai.project.devcontrol.base.util.Keys;
 import cc.niushuai.project.devcontrol.base.util.XLog;
+import cc.niushuai.project.devcontrol.db.greendao.gen.CommandExtDao;
 import cc.niushuai.project.devcontrol.db.greendao.gen.DaoMaster;
 import cc.niushuai.project.devcontrol.db.greendao.gen.DaoSession;
 import cc.niushuai.project.devcontrol.db.greendao.gen.DeviceDao;
+import cc.niushuai.project.devcontrol.db.greendao.gen.SysConfigDao;
 import cc.niushuai.project.devcontrol.db.util.MyOpenHelper;
 
 /**
@@ -54,6 +56,28 @@ public class DB {
      */
     public static DeviceDao getDeviceDao() {
         return session().getDeviceDao();
+    }
+
+    /**
+     * 设备扩展命令操作入口
+     *
+     * @author niushuai
+     * @date: 2022/10/24 11:05
+     * @return: {@link DeviceDao}
+     */
+    public static CommandExtDao getCommandExtDao() {
+        return session().getCommandExtDao();
+    }
+
+    /**
+     * 系统设置操作入口
+     *
+     * @author niushuai
+     * @date: 2022/10/24 11:05
+     * @return: {@link DeviceDao}
+     */
+    public static SysConfigDao getSysConfigDao() {
+        return session().getSysConfigDao();
     }
 
     /**

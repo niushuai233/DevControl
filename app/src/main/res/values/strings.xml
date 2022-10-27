@@ -35,6 +35,14 @@
     <string name="setup_log_switch">总开关</string>
     <string name="setup_log_level">日志级别</string>
     <string name="setup_log_keep_day">保留天数</string>
+
+    <string-array name="logLevel">
+        <item>VERBOSE</item>
+        <item>DEBUG</item>
+        <item>INFO</item>
+        <item>WARN</item>
+        <item>ERROR</item>
+    </string-array>
     <!--设置页面 end-->
 
 

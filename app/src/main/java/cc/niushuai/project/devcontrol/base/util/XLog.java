@@ -210,26 +210,31 @@ public class XLog {
          * 详细
          */
         public static final int VERBOSE = 2;
+        public static final String VERBOSE_NAME = "VERBOSE";
 
         /**
          * 调试
          */
         public static final int DEBUG = 3;
+        public static final String DEBUG_NAME = "DEBUG";
 
         /**
          * 一般
          */
         public static final int INFO = 4;
+        public static final String INFO_NAME = "INFO";
 
         /**
          * 警告
          */
         public static final int WARN = 5;
+        public static final String WARN_NAME = "WARN";
 
         /**
          * 错误
          */
         public static final int ERROR = 6;
+        public static final String ERROR_NAME = "ERROR";
 
         public static String transform(int level) {
             String str = "VERBOSE";
@@ -245,6 +250,21 @@ public class XLog {
                 str = "ERROR";
             }
             return String.format("%7s", str);
+        }
+
+        public static int transform(String level) {
+            if (VERBOSE_NAME.equals(level)) {
+                return VERBOSE;
+            } else if (DEBUG_NAME.equals(level)) {
+                return DEBUG;
+            } else if (INFO_NAME.equals(level)) {
+                return INFO;
+            } else if (WARN_NAME.equals(level)) {
+                return WARN;
+            } else if (ERROR_NAME.equals(level)) {
+                return ERROR;
+            }
+            return -1;
         }
     }
 }

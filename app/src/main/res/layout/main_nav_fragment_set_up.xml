@@ -107,9 +107,11 @@
                     style="@style/SetupText"
                     android:text="@string/setup_log_level" />
 
-                <TextView
-                    android:id="@+id/setup_log_level_display"
+                <Spinner
+                    android:id="@+id/setup_log_level_spinner"
                     style="@style/SetupExt"
+                    android:entries="@array/logLevel"
+
                     />
             </LinearLayout>
 

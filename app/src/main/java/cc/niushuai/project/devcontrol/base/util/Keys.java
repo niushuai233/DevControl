@@ -12,6 +12,10 @@ public interface Keys {
 
     String LOG_SUFFIX = ".log";
 
+    String SETUP_LOG_SWITCH = "setup_log_switch";
+    String SETUP_LOG_LEVEL = "setup_log_level";
+    String SETUP_LOG_KEEP_DAY = "setup_log_keep_day";
+
     interface Tag {
         String MY_OPEN_HELPER = "MyOpenHelper";
 
