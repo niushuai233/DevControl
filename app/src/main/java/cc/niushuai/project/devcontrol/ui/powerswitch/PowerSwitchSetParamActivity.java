@@ -5,6 +5,8 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
+import java.util.Date;
+
 import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
 import cc.niushuai.project.devcontrol.base.util.CommonUiUtil;
@@ -67,6 +69,7 @@ public class PowerSwitchSetParamActivity extends BaseActivity {
 //        deviceInfo.setIconId(device.getIconId());
         deviceInfo.setIsDeleted(device.getIsDeleted());
         deviceInfo.setCreateTime(device.getCreateTime());
+        deviceInfo.setUpdateTime(new Date());
         DB.getDeviceDao().update(deviceInfo.toDevice());
 
         // 对当前设备引用重新赋值

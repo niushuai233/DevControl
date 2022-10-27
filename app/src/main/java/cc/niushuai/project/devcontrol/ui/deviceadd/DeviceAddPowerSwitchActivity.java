@@ -75,6 +75,7 @@ public class DeviceAddPowerSwitchActivity extends BaseActivity {
         device.setOnOff(OnOffEnum.OFF.getValue());
 
         device.setCreateTime(DateUtil.now());
+        device.setUpdateTime(DateUtil.now());
         device.setOrder(1);
         device.setIsDeleted(YesNoEnum.NO.getIntegerValue());
 

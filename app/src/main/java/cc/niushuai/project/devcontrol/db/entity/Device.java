@@ -83,11 +83,16 @@ public class Device implements Serializable {
      */
     private String createTime;
 
-    @Generated(hash = 1723639212)
-    public Device(Long id, Integer order, String deviceName, String deviceType,
-                  String onOff, Integer iconId, String commandPath, String commandStatus,
-                  String commandOpen, String commandClose, Integer isDeleted,
-                  String remark, String createTime) {
+    /**
+     * 创建时间
+     */
+    private String updateTime;
+
+    @Generated(hash = 1105838321)
+    public Device(Long id, Integer order, String deviceName, String deviceType, String onOff,
+            Integer iconId, String commandPath, String commandStatus, String commandOpen,
+            String commandClose, Integer isDeleted, String remark, String createTime,
+            String updateTime) {
         this.id = id;
         this.order = order;
         this.deviceName = deviceName;
@@ -101,6 +106,7 @@ public class Device implements Serializable {
         this.isDeleted = isDeleted;
         this.remark = remark;
         this.createTime = createTime;
+        this.updateTime = updateTime;
     }
 
     @Generated(hash = 1469582394)
@@ -209,5 +215,13 @@ public class Device implements Serializable {
 
     public void setCommandStatus(String commandStatus) {
         this.commandStatus = commandStatus;
+    }
+
+    public String getUpdateTime() {
+        return this.updateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
     }
 }

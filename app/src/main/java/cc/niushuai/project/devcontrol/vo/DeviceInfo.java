@@ -231,6 +231,7 @@ public class DeviceInfo extends BaseVO {
         to.setOrder(this.getOrder());
         to.setIsDeleted(this.getIsDeleted());
         to.setCreateTime(DateFormatUtil.formatDateTime(this.getCreateTime()));
+        to.setUpdateTime(DateFormatUtil.formatDateTime(this.getUpdateTime()));
 
         return to;
     }

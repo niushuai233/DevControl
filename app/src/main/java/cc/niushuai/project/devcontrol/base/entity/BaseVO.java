@@ -21,6 +21,8 @@ public class BaseVO implements Serializable {
 
     private Date createTime;
 
+    private Date updateTime;
+
     public String getId() {
         return id;
     }
@@ -51,5 +53,13 @@ public class BaseVO implements Serializable {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }
