@@ -81,9 +81,14 @@
                     app:srcCompat="@drawable/ic_lock" />
 
                 <TextView
-                    android:id="@+id/setup_log_switch"
+                    android:id="@+id/setup_log_switch_tv"
                     style="@style/SetupText"
                     android:text="@string/setup_log_switch" />
+
+                <Switch
+                    android:id="@+id/setup_log_switch_switch"
+                    style="@style/SetupExt"
+                    />
 
             </LinearLayout>
 
@@ -102,6 +107,10 @@
                     style="@style/SetupText"
                     android:text="@string/setup_log_level" />
 
+                <TextView
+                    android:id="@+id/setup_log_level_display"
+                    style="@style/SetupExt"
+                    />
             </LinearLayout>
 
             <!--总开关-->
@@ -119,6 +128,10 @@
                     style="@style/SetupText"
                     android:text="@string/setup_log_keep_day" />
 
+                <TextView
+                    android:id="@+id/setup_log_keep_day_display"
+                    style="@style/SetupExt"
+                    />
             </LinearLayout>
 
         </RelativeLayout>
