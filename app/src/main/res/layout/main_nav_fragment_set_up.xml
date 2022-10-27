@@ -110,6 +110,7 @@
                 <Spinner
                     android:id="@+id/setup_log_level_spinner"
                     style="@style/SetupExt"
+                    android:padding="0dp"
                     android:entries="@array/logLevel"
 
                     />
@@ -133,6 +134,7 @@
                 <TextView
                     android:id="@+id/setup_log_keep_day_display"
                     style="@style/SetupExt"
+                    android:text="7"
                     />
             </LinearLayout>
 

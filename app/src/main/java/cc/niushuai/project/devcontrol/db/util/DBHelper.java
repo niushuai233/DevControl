@@ -4,6 +4,7 @@ import java.util.List;
 
 import cc.niushuai.project.devcontrol.db.DB;
 import cc.niushuai.project.devcontrol.db.entity.SysConfig;
+import cn.hutool.core.collection.CollUtil;
 
 /**
  * 抽取的公共方法
@@ -18,5 +19,11 @@ public class DBHelper {
     public static List<SysConfig> configListByKey(String key) {
 
         return DB.getSysConfigDao().queryRaw(WHERE_KEY, key);
+    }
+
+    public static SysConfig configOneByKey(String key) {
+
+        List<SysConfig> list = DB.getSysConfigDao().queryRaw(WHERE_KEY, key);
+        return CollUtil.isEmpty(list) ? null : list.get(0);
     }
 }

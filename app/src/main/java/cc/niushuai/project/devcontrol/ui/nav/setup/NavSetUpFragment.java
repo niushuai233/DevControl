@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 
 import java.util.List;
 
+import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.ui.BaseFragment;
 import cc.niushuai.project.devcontrol.base.util.IdWorker;
 import cc.niushuai.project.devcontrol.base.util.Keys;
@@ -42,6 +43,34 @@ public class NavSetUpFragment extends BaseFragment {
     }
 
     private void init() {
+
+        SysConfig switchConfig = DBHelper.configOneByKey(Keys.SETUP_LOG_SWITCH);
+        if (null == switchConfig) {
+            dealConfig(Keys.SETUP_LOG_SWITCH, XLog.LOG_SWITCH.toString());
+        } else {
+            binding.setupLogSwitchSwitch.setChecked(Boolean.parseBoolean(switchConfig.getValue()));
+        }
+
+        SysConfig levelConfig = DBHelper.configOneByKey(Keys.SETUP_LOG_LEVEL);
+        if (null == levelConfig) {
+            dealConfig(Keys.SETUP_LOG_LEVEL, XLog.SET_ROOT_LEVEL_NAME);
+        } else {
+            String[] logLevel = getResources().getStringArray(R.array.logLevel);
+            for (int i = 0; i < logLevel.length; i++) {
+                String level = logLevel[i];
+                if (level.equals(levelConfig.getValue())) {
+                    binding.setupLogLevelSpinner.setSelection(i);
+                    break;
+                }
+            }
+        }
+
+        SysConfig keepDayConfig = DBHelper.configOneByKey(Keys.SETUP_LOG_KEEP_DAY);
+        if (null == keepDayConfig) {
+            dealConfig(Keys.SETUP_LOG_KEEP_DAY, XLog.LOG_KEEP_DAY.toString());
+        } else {
+            binding.setupLogKeepDayDisplay.setText(keepDayConfig.getValue());
+        }
 
     }
 
@@ -95,15 +124,17 @@ public class NavSetUpFragment extends BaseFragment {
 
 
     private void setupKeepDayClickListener(View view) {
+
+
     }
 
-    private void dealConfig(String key, String level) {
+    private void dealConfig(String key, String value) {
         List<SysConfig> list = DBHelper.configListByKey(key);
         if (CollUtil.isNotEmpty(list)) {
-            configUpdate(level, list.get(0));
+            configUpdate(value, list.get(0));
             return;
         }
-        configInsert(key, level);
+        configInsert(key, value);
     }
 
     private void configInsert(String key, String value) {

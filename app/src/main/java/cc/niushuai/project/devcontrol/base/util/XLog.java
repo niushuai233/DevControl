@@ -25,22 +25,23 @@ public class XLog {
     /**
      * 日志总开关
      */
-    public static boolean LOG_SWITCH = true;
+    public static Boolean LOG_SWITCH = true;
 
     /**
      * 是否写入到文件
      */
-    public static boolean LOG_SWITCH_TO_FILE = true;
+    public static Boolean LOG_SWITCH_TO_FILE = true;
 
     /**
      * 日志级别 默认info
      */
-    public static int SET_ROOT_LEVEL = Level.INFO;
+    public static Integer SET_ROOT_LEVEL = Level.INFO;
+    public static String SET_ROOT_LEVEL_NAME = Level.INFO_NAME;
 
     /**
      * 日志保存最长时间
      */
-    public static int LOG_SAVE_DAYS = 7;
+    public static Integer LOG_KEEP_DAY = 7;
 
     /**
      * <pre>
