@@ -1,5 +1,6 @@
 package cc.niushuai.project.devcontrol.base.util;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
 import cc.niushuai.project.devcontrol.db.DB;
 import cc.niushuai.project.devcontrol.db.entity.Device;
 import cc.niushuai.project.devcontrol.vo.DeviceInfo;
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.text.StrPool;
 import cn.hutool.core.util.StrUtil;
 
@@ -51,5 +53,16 @@ public class Global {
 
     public static DeviceInfo getDeviceInfo(String deviceId) {
         return DEVICE_INFO_MAP.get(deviceId);
+    }
+
+    /**
+     * 当前日志文件的绝对路径
+     *
+     * @author niushuai
+     * @date: 2022/10/26 15:33
+     * @return: {@link String}
+     */
+    public static String logAbsolutePath() {
+        return Global.LOG_ROOT_PATH + DateUtil.formatDate(new Date()) + Keys.LOG_SUFFIX;
     }
 }

@@ -9,7 +9,6 @@ public class NavLogViewModel extends ViewModel {
 
     public NavLogViewModel() {
         this.vText = new MutableLiveData<>();
-        this.vText.setValue("this is log view");
     }
 
     public MutableLiveData<String> getText() {

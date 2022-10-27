@@ -156,7 +156,7 @@ public class XLog {
 
         if (LOG_SWITCH_TO_FILE) {
             String logContent = concatFinalLog(tag, level, message);
-            FileUtil.appendUtf8String(logContent + System.lineSeparator(), currentAbsoluteLogPath());
+            FileUtil.appendUtf8String(logContent + System.lineSeparator(), Global.logAbsolutePath());
         }
     }
 
@@ -202,17 +202,6 @@ public class XLog {
             return threadClassName + _Symbol1 + stackTraceElement.getMethodName() + StrPool.COLON + stackTraceElement.getLineNumber();
         }
         return null;
-    }
-
-    /**
-     * 当前日志文件的绝对路径
-     *
-     * @author niushuai
-     * @date: 2022/10/26 15:33
-     * @return: {@link String}
-     */
-    private static String currentAbsoluteLogPath() {
-        return Global.LOG_ROOT_PATH + DateUtil.formatDate(new Date()) + Keys.LOG_SUFFIX;
     }
 
     static class Level {

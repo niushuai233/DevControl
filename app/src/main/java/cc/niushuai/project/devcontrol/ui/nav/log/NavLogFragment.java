@@ -6,10 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import cc.niushuai.project.devcontrol.R;
+import cc.niushuai.project.devcontrol.base.util.Global;
 import cc.niushuai.project.devcontrol.databinding.MainNavFragmentLogBinding;
+import cn.hutool.core.io.FileUtil;
 
 
 public class NavLogFragment extends Fragment {
@@ -22,12 +26,12 @@ public class NavLogFragment extends Fragment {
 
         navFragmentLogBinding = MainNavFragmentLogBinding.inflate(inflater, container, false);
 
-        NavLogViewModel navLogViewModel = new ViewModelProvider(this).get(NavLogViewModel.class);
         View rootView = navFragmentLogBinding.getRoot();
 
         TextView textView = navFragmentLogBinding.navLogFragmentTextview;
+        textView.setText(FileUtil.readUtf8String(Global.logAbsolutePath()));
 
-        navLogViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        rootView.requestLayout();
 
         return rootView;
     }
