@@ -5,19 +5,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
 import java.util.List;
 
 import cc.niushuai.project.devcontrol.base.ui.BaseFragment;
-import cc.niushuai.project.devcontrol.base.util.Global;
 import cc.niushuai.project.devcontrol.base.util.IdWorker;
 import cc.niushuai.project.devcontrol.base.util.Keys;
 import cc.niushuai.project.devcontrol.base.util.XLog;
 import cc.niushuai.project.devcontrol.databinding.MainNavFragmentSetUpBinding;
 import cc.niushuai.project.devcontrol.db.DB;
 import cc.niushuai.project.devcontrol.db.entity.SysConfig;
+import cc.niushuai.project.devcontrol.db.util.DBHelper;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateUtil;
 
@@ -56,7 +57,9 @@ public class NavSetUpFragment extends BaseFragment {
         binding.setupLogLevelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String level = ((TextView) view).getText().toString();
 
+                dealConfig(Keys.SETUP_LOG_LEVEL, level);
             }
 
             @Override
@@ -68,6 +71,7 @@ public class NavSetUpFragment extends BaseFragment {
         binding.setupLlLogKeepDay.setOnClickListener(this::setupKeepDayClickListener);
 
     }
+
 
     private void setupBackupClickListener(View view) {
     }
@@ -86,23 +90,32 @@ public class NavSetUpFragment extends BaseFragment {
         Boolean checked = binding.setupLogSwitchSwitch.isChecked();
         XLog.LOG_SWITCH = checked;
 
-        List<SysConfig> list = DB.getSysConfigDao().queryRaw("where key = ?", Keys.SETUP_LOG_SWITCH);
-        if (CollUtil.isNotEmpty(list)) {
-            // 已存在 更新操作
-            SysConfig updateEntity = list.get(0);
-            updateEntity.setValue(checked.toString());
-            updateEntity.setUpdateTime(DateUtil.now());
-
-            DB.getSysConfigDao().update(updateEntity);
-            return;
-        }
-        // 新增操作
-        DB.getSysConfigDao().insert(new SysConfig(IdWorker.getNextId(), Keys.SETUP_LOG_SWITCH, checked.toString(), DateUtil.now(), DateUtil.now()));
+        dealConfig(Keys.SETUP_LOG_SWITCH, checked.toString());
     }
+
 
     private void setupKeepDayClickListener(View view) {
     }
 
+    private void dealConfig(String key, String level) {
+        List<SysConfig> list = DBHelper.configListByKey(key);
+        if (CollUtil.isNotEmpty(list)) {
+            configUpdate(level, list.get(0));
+            return;
+        }
+        configInsert(key, level);
+    }
+
+    private void configInsert(String key, String value) {
+        DB.getSysConfigDao().insert(new SysConfig(IdWorker.getNextId(), key, value, DateUtil.now(), DateUtil.now()));
+    }
+
+    private void configUpdate(String level, SysConfig updateEntity) {
+        updateEntity.setValue(level);
+        updateEntity.setUpdateTime(DateUtil.now());
+
+        DB.getSysConfigDao().update(updateEntity);
+    }
 
     @Override
     public void onDestroyView() {
