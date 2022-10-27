@@ -31,13 +31,14 @@ public class Global {
      * @date: 2022/10/24 17:08
      */
     public static void initDeviceInfoMap() {
+        XLog.v(Keys.Tag.APP_INIT, "重建设备信息缓存");
         DEVICE_INFO_MAP.clear();
         List<Device> deviceList = DB.getDeviceDao().loadAll();
-
+        XLog.v(Keys.Tag.APP_INIT, "现有设备信息: {}条", deviceList.size());
         for (Device device : deviceList) {
             DEVICE_INFO_MAP.put(device.getId() + "", DeviceInfo.parseDevice(device));
         }
-        System.out.println();
+        XLog.v(Keys.Tag.APP_INIT, "设备信息缓存建立成功: {}条", deviceList.size());
     }
 
     public static Class<? extends BaseActivity> getDeviceAddActivity(String deviceId) {

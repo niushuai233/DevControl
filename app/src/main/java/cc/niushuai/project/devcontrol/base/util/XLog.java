@@ -255,7 +255,7 @@ public class XLog {
             } else if (ERROR == level) {
                 str = "ERROR";
             }
-            return StrPool.BRACKET_START + String.format("%7s", str) + StrPool.BRACKET_END;
+            return String.format("%7s", str);
         }
     }
 }

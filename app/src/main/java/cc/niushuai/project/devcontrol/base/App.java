@@ -24,6 +24,8 @@ import cn.hutool.core.util.StrUtil;
 
 public class App {
 
+    public static final String WHICH_SU = "which su";
+
     public static void init(Activity activity) {
 
         // 申请权限
@@ -31,12 +33,19 @@ public class App {
 
         // 初始化日志相关内容
         initLog(activity);
+
+        XLog.i(Keys.Tag.APP_INIT, "====================================================================");
+        XLog.i(Keys.Tag.APP_INIT, "应用{}启动", BuildConfig.APP_NAME);
+        XLog.i(Keys.Tag.APP_INIT, "====================================================================");
+
         // 检查root权限
         checkRoot(activity);
         // 初始化数据库
         initDb(activity);
         // 重建设备信息缓存
         Global.initDeviceInfoMap();
+
+        XLog.i(Keys.Tag.APP_INIT, "初始化完毕");
     }
 
     /**
@@ -48,11 +57,11 @@ public class App {
      */
     private static void checkRoot(Activity activity) {
 
-        String which_su = RuntimeUtil.execForStr("which su");
-        XLog.i(Keys.Tag.APP_INIT, "检查root权限... {}", which_su);
+        String which_su = RuntimeUtil.execForStr(WHICH_SU);
+        XLog.i(Keys.Tag.APP_INIT, "检查root权限... {} ==> {}", WHICH_SU, which_su);
         if (StrUtil.isNotEmpty(which_su)) {
             Global.HAS_ROOT = true;
-            XLog.i(Keys.Tag.APP_INIT, "当前设备具有root权限, su路径: {}", which_su);
+            XLog.i(Keys.Tag.APP_INIT, "当前设备具有root权限");
         } else {
             XLog.i(Keys.Tag.APP_INIT, "当前设备不具有root权限");
         }
@@ -106,6 +115,7 @@ public class App {
      * @date: 2022/10/26 14:58
      */
     private static void initDb(Activity activity) {
+        XLog.v(Keys.Tag.APP_INIT, "加载SQLite");
         DB.getInstance().init(activity);
     }
 
@@ -118,15 +128,18 @@ public class App {
     private static void initLog(Activity activity) {
 
         String rootPath = getRootPath();
+        XLog.v(Keys.Tag.APP_INIT, "获取日志文件根目录: {}", rootPath);
 
         if (!FileUtil.exist(rootPath)) {
             // 不存在的时候创建文件
             boolean mkdirs = new File(rootPath).mkdirs();
-            System.out.println(mkdirs);
+            XLog.v(Keys.Tag.APP_INIT, "日志根目录不存在, 创建: {}", mkdirs);
         }
+
 
         // 内存存储日志根目录
         Global.LOG_ROOT_PATH = rootPath;
+        XLog.i(Keys.Tag.APP_INIT, "日志存储位置: {}", Global.LOG_ROOT_PATH);
     }
 
     private static String getRootPath() {
@@ -136,9 +149,11 @@ public class App {
         if (externalStorageState.equals(Environment.MEDIA_MOUNTED)) {
             // 如果存在外置存储
             rootPath = StrUtil.join(StrPool.SLASH, Environment.getExternalStorageDirectory().getAbsolutePath(), BuildConfig.APP_NAME);
+            XLog.v(Keys.Tag.APP_INIT, "外置存储已挂载");
         } else {
             // 否则就写到/data/data里
             rootPath = StrUtil.join(StrPool.SLASH, Keys.LOG_ROOT_FILE_PATH, BuildConfig.APPLICATION_ID);
+            XLog.v(Keys.Tag.APP_INIT, "外置存储未挂载");
         }
 
         return StrUtil.join(StrPool.SLASH, rootPath, Keys.LOG_LOG_FOLDER);

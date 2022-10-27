@@ -3,6 +3,7 @@ package cc.niushuai.project.devcontrol.db;
 import android.content.Context;
 
 import cc.niushuai.project.devcontrol.base.util.Keys;
+import cc.niushuai.project.devcontrol.base.util.XLog;
 import cc.niushuai.project.devcontrol.db.greendao.gen.DaoMaster;
 import cc.niushuai.project.devcontrol.db.greendao.gen.DaoSession;
 import cc.niushuai.project.devcontrol.db.greendao.gen.DeviceDao;
@@ -70,7 +71,10 @@ public class DB {
 //            instance.getDaoMaster();
             instance.getDaoSession();
             INIT_FLAG = true;
+            XLog.v(Keys.Tag.APP_INIT, "SQLite已加载");
+            return;
         }
+        XLog.v(Keys.Tag.APP_INIT, "SQLite已加载, 无需重复初始化");
     }
 
     /**
