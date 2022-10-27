@@ -58,12 +58,12 @@ public class App {
     private static void checkRoot(Activity activity) {
 
         String which_su = RuntimeUtil.execForStr(WHICH_SU);
-        XLog.i(Keys.Tag.APP_INIT, "检查root权限... {} ==> {}", WHICH_SU, which_su);
+        XLog.v(Keys.Tag.APP_INIT, "检查root权限... {} ==> {}", WHICH_SU, which_su);
         if (StrUtil.isNotEmpty(which_su)) {
             Global.HAS_ROOT = true;
-            XLog.i(Keys.Tag.APP_INIT, "当前设备具有root权限");
+            XLog.v(Keys.Tag.APP_INIT, "当前设备具有root权限");
         } else {
-            XLog.i(Keys.Tag.APP_INIT, "当前设备不具有root权限");
+            XLog.v(Keys.Tag.APP_INIT, "当前设备不具有root权限");
         }
     }
 
@@ -139,7 +139,7 @@ public class App {
 
         // 内存存储日志根目录
         Global.LOG_ROOT_PATH = rootPath;
-        XLog.i(Keys.Tag.APP_INIT, "日志存储位置: {}", Global.LOG_ROOT_PATH);
+        XLog.v(Keys.Tag.APP_INIT, "日志存储位置: {}", Global.LOG_ROOT_PATH);
     }
 
     private static String getRootPath() {
