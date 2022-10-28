@@ -65,4 +65,42 @@ public class Global {
     public static String logAbsolutePath() {
         return Global.LOG_ROOT_PATH + DateUtil.formatDate(new Date()) + Keys.LOG_SUFFIX;
     }
+
+    /**
+     * 拼接完整的status命令
+     *
+     * @param device
+     * @author niushuai233
+     * @date: 2022/10/28 13:36
+     * @return: {@link String}
+     */
+    public static String getDeviceCommandStatus(DeviceInfo device) {
+        return StrUtil.join(StrUtil.SPACE, device.getCommandPath(), device.getCommandStatus());
+    }
+
+    /**
+     * 拼接完整的on命令
+     *
+     * @param device
+     * @author niushuai233
+     * @date: 2022/10/28 13:36
+     * @return: {@link String}
+     */
+    public static String getDeviceCommandOpen(DeviceInfo device) {
+        return StrUtil.join(StrUtil.SPACE, device.getCommandPath(), device.getCommandOpen());
+    }
+
+    /**
+     * 拼接完整的off命令
+     *
+     * @param device
+     * @author niushuai233
+     * @date: 2022/10/28 13:36
+     * @return: {@link String}
+     */
+    public static String getDeviceCommandClose(DeviceInfo device) {
+        return StrUtil.join(StrUtil.SPACE, device.getCommandPath(), device.getCommandClose());
+    }
+
+
 }

@@ -10,8 +10,10 @@ import java.util.Map;
 
 import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.util.ActivityUtil;
+import cc.niushuai.project.devcontrol.base.util.ExecUtil;
 import cc.niushuai.project.devcontrol.base.util.Global;
 import cc.niushuai.project.devcontrol.base.util.Keys;
+import cc.niushuai.project.devcontrol.base.util.ToastUtil;
 import cc.niushuai.project.devcontrol.base.util.UiUtil;
 import cc.niushuai.project.devcontrol.ui.common.IconSelectDialogFragment;
 import cc.niushuai.project.devcontrol.vo.DeviceInfo;
@@ -179,7 +181,29 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @author niushuai
      * @date: 2022/10/24 17:09
      */
-    public void rebuildDeviceInfoMapCache() {
+    protected void rebuildDeviceInfoMapCache() {
         Global.initDeviceInfoMap();
+    }
+
+
+    /**
+     * 执行命令 返回成功与否
+     *
+     * @param command
+     * @author niushuai233
+     * @date: 2022/10/28 14:00
+     * @return: {@link boolean}
+     */
+    protected boolean exec(String command) {
+        ExecUtil.CommandResult<String> commandResult = ExecUtil.exec4Str(command);
+        if (commandResult.getSuccess()) {
+            // 命令执行成功
+            ToastUtil.show(this, "执行成功");
+            return true;
+        } else {
+            // 命令执行失败
+            ToastUtil.show(this, "执行失败");
+            return false;
+        }
     }
 }
