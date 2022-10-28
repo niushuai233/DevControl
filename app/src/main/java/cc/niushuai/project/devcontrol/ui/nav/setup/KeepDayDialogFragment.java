@@ -14,7 +14,6 @@ import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.util.Keys;
 import cc.niushuai.project.devcontrol.base.util.XLog;
 import cc.niushuai.project.devcontrol.databinding.LayoutLogKeepDayBinding;
-import cc.niushuai.project.devcontrol.db.DB;
 import cc.niushuai.project.devcontrol.db.util.DBHelper;
 
 /**
@@ -45,7 +44,9 @@ public class KeepDayDialogFragment extends DialogFragment {
 
     private void addListener() {
         binding.layoutLogKeepDayConfirm.setOnClickListener(v -> {
-            String keepDayPickerValue = binding.keepDayPicker.getValue() + "";
+            int value = binding.keepDayPicker.getValue();
+            XLog.KEEP_DAY = value;
+            String keepDayPickerValue = value + "";
             DBHelper.configDeal(Keys.SETUP_LOG_KEEP_DAY, keepDayPickerValue);
             XLog.v(Keys.Tag.KEEP_DAY_SELECT, "更新日志存储天数为: {}", keepDayPickerValue);
 
@@ -60,7 +61,7 @@ public class KeepDayDialogFragment extends DialogFragment {
 
         binding.keepDayPicker.setMinValue(1);
         binding.keepDayPicker.setMaxValue(90);
-        binding.keepDayPicker.setValue(XLog.LOG_KEEP_DAY);
+        binding.keepDayPicker.setValue(XLog.KEEP_DAY);
         binding.keepDayPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
         binding.keepDayPicker.setFormatter(value -> value + "");
         binding.keepDayPicker.setOnValueChangedListener((picker, oldVal, newVal) -> {

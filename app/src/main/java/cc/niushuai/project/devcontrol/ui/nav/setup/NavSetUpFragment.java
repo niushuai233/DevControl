@@ -38,14 +38,14 @@ public class NavSetUpFragment extends BaseFragment {
 
         SysConfig switchConfig = DBHelper.configOneByKey(Keys.SETUP_LOG_SWITCH);
         if (null == switchConfig) {
-            DBHelper.configDeal(Keys.SETUP_LOG_SWITCH, XLog.LOG_SWITCH.toString());
+            DBHelper.configDeal(Keys.SETUP_LOG_SWITCH, XLog.SWITCH.toString());
         } else {
             binding.setupLogSwitchSwitch.setChecked(Boolean.parseBoolean(switchConfig.getValue()));
         }
 
         SysConfig levelConfig = DBHelper.configOneByKey(Keys.SETUP_LOG_LEVEL);
         if (null == levelConfig) {
-            DBHelper.configDeal(Keys.SETUP_LOG_LEVEL, XLog.SET_ROOT_LEVEL_NAME);
+            DBHelper.configDeal(Keys.SETUP_LOG_LEVEL, XLog.ROOT_LEVEL_NAME);
         } else {
             String[] logLevel = getResources().getStringArray(R.array.logLevel);
             for (int i = 0; i < logLevel.length; i++) {
@@ -59,7 +59,7 @@ public class NavSetUpFragment extends BaseFragment {
 
         SysConfig keepDayConfig = DBHelper.configOneByKey(Keys.SETUP_LOG_KEEP_DAY);
         if (null == keepDayConfig) {
-            DBHelper.configDeal(Keys.SETUP_LOG_KEEP_DAY, XLog.LOG_KEEP_DAY.toString());
+            DBHelper.configDeal(Keys.SETUP_LOG_KEEP_DAY, XLog.KEEP_DAY.toString());
         } else {
             binding.setupLogKeepDayDisplay.setText(keepDayConfig.getValue());
         }
@@ -107,7 +107,7 @@ public class NavSetUpFragment extends BaseFragment {
      */
     private void setupLogSwitchClickListener(View view) {
         Boolean checked = binding.setupLogSwitchSwitch.isChecked();
-        XLog.LOG_SWITCH = checked;
+        XLog.SWITCH = checked;
 
         DBHelper.configDeal(Keys.SETUP_LOG_SWITCH, checked.toString());
     }

@@ -25,23 +25,23 @@ public class XLog {
     /**
      * 日志总开关
      */
-    public static Boolean LOG_SWITCH = true;
+    public static Boolean SWITCH = true;
 
     /**
      * 是否写入到文件
      */
-    public static Boolean LOG_SWITCH_TO_FILE = true;
+    public static Boolean SWITCH_FOR_FILE = true;
 
     /**
      * 日志级别 默认info
      */
-    public static Integer SET_ROOT_LEVEL = Level.INFO;
-    public static String SET_ROOT_LEVEL_NAME = Level.INFO_NAME;
+    public static Integer ROOT_LEVEL = Level.INFO;
+    public static String ROOT_LEVEL_NAME = Level.INFO_NAME;
 
     /**
      * 日志保存最长时间
      */
-    public static Integer LOG_KEEP_DAY = 7;
+    public static Integer KEEP_DAY = 7;
 
     /**
      * <pre>
@@ -49,7 +49,7 @@ public class XLog {
      *  2022-10-26 11:11:11:111 - [DEBUG] - packageName#methodName:lineNumber: message
      * </pre>
      */
-    public static final String LOG_TEMPLATE = "{} - [{}] - {}: {}";
+    public static final String PRINT_TEMPLATE = "{} - [{}] - {}: {}";
 
     public static void v(String tag, String message, Object... params) {
         log(tag, filterThr(message, params), Level.VERBOSE);
@@ -107,7 +107,7 @@ public class XLog {
      * @date: 2022/10/27 9:07
      */
     private static void log(String tag, String message, int level) {
-        if (!LOG_SWITCH) {
+        if (!SWITCH) {
             // 不输出日志 直接返回
             return;
         }
@@ -116,7 +116,7 @@ public class XLog {
         // 设置级别为 info 4  打印级别为 debug 3 可打印
 
         // 要求当前输出的级别大于等于设置的级别
-        if (level >= SET_ROOT_LEVEL) {
+        if (level >= ROOT_LEVEL) {
             if (Level.ERROR == level) {
 
                 Log.e(tag, message);
@@ -155,7 +155,7 @@ public class XLog {
      */
     public static void write(String tag, String message, int level) {
 
-        if (LOG_SWITCH_TO_FILE) {
+        if (SWITCH_FOR_FILE) {
             String logContent = concatFinalLog(tag, level, message);
             FileUtil.appendUtf8String(logContent + System.lineSeparator(), Global.logAbsolutePath());
         }
@@ -176,7 +176,7 @@ public class XLog {
 
         // 时间 级别 线程信息 | 日志内容
         // 2022-10-26 11:11:11:111 - [DEBUG] - packageName#methodName:lineNumber: message
-        return StrUtil.format(LOG_TEMPLATE,
+        return StrUtil.format(PRINT_TEMPLATE,
                 DateUtil.format(new Date(), DatePattern.NORM_DATETIME_MS_FORMAT),
                 Level.transform(level),
                 threadInfo(),
@@ -205,7 +205,7 @@ public class XLog {
         return null;
     }
 
-    static class Level {
+    public static class Level {
 
         /**
          * 详细

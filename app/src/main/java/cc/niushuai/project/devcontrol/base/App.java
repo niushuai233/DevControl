@@ -17,6 +17,8 @@ import cc.niushuai.project.devcontrol.base.util.Global;
 import cc.niushuai.project.devcontrol.base.util.Keys;
 import cc.niushuai.project.devcontrol.base.util.XLog;
 import cc.niushuai.project.devcontrol.db.DB;
+import cc.niushuai.project.devcontrol.db.entity.SysConfig;
+import cc.niushuai.project.devcontrol.db.util.DBHelper;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.text.StrPool;
 import cn.hutool.core.util.RuntimeUtil;
@@ -30,22 +32,16 @@ public class App {
 
         // 申请权限
         requestPermissions(activity);
-
-        // 初始化日志相关内容
-        initLog(activity);
-
-        XLog.i(Keys.Tag.APP_INIT, "{}====================================", System.lineSeparator());
-        XLog.i(Keys.Tag.APP_INIT, "应用{}启动", BuildConfig.APP_NAME);
-        XLog.i(Keys.Tag.APP_INIT, "====================================");
-
-        // 检查root权限
-        checkRoot(activity);
         // 初始化数据库
         initDb(activity);
+        // 初始化日志相关内容
+        initLogSupport(activity);
+        // 检查root权限
+        checkRoot(activity);
         // 重建设备信息缓存
-        Global.initDeviceInfoMap();
+//        Global.initDeviceInfoMap();
 
-        XLog.i(Keys.Tag.APP_INIT, "初始化完毕");
+        XLog.i(Keys.Tag.APP_INIT, "应用{}初始化完毕", BuildConfig.APP_NAME);
     }
 
     /**
@@ -115,7 +111,7 @@ public class App {
      * @date: 2022/10/26 14:58
      */
     private static void initDb(Activity activity) {
-        XLog.v(Keys.Tag.APP_INIT, "加载SQLite");
+        XLog.d(Keys.Tag.APP_INIT, "加载SQLite");
         DB.getInstance().init(activity);
     }
 
@@ -125,10 +121,27 @@ public class App {
      * @author niushuai
      * @date: 2022/10/26 15:00
      */
-    private static void initLog(Activity activity) {
+    private static void initLogSupport(Activity activity) {
 
+        SysConfig switchConfig = DBHelper.configOneByKey(Keys.SETUP_LOG_SWITCH);
+        if (null != switchConfig) {
+            XLog.SWITCH = Boolean.valueOf(switchConfig.getValue());
+            XLog.SWITCH_FOR_FILE = Boolean.valueOf(switchConfig.getValue());
+        }
+
+        SysConfig levelConfig = DBHelper.configOneByKey(Keys.SETUP_LOG_LEVEL);
+        if (null != levelConfig) {
+            XLog.ROOT_LEVEL = XLog.Level.transform(levelConfig.getValue());
+            XLog.ROOT_LEVEL_NAME = XLog.Level.transform(XLog.ROOT_LEVEL);
+        }
+
+        SysConfig keepDayConfig = DBHelper.configOneByKey(Keys.SETUP_LOG_KEEP_DAY);
+        if (null != keepDayConfig) {
+            XLog.KEEP_DAY = Integer.valueOf(keepDayConfig.getValue());
+        }
+
+        // 初始化日志路径
         String rootPath = getRootPath();
-        XLog.v(Keys.Tag.APP_INIT, "获取日志文件根目录: {}", rootPath);
 
         if (!FileUtil.exist(rootPath)) {
             // 不存在的时候创建文件
@@ -136,10 +149,12 @@ public class App {
             XLog.v(Keys.Tag.APP_INIT, "日志根目录不存在, 创建: {}", mkdirs);
         }
 
-
         // 内存存储日志根目录
         Global.LOG_ROOT_PATH = rootPath;
-        XLog.v(Keys.Tag.APP_INIT, "日志存储位置: {}", Global.LOG_ROOT_PATH);
+        XLog.d(Keys.Tag.APP_INIT, "日志开关: {}", XLog.SWITCH);
+        XLog.d(Keys.Tag.APP_INIT, "日志存储位置: {}", Global.LOG_ROOT_PATH);
+        XLog.d(Keys.Tag.APP_INIT, "日志级别: {}", XLog.ROOT_LEVEL_NAME);
+        XLog.d(Keys.Tag.APP_INIT, "日志保留天数: {}", XLog.KEEP_DAY);
     }
 
     private static String getRootPath() {
@@ -149,11 +164,9 @@ public class App {
         if (externalStorageState.equals(Environment.MEDIA_MOUNTED)) {
             // 如果存在外置存储
             rootPath = StrUtil.join(StrPool.SLASH, Environment.getExternalStorageDirectory().getAbsolutePath(), BuildConfig.APP_NAME);
-            XLog.v(Keys.Tag.APP_INIT, "外置存储已挂载");
         } else {
             // 否则就写到/data/data里
             rootPath = StrUtil.join(StrPool.SLASH, Keys.LOG_ROOT_FILE_PATH, BuildConfig.APPLICATION_ID);
-            XLog.v(Keys.Tag.APP_INIT, "外置存储未挂载");
         }
 
         return StrUtil.join(StrPool.SLASH, rootPath, Keys.LOG_LOG_FOLDER);
