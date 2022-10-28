@@ -127,17 +127,23 @@ public class App {
         if (null != switchConfig) {
             XLog.SWITCH = Boolean.valueOf(switchConfig.getValue());
             XLog.SWITCH_FOR_FILE = Boolean.valueOf(switchConfig.getValue());
+        } else {
+            DBHelper.configInsert(Keys.SETUP_LOG_SWITCH, Boolean.TRUE.toString());
         }
 
         SysConfig levelConfig = DBHelper.configOneByKey(Keys.SETUP_LOG_LEVEL);
         if (null != levelConfig) {
             XLog.ROOT_LEVEL = XLog.Level.transform(levelConfig.getValue());
             XLog.ROOT_LEVEL_NAME = XLog.Level.transform(XLog.ROOT_LEVEL);
+        } else {
+            DBHelper.configInsert(Keys.SETUP_LOG_LEVEL, XLog.Level.transform(XLog.ROOT_LEVEL));
         }
 
         SysConfig keepDayConfig = DBHelper.configOneByKey(Keys.SETUP_LOG_KEEP_DAY);
         if (null != keepDayConfig) {
             XLog.KEEP_DAY = Integer.valueOf(keepDayConfig.getValue());
+        } else {
+            DBHelper.configInsert(Keys.SETUP_LOG_KEEP_DAY, XLog.KEEP_DAY.toString());
         }
 
         // 初始化日志路径
