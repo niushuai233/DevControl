@@ -134,8 +134,8 @@
                 <TextView
                     android:id="@+id/setup_log_keep_day_display"
                     style="@style/SetupExt"
-                    android:text="7"
-                    />
+                    android:layout_marginRight="10dp"
+                    android:text="7" />
             </LinearLayout>
 
         </RelativeLayout>
