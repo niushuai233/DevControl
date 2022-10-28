@@ -14,6 +14,7 @@ import cc.niushuai.project.devcontrol.base.util.CommonUiUtil;
 import cc.niushuai.project.devcontrol.base.util.IdWorker;
 import cc.niushuai.project.devcontrol.base.util.Keys;
 import cc.niushuai.project.devcontrol.base.util.ToastUtil;
+import cc.niushuai.project.devcontrol.base.util.UiUtil;
 import cc.niushuai.project.devcontrol.databinding.ActivityDeviceAddPowerSwitchBinding;
 import cc.niushuai.project.devcontrol.db.DB;
 import cc.niushuai.project.devcontrol.db.entity.Device;
@@ -41,6 +42,8 @@ public class DeviceAddPowerSwitchActivity extends BaseActivity {
 
         // 设置标题栏信息
         this.setTitle(null, getString(R.string.power_switch_add), null, R.drawable.ic_confrim_32);
+
+        UiUtil.setAppImageCompatResource(this, R.id.device_add_select_icon, R.drawable.ic_device_type_switch);
     }
 
     /**
