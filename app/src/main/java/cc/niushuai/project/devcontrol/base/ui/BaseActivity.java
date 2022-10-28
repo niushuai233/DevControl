@@ -1,5 +1,7 @@
 package cc.niushuai.project.devcontrol.base.ui;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -15,6 +17,7 @@ import cc.niushuai.project.devcontrol.base.util.Global;
 import cc.niushuai.project.devcontrol.base.util.Keys;
 import cc.niushuai.project.devcontrol.base.util.ToastUtil;
 import cc.niushuai.project.devcontrol.base.util.UiUtil;
+import cc.niushuai.project.devcontrol.base.util.XLog;
 import cc.niushuai.project.devcontrol.ui.common.IconSelectDialogFragment;
 import cc.niushuai.project.devcontrol.vo.DeviceInfo;
 import cn.hutool.core.util.StrUtil;
@@ -99,17 +102,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * 返回上一页
-     *
-     * @param activity
-     * @author niushuai
-     * @date: 2022/10/19 14:46
-     */
-    protected void activityButtonBackClickListener(BaseActivity activity) {
-        findViewById(R.id.activity_title_back).setOnClickListener(view -> activity.finish());
-    }
-
-    /**
      * 自定义back的点击事件
      *
      * @param onClickListener 点击事件
@@ -118,6 +110,65 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     protected void activityButtonBackClickListener(View.OnClickListener onClickListener) {
         findViewById(R.id.activity_title_back).setOnClickListener(onClickListener);
+    }
+
+    /**
+     * 返回上一页
+     *
+     * @param activity
+     * @author niushuai
+     * @date: 2022/10/19 14:46
+     */
+    protected void activityButtonBackClickListener(BaseActivity activity) {
+        findViewById(R.id.activity_title_back).setOnClickListener(view -> {
+            XLog.v(Keys.Tag.ACTIVITY_JUMP, "{}.activityButtonBackClickListener: 携带device数据", this.getClass().getSimpleName());
+            withBackData(activity);
+            activity.finish();
+        });
+    }
+
+    /**
+     * 返回上一层时携带当前的device信息
+     *
+     * @param activity
+     * @author niushuai233
+     * @date: 2022/10/28 14:59
+     */
+    private void withBackData(BaseActivity activity) {
+        Intent data = new Intent();
+        data.putExtra(Keys.DEVICE_INFO, this.device);
+        activity.setResult(Keys.RequestCode.GENERAL, data);
+    }
+
+    /**
+     * 返回键被按下监控事件
+     *
+     * @author niushuai233
+     * @date: 2022/10/28 14:59
+     */
+    @Override
+    public void onBackPressed() {
+        XLog.v(Keys.Tag.ACTIVITY_JUMP, "{}.onBackPressed: 携带device数据", this.getClass().getSimpleName());
+        withBackData(this);
+        super.onBackPressed();
+    }
+
+    /**
+     * 接收其他页面传输的数据
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     * @author niushuai233
+     * @date: 2022/10/28 15:04
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        XLog.v(Keys.Tag.ACTIVITY_JUMP, "{}.onActivityResult: requestCode: {}, resultCode: {}, 处理返回数据: {}", this.getClass().getSimpleName(), requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
+        if (null!= data && null != data.getSerializableExtra(Keys.DEVICE_INFO)) {
+            this.device = (DeviceInfo) data.getSerializableExtra(Keys.DEVICE_INFO);
+        }
     }
 
     /**
@@ -136,7 +187,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             moreSetView.setVisibility(View.GONE);
             return;
         }
-        moreSetView.setOnClickListener(view -> ActivityUtil.startActivity(activity, clazz, withData));
+        moreSetView.setOnClickListener(view -> ActivityUtil.startActivityForResult(activity, clazz, withData, Keys.RequestCode.GENERAL));
     }
 
     /**
@@ -156,7 +207,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             moreSetView.setVisibility(View.GONE);
             return;
         }
-        moreSetView.setOnClickListener(view -> ActivityUtil.startActivity(activity, clazz, keys, values));
+        moreSetView.setOnClickListener(view -> ActivityUtil.startActivityForResult(activity, clazz, keys, values, Keys.RequestCode.GENERAL));
     }
 
     /**
@@ -203,6 +254,30 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     protected void rebuildDeviceInfoMapCache() {
         Global.initDeviceInfoMap();
+    }
+
+    /**
+     * 返回上一页
+     *
+     * @author niushuai233
+     * @date: 2022/10/28 15:16
+     */
+    protected void back() {
+        this.finish();
+    }
+
+    /**
+     * 携带deviceInfo返回上一页
+     *
+     * @author niushuai233
+     * @date: 2022/10/28 15:16
+     */
+    protected void backWithDeviceInfo() {
+        Intent data = new Intent();
+        data.putExtra(Keys.DEVICE_INFO, this.device);
+        this.setResult(Keys.RequestCode.GENERAL, data);
+        XLog.v(Keys.Tag.ACTIVITY_JUMP, "{}.backWithDeviceInfo 携带device数据", this.getClass().getSimpleName());
+        this.back();
     }
 
 

@@ -25,8 +25,7 @@ public class ActivityUtil {
         startActivity(sourceActivity, targetActivity, map);
     }
 
-    public static void startActivity(Activity sourceActivity, Class<? extends BaseActivity> targetActivity,
-                                     Map<String, String> withData) {
+    public static void startActivity(Activity sourceActivity, Class<? extends BaseActivity> targetActivity, Map<String, String> withData) {
         Intent intent = new Intent(sourceActivity, targetActivity);
         if (null != withData) {
             for (String key : withData.keySet()) {
@@ -34,5 +33,25 @@ public class ActivityUtil {
             }
         }
         sourceActivity.startActivity(intent);
+    }
+
+    public static void startActivityForResult(Activity sourceActivity, Class<? extends BaseActivity> targetActivity, Map<String, String> withData, Integer requestCode) {
+
+        Intent intent = new Intent(sourceActivity, targetActivity);
+        if (null != withData) {
+            for (String key : withData.keySet()) {
+                intent.putExtra(key, withData.get(key));
+            }
+        }
+        sourceActivity.startActivityForResult(intent, requestCode);
+    }
+
+    public static void startActivityForResult(Activity sourceActivity, Class<? extends BaseActivity> targetActivity, String[] keys, String[] values, Integer requestCode) {
+
+        HashMap<String, String> map = new HashMap<>();
+        for (int i = 0; i < keys.length; i++) {
+            map.put(keys[i], values[i]);
+        }
+        startActivityForResult(sourceActivity, targetActivity, map, requestCode);
     }
 }

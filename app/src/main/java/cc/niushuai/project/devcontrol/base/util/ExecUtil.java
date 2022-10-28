@@ -47,7 +47,7 @@ public class ExecUtil {
             XLog.i(Keys.Tag.EXEC_COMMAND, "执行命令: {}, 结果: {}", command, result);
             return new CommandResult<>(true, result);
         } catch (Exception e) {
-            XLog.e(Keys.Tag.EXEC_COMMAND, "执行命令: {}, 异常: {}", command, e.getMessage(), e);
+            XLog.e(Keys.Tag.EXEC_COMMAND, "执行命令: {}, 异常", command, e);
             return new CommandResult<>(false, e.getMessage());
         }
     }

@@ -1,5 +1,6 @@
 package cc.niushuai.project.devcontrol.ui.powerswitch;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -11,6 +12,7 @@ import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.ui.BaseActivity;
 import cc.niushuai.project.devcontrol.base.util.CommonUiUtil;
 import cc.niushuai.project.devcontrol.base.util.Global;
+import cc.niushuai.project.devcontrol.base.util.Keys;
 import cc.niushuai.project.devcontrol.databinding.ActivityPowerSwitchSetParamBinding;
 import cc.niushuai.project.devcontrol.db.DB;
 import cc.niushuai.project.devcontrol.vo.DeviceInfo;
@@ -76,7 +78,7 @@ public class PowerSwitchSetParamActivity extends BaseActivity {
         device = deviceInfo;
 
         // 返回上一层
-        this.finish();
+        super.backWithDeviceInfo();
     }
 
     @Override

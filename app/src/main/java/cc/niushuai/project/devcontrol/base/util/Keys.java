@@ -3,6 +3,8 @@ package cc.niushuai.project.devcontrol.base.util;
 public interface Keys {
 
     String ID = "id";
+    String DEVICE = "device";
+    String DEVICE_INFO = "deviceInfo";
 
     String DB_FILE_NAME = "dev_control.db";
 
@@ -22,5 +24,14 @@ public interface Keys {
         String KEEP_DAY_SELECT = "KeepDaySelect";
         String APP_SETUP = "AppSetup";
         String EXEC_COMMAND = "ExecCommand";
+        String ACTIVITY_JUMP = "ActivityJump";
     }
+
+    interface RequestCode {
+
+        int GENERAL = 1;
+
+    }
+
+
 }

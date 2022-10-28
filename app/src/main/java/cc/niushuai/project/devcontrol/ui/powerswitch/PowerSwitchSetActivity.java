@@ -53,7 +53,7 @@ public class PowerSwitchSetActivity extends BaseActivity {
 
         HashMap<String, String> withData = new HashMap<>(1);
         withData.put(Keys.ID, device.getId());
-        ActivityUtil.startActivity(this, PowerSwitchSetParamActivity.class, withData);
+        ActivityUtil.startActivityForResult(this, PowerSwitchSetParamActivity.class, withData, Keys.RequestCode.GENERAL);
     }
 
     private void outsideLogViewClickListener(View view) {
