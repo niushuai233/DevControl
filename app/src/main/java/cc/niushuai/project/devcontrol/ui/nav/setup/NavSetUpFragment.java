@@ -10,6 +10,7 @@ import android.widget.Spinner;
 import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.ui.BaseFragment;
 import cc.niushuai.project.devcontrol.base.util.Keys;
+import cc.niushuai.project.devcontrol.base.util.ToastUtil;
 import cc.niushuai.project.devcontrol.base.util.XLog;
 import cc.niushuai.project.devcontrol.databinding.MainNavFragmentSetUpBinding;
 import cc.niushuai.project.devcontrol.db.entity.SysConfig;
@@ -93,9 +94,11 @@ public class NavSetUpFragment extends BaseFragment {
 
 
     private void setupBackupClickListener(View view) {
+        ToastUtil.show(getActivity(), "备份功能暂未实现");
     }
 
     private void setupRestoreClickListener(View view) {
+        ToastUtil.show(getActivity(), "恢复功能暂未实现");
     }
 
     /**
