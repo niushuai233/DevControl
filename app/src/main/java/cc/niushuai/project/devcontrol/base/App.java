@@ -34,9 +34,9 @@ public class App {
         // 初始化日志相关内容
         initLog(activity);
 
-        XLog.i(Keys.Tag.APP_INIT, "====================================================================");
+        XLog.i(Keys.Tag.APP_INIT, "{}====================================", System.lineSeparator());
         XLog.i(Keys.Tag.APP_INIT, "应用{}启动", BuildConfig.APP_NAME);
-        XLog.i(Keys.Tag.APP_INIT, "====================================================================");
+        XLog.i(Keys.Tag.APP_INIT, "====================================");
 
         // 检查root权限
         checkRoot(activity);

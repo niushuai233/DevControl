@@ -20,5 +20,6 @@ public interface Keys {
         String MY_OPEN_HELPER = "MyOpenHelper";
 
         String APP_INIT = "AppInit";
+        String KEEP_DAY_SELECT = "KeepDaySelect";
     }
 }

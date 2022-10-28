@@ -5,23 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-
-import java.util.List;
+import android.widget.Spinner;
 
 import cc.niushuai.project.devcontrol.R;
 import cc.niushuai.project.devcontrol.base.ui.BaseFragment;
-import cc.niushuai.project.devcontrol.base.util.IdWorker;
 import cc.niushuai.project.devcontrol.base.util.Keys;
 import cc.niushuai.project.devcontrol.base.util.XLog;
 import cc.niushuai.project.devcontrol.databinding.MainNavFragmentSetUpBinding;
-import cc.niushuai.project.devcontrol.db.DB;
 import cc.niushuai.project.devcontrol.db.entity.SysConfig;
 import cc.niushuai.project.devcontrol.db.util.DBHelper;
-import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.date.DateUtil;
 
 public class NavSetUpFragment extends BaseFragment {
 
@@ -46,14 +38,14 @@ public class NavSetUpFragment extends BaseFragment {
 
         SysConfig switchConfig = DBHelper.configOneByKey(Keys.SETUP_LOG_SWITCH);
         if (null == switchConfig) {
-            dealConfig(Keys.SETUP_LOG_SWITCH, XLog.LOG_SWITCH.toString());
+            DBHelper.configDeal(Keys.SETUP_LOG_SWITCH, XLog.LOG_SWITCH.toString());
         } else {
             binding.setupLogSwitchSwitch.setChecked(Boolean.parseBoolean(switchConfig.getValue()));
         }
 
         SysConfig levelConfig = DBHelper.configOneByKey(Keys.SETUP_LOG_LEVEL);
         if (null == levelConfig) {
-            dealConfig(Keys.SETUP_LOG_LEVEL, XLog.SET_ROOT_LEVEL_NAME);
+            DBHelper.configDeal(Keys.SETUP_LOG_LEVEL, XLog.SET_ROOT_LEVEL_NAME);
         } else {
             String[] logLevel = getResources().getStringArray(R.array.logLevel);
             for (int i = 0; i < logLevel.length; i++) {
@@ -67,7 +59,7 @@ public class NavSetUpFragment extends BaseFragment {
 
         SysConfig keepDayConfig = DBHelper.configOneByKey(Keys.SETUP_LOG_KEEP_DAY);
         if (null == keepDayConfig) {
-            dealConfig(Keys.SETUP_LOG_KEEP_DAY, XLog.LOG_KEEP_DAY.toString());
+            DBHelper.configDeal(Keys.SETUP_LOG_KEEP_DAY, XLog.LOG_KEEP_DAY.toString());
         } else {
             binding.setupLogKeepDayDisplay.setText(keepDayConfig.getValue());
         }
@@ -86,19 +78,17 @@ public class NavSetUpFragment extends BaseFragment {
         binding.setupLogLevelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String level = ((TextView) view).getText().toString();
+                String level = ((Spinner) parent.findViewById(R.id.setup_log_level_spinner)).getSelectedItem().toString();
 
-                dealConfig(Keys.SETUP_LOG_LEVEL, level);
+                DBHelper.configDeal(Keys.SETUP_LOG_LEVEL, level);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
         // 日志保留天数点击事件
         binding.setupLlLogKeepDay.setOnClickListener(this::setupKeepDayClickListener);
-
     }
 
 
@@ -119,33 +109,12 @@ public class NavSetUpFragment extends BaseFragment {
         Boolean checked = binding.setupLogSwitchSwitch.isChecked();
         XLog.LOG_SWITCH = checked;
 
-        dealConfig(Keys.SETUP_LOG_SWITCH, checked.toString());
+        DBHelper.configDeal(Keys.SETUP_LOG_SWITCH, checked.toString());
     }
-
 
     private void setupKeepDayClickListener(View view) {
-
-
-    }
-
-    private void dealConfig(String key, String value) {
-        List<SysConfig> list = DBHelper.configListByKey(key);
-        if (CollUtil.isNotEmpty(list)) {
-            configUpdate(value, list.get(0));
-            return;
-        }
-        configInsert(key, value);
-    }
-
-    private void configInsert(String key, String value) {
-        DB.getSysConfigDao().insert(new SysConfig(IdWorker.getNextId(), key, value, DateUtil.now(), DateUtil.now()));
-    }
-
-    private void configUpdate(String level, SysConfig updateEntity) {
-        updateEntity.setValue(level);
-        updateEntity.setUpdateTime(DateUtil.now());
-
-        DB.getSysConfigDao().update(updateEntity);
+        KeepDayDialogFragment keepDayDialogFragment = new KeepDayDialogFragment();
+        keepDayDialogFragment.show(getActivity().getSupportFragmentManager(), KeepDayDialogFragment.class.getSimpleName());
     }
 
     @Override
