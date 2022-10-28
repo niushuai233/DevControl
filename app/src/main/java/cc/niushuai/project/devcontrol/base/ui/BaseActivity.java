@@ -140,6 +140,26 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
+     * 更多设置 打开新的activity
+     *
+     * @param activity 源activity
+     * @param clazz    目标activity
+     * @param keys     activity之间传递数据
+     * @param values   activity之间传递数据
+     * @author niushuai
+     * @date: 2022/10/19 14:47
+     */
+    protected void activityButtonMoreSetClickListener(boolean display, BaseActivity activity, Class<? extends BaseActivity> clazz, String[] keys, String[] values) {
+
+        View moreSetView = findViewById(R.id.activity_title_more_set);
+        if (!display) {
+            moreSetView.setVisibility(View.GONE);
+            return;
+        }
+        moreSetView.setOnClickListener(view -> ActivityUtil.startActivity(activity, clazz, keys, values));
+    }
+
+    /**
      * 自定义moreSet点击事件
      *
      * @param onClickListener 点击事件
