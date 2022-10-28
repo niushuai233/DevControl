@@ -51,6 +51,21 @@ public class PowerSwitchActivity extends BaseActivity {
         // 开关底部的名称
         TextView contentTextTextView = findViewById(R.id.power_switch_activity_content_text);
         contentTextTextView.setText(device.getDeviceName());
+
+
+        int switchImageId, iconImageId;
+        if (OnOffEnum.OFF.equals(device.getOnOff())) {
+            device.setOnOff(OnOffEnum.ON);
+            switchImageId = R.drawable.img_switch_open;
+            iconImageId = R.drawable.ic_device_light_1_on;
+        } else {
+            device.setOnOff(OnOffEnum.OFF);
+            switchImageId = R.drawable.img_switch_close;
+            iconImageId = R.drawable.ic_device_light_1_close;
+        }
+
+        ((AppCompatImageView) findViewById(R.id.power_switch_activity_content_switch)).setImageResource(switchImageId);
+        ((AppCompatImageView) findViewById(R.id.power_switch_activity_content_icon)).setImageResource(iconImageId);
     }
 
     /**
