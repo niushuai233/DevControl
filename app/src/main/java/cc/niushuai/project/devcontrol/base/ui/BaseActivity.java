@@ -202,7 +202,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             return true;
         } else {
             // 命令执行失败
-            ToastUtil.show(this, "执行失败");
+            ToastUtil.show(this, "执行失败, 详情请在日志中查看." + commandResult.getResult());
             return false;
         }
     }
