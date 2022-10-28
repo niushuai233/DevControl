@@ -79,9 +79,12 @@ public class NavSetUpFragment extends BaseFragment {
         binding.setupLogLevelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String level = ((Spinner) parent.findViewById(R.id.setup_log_level_spinner)).getSelectedItem().toString();
+                String levelName = ((Spinner) parent.findViewById(R.id.setup_log_level_spinner)).getSelectedItem().toString();
+                DBHelper.configDeal(Keys.SETUP_LOG_LEVEL, levelName);
 
-                DBHelper.configDeal(Keys.SETUP_LOG_LEVEL, level);
+                XLog.ROOT_LEVEL = XLog.Level.transform(levelName);
+                XLog.ROOT_LEVEL_NAME = levelName;
+                XLog.i(Keys.Tag.APP_SETUP, "修改日志级别为: {}", XLog.ROOT_LEVEL_NAME);
             }
 
             @Override
@@ -110,9 +113,8 @@ public class NavSetUpFragment extends BaseFragment {
      */
     private void setupLogSwitchClickListener(View view) {
         Boolean checked = binding.setupLogSwitchSwitch.isChecked();
-        XLog.SWITCH = checked;
-
         DBHelper.configDeal(Keys.SETUP_LOG_SWITCH, checked.toString());
+        XLog.SWITCH = checked;
     }
 
     private void setupKeepDayClickListener(View view) {

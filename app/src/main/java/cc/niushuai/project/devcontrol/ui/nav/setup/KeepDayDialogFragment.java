@@ -45,10 +45,11 @@ public class KeepDayDialogFragment extends DialogFragment {
     private void addListener() {
         binding.layoutLogKeepDayConfirm.setOnClickListener(v -> {
             int value = binding.keepDayPicker.getValue();
-            XLog.KEEP_DAY = value;
             String keepDayPickerValue = value + "";
             DBHelper.configDeal(Keys.SETUP_LOG_KEEP_DAY, keepDayPickerValue);
-            XLog.v(Keys.Tag.KEEP_DAY_SELECT, "更新日志存储天数为: {}", keepDayPickerValue);
+
+            XLog.KEEP_DAY = value;
+            XLog.i(Keys.Tag.KEEP_DAY_SELECT, "更新日志存储天数为: {}", keepDayPickerValue);
 
             ((TextView)getActivity().findViewById(R.id.setup_log_keep_day_display)).setText(keepDayPickerValue);
             this.dismiss();

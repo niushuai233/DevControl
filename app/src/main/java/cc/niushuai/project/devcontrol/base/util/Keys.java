@@ -21,5 +21,6 @@ public interface Keys {
 
         String APP_INIT = "AppInit";
         String KEEP_DAY_SELECT = "KeepDaySelect";
+        String APP_SETUP = "AppSetup";
     }
 }
